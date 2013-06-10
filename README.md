@@ -11,15 +11,10 @@ UKE:1
 -Fredag: Fri
 
 UKE:2
-
 -Mandag: GUI teste gui om er brukervennlig nok?
-
 -Tirsdag: Lage en database design starte implementasjon.
-
 -Onsdag: Fortsette med implementasjon av databasen.
-
 -Torsdag: Implementere databasen.
-
 -Fredag: Fri
 
 
