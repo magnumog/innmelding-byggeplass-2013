@@ -14,48 +14,61 @@ import javax.swing.event.ChangeListener;
 
 public class RegistreringPanel extends JPanel implements ActionListener, ChangeListener, PropertyChangeListener {
 	
-	protected JLabel nameLabel;
-	protected JTextField nameField;
-	protected JLabel dateOfBirthLabel;
-	protected JTextField dateOfBirthField;
-	protected JLabel idCardLabel;
-	protected JTextField idCardField;
-	protected JLabel idCardExpiresLabel;
-	protected JTextField idCardExpireDateField;
-	protected JLabel adressLabel;
-	protected JTextField adressField;
-	protected JLabel postalNrLabel;
-	protected JTextField postalNrField;
-	protected JLabel postalPlaceLabel;
-	protected JTextField postalPlaceField;
-	protected JLabel telefoneNrLabel;
-	protected JTextField telefonNrField;
-	protected JLabel EmployeerLabel;
-	protected JTextField EmployerField;
-	protected JLabel EmployerPhoneLabel;
-	protected JTextField EmployerPhoneField;
-	protected JLabel nextToKindNameLabel;
-	protected JTextField nextToKindNameField;
-	protected JLabel nextToKindPhoneLabel;
-	protected JTextField nextToKindPhoneField;
+	protected JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,EmployeerLabel;
+	protected JLabel EmployerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel;
+	protected JTextField nameField,dateOfBirthField,idCardField,idCardExpireDateField,adressField,postalNrField,postalPlaceField,telefonNrField,EmployerField;
+	protected JTextField EmployerPhoneField,nextToKindNameField,nextToKindPhoneField;
+	JButton Lagre;
 	int topp=10, side=10;
 	
 	public RegistreringPanel() {
-		setLayout(new GridBagLayout());
-		setBorder(BorderFactory.createEmptyBorder(topp, side, topp, side));
 		
-		nameLabel = new JLabel("Navn:");
-		nameField = new JTextField(50);
+		nameLabel = new JLabel("Navn: ");
+		nameField = new JTextField(40);
+		dateOfBirthLabel = new JLabel("Fødselsdato: ");
+		dateOfBirthField = new JTextField(10);
+		idCardLabel = new JLabel("ID-Kortnummer:");
+		idCardField = new JTextField(10);
+		idCardExpiresLabel = new JLabel("Utløpsdato ID-kort:");
+		idCardExpireDateField = new JTextField(10);
+		adressLabel = new JLabel("Adresse:");
+		adressField = new JTextField(20);
+		postalNrLabel = new JLabel("Postnr");
+		postalNrField = new JTextField(8);
+		postalPlaceLabel = new JLabel("Poststed:");
+		postalPlaceField = new JTextField(20);
+		telefoneNrLabel = new JLabel("Telefon/Mobil:");
+		telefonNrField = new JTextField(18);
+		EmployeerLabel = new JLabel("Arbeidsgiver");
+		EmployerField = new JTextField(40);
+		EmployerPhoneLabel = new JLabel("Arbeidsgivers telefon");
+		EmployerPhoneField = new JTextField(18);
+		nextToKindNameLabel = new JLabel("Nærmeste pårørende:");
+		nextToKindNameField = new JTextField(40);
+		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende");
+		nextToKindPhoneField = new JTextField(18);
+		Lagre = new JButton("Lagre");
+		
 		
 		GridBagConstraints c = new GridBagConstraints();
+		setLayout(new GridBagLayout());
 		
-		c.anchor = GridBagConstraints.WEST;
+		c.anchor = GridBagConstraints.NORTHWEST;
 		c.gridx=0;
 		c.gridy=0;
 		add(nameLabel,c);
 		c.gridx=1;
 		c.gridy=0;
 		add(nameField,c);
+		c.gridx=0;
+		c.gridy=1;
+		add(dateOfBirthLabel,c);
+		c.gridx=1;
+		c.gridy=1;
+		add(dateOfBirthField,c);
+		
+		
+		
 	}
 	
 	@Override
