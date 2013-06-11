@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -7,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class RegistreringPanelProgram extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
@@ -17,11 +20,11 @@ public class RegistreringPanelProgram extends JPanel {
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
-		frame.getContentPane().add(new RegistreringPanelProgram()).setPreferredSize(new Dimension(900, 1000));
+		frame.getContentPane().add(new RegistreringPanelProgram()).setPreferredSize(new Dimension(450, 500));
+		frame.getContentPane().setBackground(Color.RED);
 		frame.pack();
 		frame.setLocation(100, 100);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.add(new RegistreringPanel());
 	}
 }
