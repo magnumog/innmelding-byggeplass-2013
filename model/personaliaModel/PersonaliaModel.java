@@ -34,7 +34,8 @@ public class PersonaliaModel {
 	
 	private PropertyChangeSupport pcs;
 	
-	public PersonaliaModel() {
+	public PersonaliaModel(String name) {
+		this.name = name;
 		pcs = new PropertyChangeSupport(this);
 	}
 
