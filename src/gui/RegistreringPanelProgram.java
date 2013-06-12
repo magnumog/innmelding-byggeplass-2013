@@ -18,7 +18,7 @@ public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public RegistreringPanelProgram() {
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 		add(registreringPanel);
@@ -27,13 +27,20 @@ public class RegistreringPanelProgram extends JPanel {
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
-		frame.getContentPane().setPreferredSize(new Dimension(450, 500));
-		frame.add(new RegistreringPanelProgram()).setBackground(Color.red);
-		frame.setMinimumSize(new Dimension(450, 500));
+		frame.getContentPane().add(new RegistreringPanelProgram());
+		frame.setMinimumSize(new Dimension(800, 400));
+//		frame.setMaximumSize(new Dimension(470, 600));
 		frame.pack();
-		frame.setLocation(50, 50);
+		frame.setLocation(0, 100);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		//frame.setBounds(450, 500, 450, 500);
+		//frame.setBounds(450, 500, 450, 500)
+		
+		/*JFrame frame = new JFrame("Oving 3");
+		frame.getContentPane().add(new RegistreringPanelProgram());
+		frame.pack();
+		frame.setLocation(0, 100);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);*/
 	}
 }
