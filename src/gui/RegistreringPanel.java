@@ -17,6 +17,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 	protected JLabel EmployerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel;
 	protected JTextField nameField,dateOfBirthField,idCardField,idCardExpireDateField,adressField,postalNrField,postalPlaceField,telefonNrField,EmployerField;
 	protected JTextField EmployerPhoneField,nextToKindNameField,nextToKindPhoneField;
+	protected JComboBox languageChoise;
 	JButton Neste;
 	int topp=10, side=10;
 	
@@ -49,8 +50,10 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		nextToKindNameField = new JTextField(40);
 		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende");
 		nextToKindPhoneField = new JTextField(18);
+		languageChoise = new JComboBox(Language.values());
 		Neste = new JButton("Neste");
 		
+		languageChoise.addActionListener(this);
 		Neste.addActionListener(this);
 		
 		/*GridBagConstraints c;
@@ -70,6 +73,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		layout = new FlowLayout();
 		setLayout(layout);
 		//layout.setAlignment(FlowLayout.LEFT);
+		add(languageChoise);
 		add(nameLabel);
 		add(nameField);
 		add(dateOfBirthLabel);
@@ -103,7 +107,9 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == Neste) {
 			System.out.println("Du trykket på knappen");
-		}
+		} else if(e.getSource() == languageChoise) {
+			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+		} 
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent arg0) {

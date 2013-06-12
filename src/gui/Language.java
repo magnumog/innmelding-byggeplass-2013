@@ -1,7 +1,12 @@
 package gui;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Language {
 	Norwegian, Polski, English, Deutsch;
+	
+	private static Map<String, Language> StringMap = new HashMap<String, Language>();
 
 	public String toString() {
 		if(this==Language.Norwegian){
@@ -13,6 +18,9 @@ public enum Language {
 		} else {
 			return "Deutsch";
 		}
+	}
+	public static Language getLannguage(String key) {
+		return 	StringMap.get(key);
 	}
 }
 
