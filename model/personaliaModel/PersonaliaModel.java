@@ -9,7 +9,7 @@ public class PersonaliaModel {
 	private String IdCardNr;
 	private String IdexpireDate;
 	private String adresse;
-	private int postalNr;
+	private String postalNr;
 	private String postalPlace;
 	private String phoneNr;
 	private String employeer;
@@ -78,11 +78,11 @@ public class PersonaliaModel {
 		this.adresse = adresse;
 		pcs.firePropertyChange(ADRESS_PROPERTY, oldAdress, adresse);
 	}
-	public int getPostalNr() {
+	public String getPostalNr() {
 		return postalNr;
 	}
-	public void setPostalNr(int postalNr) {
-		int oldPostal = this.getPostalNr();
+	public void setPostalNr(String postalNr) {
+		String oldPostal = this.getPostalNr();
 		this.postalNr = postalNr;
 		pcs.firePropertyChange(POSTALNR_PROPERTY, oldPostal, postalNr);
 	}

@@ -17,6 +17,8 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import personaliaModel.PersonaliaModel;
+
 public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {
 	
 	private static final long serialVersionUID = 1L;
@@ -26,10 +28,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JTextField employerPhoneField,nextToKindNameField,nextToKindPhoneField;
 	protected JComboBox<Language> languageChoise;
 	JButton Neste;
-	int topp=10, side=10;
 	
-	//String [][] ord = new String[][]{{"Navn:","Fødlselsdato","ID-kortnummer"},{},{"Name", "Personalnumber","Registration number"},{}};
-	//int languageNr = 0;
+	PersonaliaModel model = null;
 	
 	
 	
@@ -162,6 +162,27 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 12;
 		add(nextToKindPhoneField,c);
+	}
+	
+	public void setModel(PersonaliaModel model){
+		this.model = model;
+		this.model.addPropertyChangeListener(this);
+		nameField.setText(model.getName());
+		dateOfBirthField.setText(model.getDateOfBirth());
+		idCardField.setText(model.getIdCardNr());
+		idCardExpireDateField.setText(model.getIdexpireDate());
+		adressField.setText(model.getAdresse());
+		postalNrField.setText(model.getPostalNr());
+		postalPlaceField.setText(model.getPostalPlace());
+		telefonNrField.setText(model.getPhoneNr());
+		employerField.setText(model.getEmployeer());
+		employerPhoneField.setText(model.getEmployeerPhone());
+		nextToKindNameField.setText(model.getNextToKind());
+		nextToKindPhoneField.setText(model.getNextToKindPhone());		
+	}
+
+	public PersonaliaModel getModel() {
+		return model;
 	}
 	
 	@Override
