@@ -17,7 +17,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 	protected JLabel EmployerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel;
 	protected JTextField nameField,dateOfBirthField,idCardField,idCardExpireDateField,adressField,postalNrField,postalPlaceField,telefonNrField,EmployerField;
 	protected JTextField EmployerPhoneField,nextToKindNameField,nextToKindPhoneField;
-	protected JComboBox languageChoise;
+	protected JComboBox<Language> languageChoise;
 	JButton Neste;
 	int topp=10, side=10;
 	
@@ -50,7 +50,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		nextToKindNameField = new JTextField(40);
 		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende");
 		nextToKindPhoneField = new JTextField(18);
-		languageChoise = new JComboBox(Language.values());
+		languageChoise = new JComboBox<Language>(Language.values());
 		Neste = new JButton("Neste");
 		
 		languageChoise.addActionListener(this);
@@ -108,7 +108,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		if(e.getSource() == Neste) {
 			System.out.println("Du trykket på knappen");
 		} else if(e.getSource() == languageChoise) {
-			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());				
 		} 
 	}
 	@Override
