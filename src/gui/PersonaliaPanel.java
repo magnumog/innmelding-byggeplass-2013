@@ -6,9 +6,6 @@ package gui;
  * Owner Veidekke ASA
  */
 
-
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -66,7 +63,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindNameLabel = new JLabel("Nærmeste pårørende: ");
 		nextToKindNameField = new JTextField(15);
 		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende: ");
-		nextToKindPhoneField = new JTextField(10);
+		nextToKindPhoneField = new JTextField(	10);
 		selectLanguageLabel = new JLabel("Velg Språk/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
 		Neste = new JButton("Neste");
