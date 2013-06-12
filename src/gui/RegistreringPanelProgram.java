@@ -20,19 +20,20 @@ public class RegistreringPanelProgram extends JPanel {
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
-		RegistreringPanel registreringPanel = new RegistreringPanel();
+		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 		add(registreringPanel);
 		
 	}
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
-		frame.getContentPane().add(new RegistreringPanelProgram()).setPreferredSize(new Dimension(450, 500));
-		frame.getContentPane().setBackground(Color.RED);
+		frame.getContentPane().setPreferredSize(new Dimension(450, 500));
+		frame.add(new RegistreringPanelProgram()).setBackground(Color.red);
 		frame.setMinimumSize(new Dimension(450, 500));
 		frame.pack();
-		frame.setLocation(100, 100);
+		frame.setLocation(50, 50);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		//frame.setBounds(450, 500, 450, 500);
 	}
 }

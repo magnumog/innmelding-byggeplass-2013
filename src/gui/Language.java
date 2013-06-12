@@ -1,5 +1,13 @@
 package gui;
 
+/*
+ * Author Magnus Settemsli Mogstad
+ * mail @ magnumog@stud.ntnu.no
+ * Rotete kode men forståelig
+ * Owner Veidekke ASA
+ */
+
+
 import java.util.HashMap;
 import java.util.Map;
 

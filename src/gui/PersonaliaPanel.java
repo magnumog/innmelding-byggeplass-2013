@@ -1,5 +1,13 @@
 package gui;
+/*
+ * Author Magnus Settemsli Mogstad
+ * mail @ magnumog@stud.ntnu.no
+ * Rotete kode men forståelig
+ * Owner Veidekke ASA
+ */
 
+
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,22 +18,26 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class RegistreringPanel extends JPanel implements ActionListener, PropertyChangeListener {
+public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {
 	
 	private static final long serialVersionUID = 1L;
 	protected JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,EmployeerLabel;
-	protected JLabel EmployerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel;
+	protected JLabel EmployerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel, emptyLabel;
 	protected JTextField nameField,dateOfBirthField,idCardField,idCardExpireDateField,adressField,postalNrField,postalPlaceField,telefonNrField,EmployerField;
 	protected JTextField EmployerPhoneField,nextToKindNameField,nextToKindPhoneField;
 	protected JComboBox<Language> languageChoise;
 	JButton Neste;
 	int topp=10, side=10;
 	
-	private FlowLayout layout;
-	//private Container container;
 	
-	public RegistreringPanel() {
-		//Fikser alle komponenter
+	
+	public PersonaliaPanel() {
+		//Lager en emptylabel for å fikse GUI slik jeg vil ha det
+		emptyLabel = new JLabel("Denne skal ikke synes");
+		emptyLabel.setVisible(false);
+		
+		
+		//Fikser alle komponenter som skal brukes
 		nameLabel = new JLabel("Navn: ");
 		nameField = new JTextField(15);
 		dateOfBirthLabel = new JLabel("Fødselsdato: ");
@@ -50,11 +62,42 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		nextToKindNameField = new JTextField(40);
 		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende");
 		nextToKindPhoneField = new JTextField(18);
+		selectLanguageLabel = new JLabel("Velg Språk/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
 		Neste = new JButton("Neste");
 		
+		//Legger til ActionListener på LaguageChoise dette slik at det skal gå å bytte språk, og på knappen.
 		languageChoise.addActionListener(this);
 		Neste.addActionListener(this);
+		
+		//Starter å legge ut komponenten
+		setLayout(new BorderLayout());
+		
+		JPanel pN = new JPanel();
+		
+		pN.add(emptyLabel,BorderLayout.CENTER);
+		
+		add(pN, BorderLayout.NORTH);
+		
+		JPanel pLangauge = new JPanel();
+		
+		pLangauge.add(selectLanguageLabel,BorderLayout.EAST);
+		pLangauge.add(languageChoise,BorderLayout.LINE_END);
+		
+		
+		add(pLangauge,BorderLayout.NORTH);
+		
+		JPanel pC = new JPanel();
+		
+		pC.add(nameLabel,BorderLayout.CENTER);
+		pC.add(nameField,BorderLayout.CENTER);
+		pC.add(dateOfBirthLabel,BorderLayout.CENTER);
+		pC.add(dateOfBirthField,BorderLayout.CENTER);
+		
+		
+		add(pC, BorderLayout.CENTER);
+		
+		
 		
 		/*GridBagConstraints c;
 		setLayout(new GridBagLayout());
@@ -70,7 +113,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		c.gridy = 0;
 		add(nameField,c);*/
 		
-		layout = new FlowLayout();
+		/*layout = new FlowLayout();
 		setLayout(layout);
 		//layout.setAlignment(FlowLayout.LEFT);
 		add(languageChoise);
@@ -100,7 +143,7 @@ public class RegistreringPanel extends JPanel implements ActionListener, Propert
 		add(nextToKindNameField);
 		add(nextToKindPhoneLabel);
 		add(nextToKindPhoneField);
-		add(Neste);
+		add(Neste);*/
 	}
 	
 	@Override
