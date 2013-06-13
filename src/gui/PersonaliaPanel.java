@@ -8,12 +8,14 @@ package gui;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import javax.swing.*;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.LocatorEx.Snapshot;
 
 import personaliaModel.Personalia;
 
@@ -21,22 +23,37 @@ import personaliaModel.Personalia;
 public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
+	//GUI til personalia
 	protected JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,employeerLabel;
-	protected JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel;
+	protected JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel, emptyLabel;
 	protected JTextField namePropertyComponent,dateOfBirthpropertyComponent,idCardPropertyComponent,idExpiresPropertyComponent,adressPropertyComponent,postNrPropertyComponent,postPlacePropertyComponent,phonePropertyComponent,employeePropertyComponent;
 	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent;
 	protected JComboBox<Language> languageChoise;
-	JButton Neste;
+	
+	//GUI språk
+	protected JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
+	protected JToggleButton speakSkadinvaiskJaToggel,speakSkadinvaiskNeiToggel,understadnSkandinaviskJaToggel,understadnSkandinaviskNeiToggel;
+	protected ButtonGroup speakSkandinavisk,understandSkandinavisk;
+	
+	
+	//GUI knapper
+	protected JButton Neste,nullstill;
 
 	Personalia model = null;
 
-	public PersonaliaPanel() {		
-
+	public PersonaliaPanel() {
 		createComponents();
-
 		addactionListeners();
-
 		layGUI();
+		setNameOnComponenents();
+		speakSkandinavisk.add(speakSkadinvaiskJaToggel);
+		speakSkandinavisk.add(speakSkadinvaiskNeiToggel);
+		understandSkandinavisk.add(understadnSkandinaviskJaToggel);
+		understandSkandinavisk.add(understadnSkandinaviskNeiToggel);
+	}
+
+	private void setNameOnComponenents() {
+		// Setter navn på componentene slik at de kan brukes i tester
 		namePropertyComponent.setName("NamePropertyComponent");
 		dateOfBirthpropertyComponent.setName("DateOfBirthpropertyComponent");
 		idCardPropertyComponent.setName("IdCardPropertyComponent");
@@ -49,14 +66,16 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		employeePhonePropertyComponent.setName("EmployeePhonePropertyComponent");
 		nextToKindPropertyComponent.setName("NextToKindPropertyComponent");
 		nextToKindPhonePropertyComponent.setName("NextToKindPhonePropertyComponent");
-
 	}
-
 	private void layGUI() {
 		//Legger ut GUI komponentene.
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
+		
+		c.ipadx=1;
+		c.ipady=1;
+		c.insets = new Insets(2,2,2,2);
 
 		//c.gridheight = 10;
 		c.anchor = GridBagConstraints.NORTHEAST;
@@ -108,6 +127,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 0;
 		c.gridy = 12;
 		add(nextToKindPhoneLabel,c);
+		c.gridx=0;
+		c.gridy=13;
+		add(speakSkandinaviskLabel,c);
+		c.gridx=0;
+		c.gridy=14;
+		add(understandSkandinaviskLabel,c);
 
 		c.anchor = GridBagConstraints.WEST;
 		c.gridx = 1;
@@ -146,15 +171,41 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 12;
 		add(nextToKindPhonePropertyComponent,c);
-
 		c.gridx=1;
 		c.gridy=13;
+		add(speakSkadinvaiskJaToggel,c);
+		c.anchor=GridBagConstraints.EAST;
+		c.gridx=1;
+		c.gridy=13;
+		add(speakSkadinvaiskNeiToggel,c);
+		c.anchor=GridBagConstraints.WEST;
+		c.gridx=1;
+		c.gridy=14;
+		add(understadnSkandinaviskJaToggel,c);
+		c.anchor=GridBagConstraints.EAST;
+		c.gridx=1;
+		c.gridy=14;
+		add(understadnSkandinaviskNeiToggel,c);
+		
+		
+		c.gridx=1;
+		c.gridy=15;
+		add(emptyLabel,c);
+		emptyLabel.setVisible(true);
+		c.gridx=0;
+		c.gridy=16;
+		add(nullstill,c);
+		c.gridx=1;
+		c.gridy=16;
 		add(Neste,c);
+		
+		
+		
 
 	}
-
 	private void createComponents() {
 		//Fikser alle komponenter som skal brukes
+		emptyLabel = new JLabel(" ");
 		nameLabel = new JLabel("Navn: ");
 		namePropertyComponent = new JTextField(15);
 		dateOfBirthLabel = new JLabel("Fødselsdato: ");
@@ -181,13 +232,24 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindPhonePropertyComponent = new JTextField(	10);
 		selectLanguageLabel = new JLabel("Velg Språk/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
+		
+		
+		speakSkandinaviskLabel = new JLabel("Snakker skandinavisk: ");
+		understandSkandinaviskLabel = new JLabel("Understand skandinavisk: ");
+		speakSkadinvaiskJaToggel = new JToggleButton("Ja");
+		speakSkadinvaiskNeiToggel = new JToggleButton("Nei");
+		understadnSkandinaviskJaToggel = new JToggleButton("Ja");
+		understadnSkandinaviskNeiToggel = new JToggleButton("Nei");
+		
 		Neste = new JButton("Neste");
+		nullstill = new JButton("nullstill");
 
 	}
 	private void addactionListeners() {
 		//Legger til ActionListener på LaguageChoise dette slik at det skal gå å bytte språk, og på knappen.
 		languageChoise.addActionListener(this);
 		Neste.addActionListener(this);
+		nullstill.addActionListener(this);
 		namePropertyComponent.addActionListener(this);
 		dateOfBirthpropertyComponent.addActionListener(this);
 		idCardPropertyComponent.addActionListener(this);
@@ -201,9 +263,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindPropertyComponent.addActionListener(this);
 		nextToKindPhonePropertyComponent.addActionListener(this);
 	}
+	
+
 	public void setModel(Personalia model){
 		this.model = model;
-		this.model.addPropertyChangeListener(this);
+		model.addPropertyChangeListener(this);
 		namePropertyComponent.setText(model.getName());
 		dateOfBirthpropertyComponent.setText(model.getDateOfBirth());
 		idCardPropertyComponent.setText(model.getIdCardNr());
@@ -222,48 +286,67 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent evt) {
-		if(model != null) {
+	public void actionPerformed(ActionEvent action) {
+		if(model == null) {
 			return;
 		}
 
 		try {
-			if(evt.getSource() == Neste) {
+			if(action.getSource() == Neste) {
 				System.out.println("Du trykket på knappen");
-//				System.out.println("" + model.getName() + " " + model.getDateOfBirth() + " " + model.getIdCardNr());
-			} 
-			if(evt.getSource() == languageChoise) {
-				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
-				//languageNr = languageChoise.getSelectedIndex();
-			} 
-			if(evt.getSource() == namePropertyComponent) {
 				model.setName(namePropertyComponent.getText());
-			} 
-			if(evt.getSource() == dateOfBirthpropertyComponent) {
 				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
-			} 
-			if(evt.getSource() == idCardPropertyComponent) {
 				model.setIdCardNr(idCardPropertyComponent.getText());
-			} else if(evt.getSource() == idExpiresPropertyComponent) {
-				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
-			} else if(evt.getSource() == adressPropertyComponent) {
+				model.setIdexpireDate(idExpiresPropertyComponent.getText());
 				model.setAdresse(adressPropertyComponent.getText());
-			} else if(evt.getSource() == postNrPropertyComponent) {
 				model.setPostalNr(postNrPropertyComponent.getText());
-			} else if(evt.getSource() == postalPlaceLabel) {
 				model.setPostalPlace(postPlacePropertyComponent.getText());
-			} else if(evt.getSource()==phonePropertyComponent) {
 				model.setPhoneNr(phonePropertyComponent.getText());
-			} else if(evt.getSource()==employeePropertyComponent) {
 				model.setEmployeer(employeePropertyComponent.getText());
-			} else if(evt.getSource()==employeePhonePropertyComponent) {
 				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
-			} else if(evt.getSource()==nextToKindPropertyComponent) {
 				model.setNextToKind(nextToKindPropertyComponent.getText());
-			} else if(evt.getSource()==nextToKindPhonePropertyComponent) {
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-			} else {
-				System.out.println("WTF happend in actionPerformed");
+				System.out.println("You just updated a bunch of shit");
+			} else if (action.getSource() == nullstill) {
+				model.setName(null);
+				model.setDateOfBirth(null);
+				model.setIdCardNr(null);
+				model.setIdexpireDate(null);
+				model.setAdresse(null);
+				model.setPostalNr(null);
+				model.setPostalPlace(null);
+				model.setPhoneNr(null);
+				model.setEmployeer(null);
+				model.setEmployeerPhone(null);
+				model.setNextToKind(null);
+				model.setNextToKindPhone(null);
+				System.out.println("You just nulled a bunch of shit");
+			}else if(action.getSource() == languageChoise) {
+				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+			} else if (action.getSource() == namePropertyComponent) {
+				model.setName(namePropertyComponent.getText());
+			} else if(action.getSource() == dateOfBirthpropertyComponent) {
+				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
+			} else if(action.getSource() == idCardPropertyComponent) {
+				model.setIdCardNr(idCardPropertyComponent.getText());
+			} else if(action.getSource() == idExpiresPropertyComponent) {
+				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
+			} else if(action.getSource() == adressPropertyComponent) {
+				model.setAdresse(adressPropertyComponent.getText());
+			} else if(action.getSource() == postNrPropertyComponent) {
+				model.setPostalNr(postNrPropertyComponent.getText());
+			} else if(action.getSource() == postalPlaceLabel) {
+				model.setPostalPlace(postPlacePropertyComponent.getText());
+			} else if(action.getSource()==phonePropertyComponent) {
+				model.setPhoneNr(phonePropertyComponent.getText());
+			} else if(action.getSource()==employeePropertyComponent) {
+				model.setEmployeer(employeePropertyComponent.getText());
+			} else if(action.getSource()==employeePhonePropertyComponent) {
+				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
+			} else if(action.getSource()==nextToKindPropertyComponent) {
+				model.setNextToKind(nextToKindPropertyComponent.getText());
+			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
+				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
