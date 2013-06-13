@@ -32,6 +32,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
 	protected JToggleButton speakSkadinvaiskJaToggel,speakSkadinvaiskNeiToggel,understadnSkandinaviskJaToggel,understadnSkandinaviskNeiToggel;
 	protected ButtonGroup speakSkandinavisk,understandSkandinavisk;
+	protected JTextField speakTiltakPropertyComponent,understandTiltakPropertyComponent;
+	protected JLabel speakTiltakLabel,understandTiltakLabel;
 	
 	boolean speakingSkandinavisk, understandingSkandinavisk;
 	
@@ -183,15 +185,29 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=14;
 		add(understadnSkandinaviskNeiToggel,c);
+		c.gridx=2;
+		c.gridy=13;
+		add(speakTiltakLabel,c);
+		c.gridx=2;
+		c.gridy=14;
+		add(understandTiltakLabel,c);
+		c.anchor = GridBagConstraints.WEST;
+		c.gridx=3;
+		c.gridy=13;
+		add(speakTiltakPropertyComponent, c);
+		c.gridx=3;
+		c.gridy=14;
+		add(understandTiltakPropertyComponent,c);
 		
-		
+		c.anchor = GridBagConstraints.WEST;
 		c.gridx=1;
 		c.gridy=15;
 		add(emptyLabel,c);
 		emptyLabel.setVisible(true);
-		c.gridx=0;
+		c.gridx=1;
 		c.gridy=16;
 		add(nullstill,c);
+		c.anchor = GridBagConstraints.EAST;
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
@@ -243,9 +259,14 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		speakSkandinavisk.add(speakSkadinvaiskNeiToggel);
 		understandSkandinavisk.add(understadnSkandinaviskJaToggel);
 		understandSkandinavisk.add(understadnSkandinaviskNeiToggel);
+		understandTiltakPropertyComponent = new JTextField(5);
+		speakTiltakPropertyComponent = new JTextField(5);
+		understandTiltakLabel = new JLabel("Ved nei, tiltak; ");//Få med Disse i MVC!!!!!!!!!!!!!!
+		speakTiltakLabel = new JLabel("Ved nei, tiltak: ");//Denne også
+		
 		
 		Neste = new JButton("Neste");
-		nullstill = new JButton("nullstill");
+		nullstill = new JButton("Nullstill");
 
 	}
 	private void addactionListeners() {
