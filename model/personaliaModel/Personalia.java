@@ -3,7 +3,7 @@ package personaliaModel;
 import java.beans.PropertyChangeListener;
 import java.beans.*;
 
-public class PersonaliaModel {
+public class Personalia {
 	private String name;
 	private String dateOfBirth;
 	private String IdCardNr;
@@ -34,8 +34,7 @@ public class PersonaliaModel {
 	
 	private PropertyChangeSupport pcs;
 	
-	public PersonaliaModel(String name) {
-		this.name = name;
+	public Personalia() {
 		pcs = new PropertyChangeSupport(this);
 	}
 

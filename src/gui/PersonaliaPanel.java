@@ -14,13 +14,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-import personaliaModel.PersonaliaModel;
+import personaliaModel.Personalia;
+
 
 public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {
-	
+
 	private static final long serialVersionUID = 1L;
 	protected JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,employeerLabel;
 	protected JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel;
@@ -28,18 +27,37 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent;
 	protected JComboBox<Language> languageChoise;
 	JButton Neste;
-	
-	PersonaliaModel model = null;
-	
+
+	Personalia model = null;
+
 	public PersonaliaPanel() {		
+
 		createComponents();
-		
+
 		addactionListeners();
-		
+
+		layGUI();
+		namePropertyComponent.setName("NamePropertyComponent");
+		dateOfBirthpropertyComponent.setName("DateOfBirthpropertyComponent");
+		idCardPropertyComponent.setName("IdCardPropertyComponent");
+		idExpiresPropertyComponent.setName("IdExpiresPropertyComponent");
+		adressPropertyComponent.setName("AdressPropertyComponent");
+		postNrPropertyComponent.setName("PostNrPropertyComponent");
+		postPlacePropertyComponent.setName("PostPlacePropertyComponent");
+		phonePropertyComponent.setName("PhonePropertyComponent");
+		employeePropertyComponent.setName("EmployeePropertyComponent");
+		employeePhonePropertyComponent.setName("EmployeePhonePropertyComponent");
+		nextToKindPropertyComponent.setName("NextToKindPropertyComponent");
+		nextToKindPhonePropertyComponent.setName("NextToKindPhonePropertyComponent");
+
+	}
+
+	private void layGUI() {
+		//Legger ut GUI komponentene.
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
-		
+
 		//c.gridheight = 10;
 		c.anchor = GridBagConstraints.NORTHEAST;
 		c.gridx = 1;
@@ -50,9 +68,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridy = 0;
 		add(languageChoise,c);
 		languageChoise.setVisible(false); //Sette usynlig for denne funksjonen er ikke implementert ennå.
-		
-		
-		
+
+
+
 		c.anchor = GridBagConstraints.EAST;
 		c.gridx = 0;
 		c.gridy = 1;
@@ -90,7 +108,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 0;
 		c.gridy = 12;
 		add(nextToKindPhoneLabel,c);
-		
+
 		c.anchor = GridBagConstraints.WEST;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -128,8 +146,13 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 12;
 		add(nextToKindPhonePropertyComponent,c);
+
+		c.gridx=1;
+		c.gridy=13;
+		add(Neste,c);
+
 	}
-	
+
 	private void createComponents() {
 		//Fikser alle komponenter som skal brukes
 		nameLabel = new JLabel("Navn: ");
@@ -159,9 +182,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		selectLanguageLabel = new JLabel("Velg Språk/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
 		Neste = new JButton("Neste");
-		
-	}
 
+	}
 	private void addactionListeners() {
 		//Legger til ActionListener på LaguageChoise dette slik at det skal gå å bytte språk, og på knappen.
 		languageChoise.addActionListener(this);
@@ -179,8 +201,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindPropertyComponent.addActionListener(this);
 		nextToKindPhonePropertyComponent.addActionListener(this);
 	}
-
-	public void setModel(PersonaliaModel model){
+	public void setModel(Personalia model){
 		this.model = model;
 		this.model.addPropertyChangeListener(this);
 		namePropertyComponent.setText(model.getName());
@@ -196,81 +217,97 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindPropertyComponent.setText(model.getNextToKind());
 		nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());		
 	}
-
-	public PersonaliaModel getModel() {
+	public Personalia getModel() {
 		return model;
 	}
-	
+
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(model == null) {
+	public void actionPerformed(ActionEvent evt) {
+		if(model != null) {
 			return;
 		}
-		
-		if(e.getSource() == Neste) {
-			System.out.println("Du trykket på knappen");
-		} else if(e.getSource() == languageChoise) {
-			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
-			//languageNr = languageChoise.getSelectedIndex();
-		} else if(e.getSource() == namePropertyComponent) {
-			model.setName(namePropertyComponent.getText());
-		}else if(e.getSource() == namePropertyComponent) {
-			model.setName(namePropertyComponent.getText());
-		} else if(e.getSource() == dateOfBirthpropertyComponent) {
-			model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
-		} else if(e.getSource() == idCardPropertyComponent) {
-			model.setIdCardNr(idCardPropertyComponent.getText());
-		} else if(e.getSource() == idExpiresPropertyComponent) {
-			model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
-		} else if(e.getSource() == adressPropertyComponent) {
-			model.setAdresse(adressPropertyComponent.getText());
-		} else if(e.getSource() == postNrPropertyComponent) {
-			model.setPostalNr(postNrPropertyComponent.getText());
-		} else if(e.getSource() == postalPlaceLabel) {
-			model.setPostalPlace(postPlacePropertyComponent.getText());
-		} else if(e.getSource()==phonePropertyComponent) {
-			model.setPhoneNr(phonePropertyComponent.getText());
-		} else if(e.getSource()==employeePropertyComponent) {
-			model.setEmployeer(employeePropertyComponent.getText());
-		} else if(e.getSource()==employeePhonePropertyComponent) {
-			model.setEmployeerPhone(employeePhonePropertyComponent.getText());
-		} else if(e.getSource()==nextToKindPropertyComponent) {
-			model.setNextToKind(nextToKindPropertyComponent.getText());
-		} else if(e.getSource()==nextToKindPhonePropertyComponent) {
-			model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-		} else {
-			System.out.println("WTF happend in actionPerformed");
+
+		try {
+			if(evt.getSource() == Neste) {
+				System.out.println("Du trykket på knappen");
+//				System.out.println("" + model.getName() + " " + model.getDateOfBirth() + " " + model.getIdCardNr());
+			} 
+			if(evt.getSource() == languageChoise) {
+				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+				//languageNr = languageChoise.getSelectedIndex();
+			} 
+			if(evt.getSource() == namePropertyComponent) {
+				model.setName(namePropertyComponent.getText());
+			} 
+			if(evt.getSource() == dateOfBirthpropertyComponent) {
+				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
+			} 
+			if(evt.getSource() == idCardPropertyComponent) {
+				model.setIdCardNr(idCardPropertyComponent.getText());
+			} else if(evt.getSource() == idExpiresPropertyComponent) {
+				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
+			} else if(evt.getSource() == adressPropertyComponent) {
+				model.setAdresse(adressPropertyComponent.getText());
+			} else if(evt.getSource() == postNrPropertyComponent) {
+				model.setPostalNr(postNrPropertyComponent.getText());
+			} else if(evt.getSource() == postalPlaceLabel) {
+				model.setPostalPlace(postPlacePropertyComponent.getText());
+			} else if(evt.getSource()==phonePropertyComponent) {
+				model.setPhoneNr(phonePropertyComponent.getText());
+			} else if(evt.getSource()==employeePropertyComponent) {
+				model.setEmployeer(employeePropertyComponent.getText());
+			} else if(evt.getSource()==employeePhonePropertyComponent) {
+				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
+			} else if(evt.getSource()==nextToKindPropertyComponent) {
+				model.setNextToKind(nextToKindPropertyComponent.getText());
+			} else if(evt.getSource()==nextToKindPhonePropertyComponent) {
+				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+			} else {
+				System.out.println("WTF happend in actionPerformed");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Some shit happend");
 		}
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		System.out.println("hendelse");
-		if(evt.getPropertyName() == PersonaliaModel.NAME_PROPERTY) {
+		if(evt.getPropertyName() == Personalia.NAME_PROPERTY) {
 			namePropertyComponent.setText(model.getName());
 			System.out.println("Navn endret");
-		} else if (evt.getPropertyName() == PersonaliaModel.DATE_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.DATE_PROPERTY) {
+			dateOfBirthpropertyComponent.setText(model.getDateOfBirth());
 			System.out.println("Endret dateOfBirth");
-		} else if (evt.getPropertyName() == PersonaliaModel.DATE_PROPERTY) {
-			System.out.println("Endret dateOfBirth");
-		} else if (evt.getPropertyName() == PersonaliaModel.ID_CARDNUMBER) {
+		} else if (evt.getPropertyName() == Personalia.ID_CARDNUMBER) {
+			idCardPropertyComponent.setText(model.getIdCardNr());
 			System.out.println("Endret id_cardNumber"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.ID_EXPIRATION) {
+		} else if (evt.getPropertyName() == Personalia.ID_EXPIRATION) {
+			idExpiresPropertyComponent.setText(model.getIdexpireDate());
 			System.out.println("Endret id_expirationdate"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.ADRESS_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.ADRESS_PROPERTY) {
+			adressPropertyComponent.setText(model.getAdresse());
 			System.out.println("Endret adresse"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.POSTALNR_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.POSTALNR_PROPERTY) {
+			postNrPropertyComponent.setText(model.getPostalNr());
 			System.out.println("Endret postnr"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.POSTALPLACE_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.POSTALPLACE_PROPERTY) {
+			postPlacePropertyComponent.setText(model.getPostalPlace());
 			System.out.println("Endret poststed"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.PHONE_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.PHONE_PROPERTY) {
+			phonePropertyComponent.setText(model.getPhoneNr());
 			System.out.println("Endret TelefonNr"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.EMPLOYER_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.EMPLOYER_PROPERTY) {
+			employeePropertyComponent.setText(model.getEmployeer());
 			System.out.println("Endret employee"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.EMPLOYERPHONE_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.EMPLOYERPHONE_PROPERTY) {
+			employeePhonePropertyComponent.setText(model.getEmployeerPhone());
 			System.out.println("Endret employeePhone"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.NEXTTO_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.NEXTTO_PROPERTY) {
+			nextToKindPropertyComponent.setText(model.getNextToKind());
 			System.out.println("Endret nextToKind"); 
-		} else if (evt.getPropertyName() == PersonaliaModel.NEXTTOPHONE_PROPERTY) {
+		} else if (evt.getPropertyName() == Personalia.NEXTTOPHONE_PROPERTY) {
+			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 			System.out.println("Endret nextToPhone"); 
 		} else {
 			System.out.println("WTF happend in propertyChange");
