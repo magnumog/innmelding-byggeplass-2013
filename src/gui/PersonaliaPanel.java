@@ -33,6 +33,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JToggleButton speakSkadinvaiskJaToggel,speakSkadinvaiskNeiToggel,understadnSkandinaviskJaToggel,understadnSkandinaviskNeiToggel;
 	protected ButtonGroup speakSkandinavisk,understandSkandinavisk;
 	
+	boolean speakingSkandinavisk, understandingSkandinavisk;
+	
 	
 	//GUI knapper
 	protected JButton Neste,nullstill;
@@ -269,7 +271,22 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understadnSkandinaviskJaToggel.addActionListener(this);
 	}
 	
-
+	public void speak() {
+		if(speakSkadinvaiskJaToggel.isSelected()) {
+			speakingSkandinavisk=true;
+		} else {
+			speakingSkandinavisk = false;
+		}
+	}
+	
+	public void understand() {
+		if (understadnSkandinaviskJaToggel.isSelected()) {
+			understandingSkandinavisk=true;
+		} else {
+			understandingSkandinavisk=false;
+		}
+	}
+	
 	public void setModel(Personalia model){
 		this.model = model;
 		model.addPropertyChangeListener(this);
@@ -311,6 +328,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
 				model.setNextToKind(nextToKindPropertyComponent.getText());
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+				model.setUnderstandScandinavian(understandingSkandinavisk);
+				model.setSpeakScandinavian(speakingSkandinavisk);
 				System.out.println("You just updated a bunch of shit");
 			} else if (action.getSource() == nullstill) {
 				model.setName(null);
@@ -325,6 +344,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setEmployeerPhone(null);
 				model.setNextToKind(null);
 				model.setNextToKindPhone(null);
+				model.setSpeakScandinavian(speakSkadinvaiskJaToggel.isSelected());
+				model.setUnderstandScandinavian(understadnSkandinaviskJaToggel.isSelected());
 				System.out.println("You just nulled a bunch of shit");
 			}else if(action.getSource() == languageChoise) {
 				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
@@ -353,13 +374,17 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
 			} else if(action.getSource() == understadnSkandinaviskJaToggel) {
-				
+				model.setUnderstandScandinavian(understandingSkandinavisk);
+				System.out.println("Endret understand --> JA"); 
 			} else if(action.getSource() == understadnSkandinaviskNeiToggel) {
-				
+				model.setUnderstandScandinavian(understandingSkandinavisk);
+				System.out.println("Endret understand-->NEI");
 			} else if(action.getSource() == speakSkadinvaiskJaToggel) {
-				
+				model.setSpeakScandinavian(speakingSkandinavisk);
+				System.out.println("Endret speak-->JA");
 			} else if(action.getSource() == speakSkadinvaiskNeiToggel) {
-				
+				model.setSpeakScandinavian(speakingSkandinavisk);
+				System.out.println("speak-->NEI");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -405,9 +430,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if (evt.getPropertyName() == Personalia.NEXTTOPHONE_PROPERTY) {
 			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 			System.out.println("Endret nextToPhone"); 
-		} 
-//			else if(evt.getPropertyName() == Personalia) {
-//			
-//		} else if(evt.getPropertyName() == Personalia)
+		} else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
+			speakSkadinvaiskJaToggel.isSelected();
+		} else if(evt.getPropertyName() == Personalia.UNDERSTANDSKANDINAVIAN_PROPERTY) {
+			understadnSkandinaviskJaToggel.isSelected();
+		}
 	}
 }

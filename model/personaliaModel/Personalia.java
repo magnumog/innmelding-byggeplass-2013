@@ -1,6 +1,5 @@
 package personaliaModel;
 
-import java.beans.PropertyChangeListener;
 import java.beans.*;
 
 public class Personalia {
@@ -16,6 +15,8 @@ public class Personalia {
 	private String employeerPhone;
 	private String nextToKind;
 	private String NextToKindPhone;
+	private boolean SpeakScandinavian;
+	private boolean understandScandinavian;
 	
 	public final static String NAME_PROPERTY = "name";
 	public final static String DATE_PROPERTY = "date";
@@ -29,6 +30,9 @@ public class Personalia {
 	public final static String EMPLOYERPHONE_PROPERTY = "employerphone";
 	public final static String NEXTTO_PROPERTY = "nextToKind";
 	public final static String NEXTTOPHONE_PROPERTY = "nextToPhone";
+	public final static String SPEAKSVANDINAVIAN_PROPERTY = "speakScandinavian";
+	public final static String UNDERSTANDSKANDINAVIAN_PROPERTY = "understandScandinavian";
+	
 	
 	
 	
@@ -134,9 +138,28 @@ public class Personalia {
 		this.NextToKindPhone = nextToKindPhone;
 		pcs.firePropertyChange(NEXTTOPHONE_PROPERTY, oldNextToPhone, nextToKindPhone);
 	}
+	public boolean isSpeakScandinavian() {
+		return SpeakScandinavian;
+	}
+	public void setSpeakScandinavian(boolean speakScandinavian) {
+		boolean oldSpeakScandinavian = this.isSpeakScandinavian();
+		SpeakScandinavian = speakScandinavian;
+		pcs.firePropertyChange(UNDERSTANDSKANDINAVIAN_PROPERTY, oldSpeakScandinavian, speakScandinavian);
+		
+	}
+	
+	public boolean isUnderstandScandinavian() {
+		return understandScandinavian;
+	}
+	
+	public void setUnderstandScandinavian(boolean understandScandinavian) {
+		boolean oldUnderstadnScandinavian = this.isUnderstandScandinavian();
+		this.understandScandinavian = understandScandinavian;
+		pcs.firePropertyChange(UNDERSTANDSKANDINAVIAN_PROPERTY, oldUnderstadnScandinavian, understandScandinavian);
+	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
-	
 }
+	
