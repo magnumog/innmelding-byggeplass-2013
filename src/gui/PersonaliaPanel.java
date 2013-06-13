@@ -15,8 +15,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.LocatorEx.Snapshot;
-
 import personaliaModel.Personalia;
 
 
@@ -46,10 +44,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		addactionListeners();
 		layGUI();
 		setNameOnComponenents();
-		speakSkandinavisk.add(speakSkadinvaiskJaToggel);
-		speakSkandinavisk.add(speakSkadinvaiskNeiToggel);
-		understandSkandinavisk.add(understadnSkandinaviskJaToggel);
-		understandSkandinavisk.add(understadnSkandinaviskNeiToggel);
+		
 	}
 
 	private void setNameOnComponenents() {
@@ -240,6 +235,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		speakSkadinvaiskNeiToggel = new JToggleButton("Nei");
 		understadnSkandinaviskJaToggel = new JToggleButton("Ja");
 		understadnSkandinaviskNeiToggel = new JToggleButton("Nei");
+		speakSkandinavisk = new ButtonGroup();
+		understandSkandinavisk = new ButtonGroup();
+		speakSkandinavisk.add(speakSkadinvaiskJaToggel);
+		speakSkandinavisk.add(speakSkadinvaiskNeiToggel);
+		understandSkandinavisk.add(understadnSkandinaviskJaToggel);
+		understandSkandinavisk.add(understadnSkandinaviskNeiToggel);
 		
 		Neste = new JButton("Neste");
 		nullstill = new JButton("nullstill");
@@ -262,6 +263,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		employeePhonePropertyComponent.addActionListener(this);
 		nextToKindPropertyComponent.addActionListener(this);
 		nextToKindPhonePropertyComponent.addActionListener(this);
+		speakSkadinvaiskJaToggel.addActionListener(this);
+		speakSkadinvaiskNeiToggel.addActionListener(this);
+		understadnSkandinaviskJaToggel.addActionListener(this);
+		understadnSkandinaviskJaToggel.addActionListener(this);
 	}
 	
 
@@ -347,6 +352,14 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setNextToKind(nextToKindPropertyComponent.getText());
 			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+			} else if(action.getSource() == understadnSkandinaviskJaToggel) {
+				
+			} else if(action.getSource() == understadnSkandinaviskNeiToggel) {
+				
+			} else if(action.getSource() == speakSkadinvaiskJaToggel) {
+				
+			} else if(action.getSource() == speakSkadinvaiskNeiToggel) {
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -392,8 +405,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if (evt.getPropertyName() == Personalia.NEXTTOPHONE_PROPERTY) {
 			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 			System.out.println("Endret nextToPhone"); 
-		} else {
-			System.out.println("WTF happend in propertyChange");
-		}
+		} 
+//			else if(evt.getPropertyName() == Personalia) {
+//			
+//		} else if(evt.getPropertyName() == Personalia)
 	}
 }
