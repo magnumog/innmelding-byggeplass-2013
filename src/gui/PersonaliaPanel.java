@@ -261,8 +261,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understandSkandinavisk.add(understadnSkandinaviskNeiToggel);
 		understandTiltakPropertyComponent = new JTextField(5);
 		speakTiltakPropertyComponent = new JTextField(5);
-		understandTiltakLabel = new JLabel("Ved nei, tiltak; ");//Få med Disse i MVC!!!!!!!!!!!!!!
-		speakTiltakLabel = new JLabel("Ved nei, tiltak: ");//Denne også
+		understandTiltakLabel = new JLabel("Ved nei, tiltak; ");
+		speakTiltakLabel = new JLabel("Ved nei, tiltak: ");
 		
 		
 		Neste = new JButton("Neste");
