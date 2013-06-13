@@ -17,7 +17,10 @@ public class Personalia {
 	private String NextToKindPhone;
 	private boolean SpeakScandinavian;
 	private boolean understandScandinavian;
+	private String tiltakSpeak;
+	private String tiltakUnderstand;
 	
+
 	public final static String NAME_PROPERTY = "name";
 	public final static String DATE_PROPERTY = "date";
 	public final static String ID_CARDNUMBER = "id-card";
@@ -32,6 +35,8 @@ public class Personalia {
 	public final static String NEXTTOPHONE_PROPERTY = "nextToPhone";
 	public final static String SPEAKSVANDINAVIAN_PROPERTY = "speakScandinavian";
 	public final static String UNDERSTANDSKANDINAVIAN_PROPERTY = "understandScandinavian";
+	public final static String TILTAKSPEAK_PROPERTY = "tiltakSpeak";
+	public final static String TILTAKUNDERSTAND_PROPERTY = "tiltakUnderstand";
 	
 	
 	
@@ -42,6 +47,25 @@ public class Personalia {
 		pcs = new PropertyChangeSupport(this);
 	}
 
+	public String getTiltakSpeak() {
+		return tiltakSpeak;
+	}
+	
+	public void setTiltakSpeak(String tiltakSpeak) {
+		String oldTiltak = this.getTiltakSpeak();
+		this.tiltakSpeak = tiltakSpeak;
+		pcs.firePropertyChange(TILTAKSPEAK_PROPERTY, oldTiltak, tiltakSpeak);
+	}
+	
+	public String getTiltakUnderstand() {
+		return tiltakUnderstand;
+	}
+	
+	public void setTiltakUnderstand(String tiltakUnderstand) {
+		String oldTiltak = this.getTiltakUnderstand();
+		this.tiltakUnderstand = tiltakUnderstand;
+		pcs.firePropertyChange(TILTAKUNDERSTAND_PROPERTY, oldTiltak, tiltakUnderstand);
+	}
 	public String getName() {
 		return name;
 	}

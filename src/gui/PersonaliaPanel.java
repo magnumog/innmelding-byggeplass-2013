@@ -248,7 +248,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		
 		
 		speakSkandinaviskLabel = new JLabel("Snakker skandinavisk: ");
-		understandSkandinaviskLabel = new JLabel("Understand skandinavisk: ");
+		understandSkandinaviskLabel = new JLabel("Forstår skandinavisk: ");
 		speakSkadinvaiskJaToggel = new JToggleButton("Ja");
 		speakSkadinvaiskNeiToggel = new JToggleButton("Nei");
 		understadnSkandinaviskJaToggel = new JToggleButton("Ja");
@@ -289,7 +289,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		speakSkadinvaiskJaToggel.addActionListener(this);
 		speakSkadinvaiskNeiToggel.addActionListener(this);
 		understadnSkandinaviskJaToggel.addActionListener(this);
-		understadnSkandinaviskJaToggel.addActionListener(this);
+		understadnSkandinaviskNeiToggel.addActionListener(this);
+		speakTiltakPropertyComponent.addActionListener(this);
+		understandTiltakPropertyComponent.addActionListener(this);
 	}
 	
 	public void speak() {
@@ -351,6 +353,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
 				model.setUnderstandScandinavian(understandingSkandinavisk);
 				model.setSpeakScandinavian(speakingSkandinavisk);
+				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
+				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 				System.out.println("You just updated a bunch of shit");
 			} else if (action.getSource() == nullstill) {
 				model.setName(null);
@@ -367,6 +371,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setNextToKindPhone(null);
 				model.setSpeakScandinavian(speakSkadinvaiskJaToggel.isSelected());
 				model.setUnderstandScandinavian(understadnSkandinaviskJaToggel.isSelected());
+				model.setTiltakSpeak(null);
+				model.setTiltakUnderstand(null);
 				System.out.println("You just nulled a bunch of shit");
 			}else if(action.getSource() == languageChoise) {
 				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
@@ -406,6 +412,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			} else if(action.getSource() == speakSkadinvaiskNeiToggel) {
 				model.setSpeakScandinavian(speakingSkandinavisk);
 				System.out.println("speak-->NEI");
+			} else if(action.getSource() == speakTiltakPropertyComponent) {
+				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
+				System.out.println("Endret tiltak speak");
+			} else if(action.getSource() == understandTiltakPropertyComponent) {
+				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+				System.out.println("Endret tiltak understand");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -451,10 +463,16 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if (evt.getPropertyName() == Personalia.NEXTTOPHONE_PROPERTY) {
 			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 			System.out.println("Endret nextToPhone"); 
-		} else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
-			speakSkadinvaiskJaToggel.isSelected();
-		} else if(evt.getPropertyName() == Personalia.UNDERSTANDSKANDINAVIAN_PROPERTY) {
-			understadnSkandinaviskJaToggel.isSelected();
+		} //else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
+			//speakSkadinvaiskJaToggel.isSelected();
+		//} else if(evt.getPropertyName() == Personalia.UNDERSTANDSKANDINAVIAN_PROPERTY) {
+			//understadnSkandinaviskJaToggel.isSelected(); } 
+		  else if(evt.getPropertyName() == Personalia.TILTAKSPEAK_PROPERTY) {
+			speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
+			System.out.println("Endret speak tiltak");
+		} else if(evt.getPropertyName() == Personalia.TILTAKUNDERSTAND_PROPERTY) {
+			understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
+			System.out.println("Endret understand tiltak");
 		}
 	}
 }
