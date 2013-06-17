@@ -1,4 +1,4 @@
-package personaliaModel;
+package modell;
 /*
  * Author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no

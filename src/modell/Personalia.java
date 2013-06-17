@@ -1,4 +1,4 @@
-package personaliaModel;
+package modell;
 
 import java.beans.*;
 

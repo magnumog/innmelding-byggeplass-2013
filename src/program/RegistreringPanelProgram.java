@@ -7,6 +7,7 @@ package program;
  * Owner Veidekke ASA
  */
 
+import gui.KursPanel;
 import gui.PersonaliaPanel;
 import gui.SertifikatPanel;
 
@@ -15,7 +16,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import personaliaModel.Personalia;
+import modell.Personalia;
+
 
 public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -25,6 +27,7 @@ public class RegistreringPanelProgram extends JPanel {
 		
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
+		KursPanel kursPanel = new KursPanel();
 		
 		
 //		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
@@ -33,6 +36,7 @@ public class RegistreringPanelProgram extends JPanel {
 		
 		add(registreringPanel);
 		add(sertifikatPanel);
+		add(kursPanel);
 		
 	}
 	

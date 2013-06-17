@@ -15,7 +15,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
 
-import personaliaModel.Personalia;
+import modell.Personalia;
+
 
 
 public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {

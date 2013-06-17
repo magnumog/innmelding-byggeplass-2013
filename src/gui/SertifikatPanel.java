@@ -25,14 +25,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 	protected JCheckBox driversLicenseCheck, grunnArbeidsmiljoCheck, maskinforerCheck, arbeidsVarslingCheck, varmeArbeiderCheck, truckKranBevisCheck;
 	protected JLabel driverlicenseLabel, maskinforerLabel, arbeidsvarslingLabel, varmeArbeiderLabel, truckKranLabel;
 	protected JTextField driverLicensePropertyComponent, maskinForerPropertyComponent, varmeArbeiderPropertyComponent, truckKranPropertyComponent, arbeidsVarslingPropertyComponent;
-	
-	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLøftereCheck, personLLøftereUnderJordCheck;
-	protected JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
-	protected JCheckBox KappKlyveGjerdeSagCheck, bindeMaskinArmeringCheck, VibrostavCheck, haandholdtArmeringsKapperCheck, skjarebrennerCheck, sponBrytendeCheck, slipemaskinerCheck, trebearbeidingsMaskinerCheck;
-	protected JCheckBox asfaltArbeiderCheck, betongSagerKjerneBorCheck, veggsagerCheck, vaierSagerCheck, gulvsagerOgAsfaltsagCheck, hoytrykkspylerUtstyrCheck, ryddeSagerOgTrimmereCheck, spunteOgPaleutstyrCheck;
-	protected JCheckBox mobiltBetongPumpeUtstyr;
-	
-	
+
 	protected JButton neste, nullstill;
 	
 	public SertifikatPanel() {
@@ -49,7 +42,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		c.insets = new Insets(1,1,1,1);
 		
 		//Legger ut checkbokser
-		c.anchor = GridBagConstraints.EAST;
+		c.anchor = GridBagConstraints.WEST;
 		c.gridx = 0;
 		c.gridy = 2;
 		add(driversLicenseCheck,c);
@@ -68,13 +61,13 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		c.gridx = 1;
 		c.gridy = 2;
 		add(driverlicenseLabel,c);
-		c.gridy = 3;
-		add(maskinforerLabel,c);
 		c.gridy = 4;
-		add(arbeidsvarslingLabel,c);
+		add(maskinforerLabel,c);
 		c.gridy = 5;
-		add(varmeArbeiderLabel,c);
+		add(arbeidsvarslingLabel,c);
 		c.gridy = 6;
+		add(varmeArbeiderLabel,c);
+		c.gridy = 7;
 		add(truckKranLabel,c);
 		c.gridx = 2;
 		c.gridy = 2;
@@ -87,6 +80,8 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		add(varmeArbeiderPropertyComponent,c);
 		c.gridy = 7;
 		add(truckKranPropertyComponent,c);
+		
+
 		
 	}
 
@@ -106,7 +101,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		varmeArbeiderLabel = new JLabel("Hvis ja, utløpsdato: ");
 		varmeArbeiderPropertyComponent = new JTextField(5);
 		truckKranLabel = new JLabel("Hvis ja, hvilke klasse: ");
-		truckKranPropertyComponent = new JTextField(5);		
+		truckKranPropertyComponent = new JTextField(5);
 	}
 
 	@Override
