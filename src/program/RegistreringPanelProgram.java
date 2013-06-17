@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import panel.KursPanel;
+import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
 
@@ -27,6 +28,7 @@ public class RegistreringPanelProgram extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
+		ModulEnPanel modulEn = new ModulEnPanel();
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
 		KursPanel kursPanel = new KursPanel();
 		
@@ -36,6 +38,7 @@ public class RegistreringPanelProgram extends JPanel {
 		registreringPanel.setModel(personaliaModel);
 		
 		add(registreringPanel);
+		add(modulEn);
 		add(sertifikatPanel);
 		add(kursPanel);
 		

@@ -28,7 +28,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 
 	protected JButton neste, nullstill;
 	
-	public SertifikatPanel() {
+	public SertifikatPanel() {		
 		createSertifikatKursComponents();
 		laySertifikatGrid();
 		

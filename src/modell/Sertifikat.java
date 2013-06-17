@@ -7,6 +7,16 @@ package modell;
  */
 
 public class Sertifikat {
-	
+	private boolean forerkort;
+	private String forerkortKlasser;
+	private boolean grunnopplaeringArbeidsmiljo;
+	private boolean maskinForerBevis;
+	private String maskinForerKlasser;
+	private boolean arbeidsVarsling;
+	private String arbeidsVarslingKurs;
+	private boolean varmeArbeider;
+	private String varmeArbeiderdato;
+	private boolean truckKranForer;
+	private String truckKranForerBevis;
 
 }
