@@ -21,7 +21,7 @@ public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public RegistreringPanelProgram() {
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();

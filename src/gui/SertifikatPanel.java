@@ -21,86 +21,92 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SertifikatPanel extends JPanel implements ActionListener,PropertyChangeListener {
-	private static final long serialVersionUID = 1L;
-	protected JCheckBox driversLicense, grunnArbeidsmiljo, maskinforer, arbeidsVarsling, varmeArbeider,truckKranBevis;
+	private static final long serialVersionUID = 1L;	
+	protected JCheckBox driversLicenseCheck, grunnArbeidsmiljoCheck, maskinforerCheck, arbeidsVarslingCheck, varmeArbeiderCheck, truckKranBevisCheck;
 	protected JLabel driverlicenseLabel, maskinforerLabel, arbeidsvarslingLabel, varmeArbeiderLabel, truckKranLabel;
 	protected JTextField driverLicensePropertyComponent, maskinForerPropertyComponent, varmeArbeiderPropertyComponent, truckKranPropertyComponent, arbeidsVarslingPropertyComponent;
+	
+	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLøftereCheck, personLLøftereUnderJordCheck;
+	protected JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
+	protected JCheckBox KappKlyveGjerdeSagCheck, bindeMaskinArmeringCheck, VibrostavCheck, haandholdtArmeringsKapperCheck, skjarebrennerCheck, sponBrytendeCheck, slipemaskinerCheck, trebearbeidingsMaskinerCheck;
+	protected JCheckBox asfaltArbeiderCheck, betongSagerKjerneBorCheck, veggsagerCheck, vaierSagerCheck, gulvsagerOgAsfaltsagCheck, hoytrykkspylerUtstyrCheck, ryddeSagerOgTrimmereCheck, spunteOgPaleutstyrCheck;
+	protected JCheckBox mobiltBetongPumpeUtstyr;
 	
 	
 	protected JButton neste, nullstill;
 	
 	public SertifikatPanel() {
-		driversLicense = new JCheckBox("Førerkort");
-		grunnArbeidsmiljo = new JCheckBox("Grunnopplæring i Arbeidsmiljø");
-		maskinforer = new JCheckBox("Maskinførerbevis");
-		arbeidsVarsling = new JCheckBox("Arbeidsvarsling kurs nr");
-		varmeArbeider = new JCheckBox("VarmeArbeider");
-		truckKranBevis = new JCheckBox("Truck/kranførerbevis");
-		driverlicenseLabel = new JLabel("Hvis ja, hvilke førerklasser: ");
-		driverLicensePropertyComponent = new JTextField(5);
-		maskinforerLabel = new JLabel("Hvis ja, hvilke: ");
-		maskinForerPropertyComponent = new JTextField(5);
-		arbeidsvarslingLabel = new JLabel("Hvis ja, kurs nr: ");
-		arbeidsVarslingPropertyComponent = new JTextField(5);
-		varmeArbeiderLabel = new JLabel("Hvis ja, utløpsdato: ");
-		varmeArbeiderPropertyComponent = new JTextField(5);
-		truckKranLabel = new JLabel("Hvis ja, hvilke: ");
-		truckKranPropertyComponent = new JTextField(5);
+		createSertifikatKursComponents();
+		laySertifikatGrid();
 		
+	}
+
+	private void laySertifikatGrid() {
+		//Legger ut componentene i GUI
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
 		c.insets = new Insets(1,1,1,1);
 		
 		//Legger ut checkbokser
-		c.anchor = GridBagConstraints.WEST;
+		c.anchor = GridBagConstraints.EAST;
 		c.gridx = 0;
-		c.gridy = 0;
-		add(driversLicense,c);
-		c.anchor = GridBagConstraints.WEST;
-		c.gridy = 1;
-		add(grunnArbeidsmiljo,c);
-		c.anchor = GridBagConstraints.WEST;
 		c.gridy = 2;
-		add(maskinforer,c);
-		c.anchor = GridBagConstraints.WEST;
+		add(driversLicenseCheck,c);
 		c.gridy = 3;
-		add(arbeidsVarsling,c);
-		c.anchor = GridBagConstraints.WEST;
-		c.gridy = 4;
-		add(varmeArbeider,c);
-		c.anchor = GridBagConstraints.WEST;
+		add(grunnArbeidsmiljoCheck,c);
+		c.gridy =4;
+		add(maskinforerCheck,c);
 		c.gridy = 5;
-		add(truckKranBevis,c);
-		
-		
-		
-		
+		add(arbeidsVarslingCheck,c);
+		c.gridy = 6;
+		add(varmeArbeiderCheck,c);
+		c.gridy = 7;
+		add(truckKranBevisCheck,c);
 		
 		//Legger ut label og tekstbokser
 		c.gridx = 1;
-		c.gridy = 0;
-		add(driverlicenseLabel,c);
 		c.gridy = 2;
-		add(maskinforerLabel,c);
+		add(driverlicenseLabel,c);
 		c.gridy = 3;
-		add(arbeidsvarslingLabel,c);
+		add(maskinforerLabel,c);
 		c.gridy = 4;
-		add(varmeArbeiderLabel,c);
+		add(arbeidsvarslingLabel,c);
 		c.gridy = 5;
+		add(varmeArbeiderLabel,c);
+		c.gridy = 6;
 		add(truckKranLabel,c);
 		c.gridx = 2;
-		c.gridy = 0;
-		add(driverLicensePropertyComponent,c);
 		c.gridy = 2;
-		add(maskinForerPropertyComponent,c);
-		c.gridy = 3;
-		add(arbeidsVarslingPropertyComponent,c);
+		add(driverLicensePropertyComponent,c);
 		c.gridy = 4;
-		add(varmeArbeiderPropertyComponent,c);
+		add(maskinForerPropertyComponent,c);
 		c.gridy = 5;
+		add(arbeidsVarslingPropertyComponent,c);
+		c.gridy = 6;
+		add(varmeArbeiderPropertyComponent,c);
+		c.gridy = 7;
 		add(truckKranPropertyComponent,c);
 		
+	}
+
+	private void createSertifikatKursComponents() {
+		driversLicenseCheck = new JCheckBox("Førerkort");
+		grunnArbeidsmiljoCheck = new JCheckBox("Grunnopplæring i Arbeidsmiljø");
+		maskinforerCheck = new JCheckBox("Maskinførerbevis");
+		arbeidsVarslingCheck = new JCheckBox("Arbeidsvarsling kurs nr");
+		varmeArbeiderCheck = new JCheckBox("VarmeArbeider");
+		truckKranBevisCheck = new JCheckBox("Truck/kranførerbevis");
+		driverlicenseLabel = new JLabel("Hvis ja, hvilke førerklasser: ");
+		driverLicensePropertyComponent = new JTextField(5);
+		maskinforerLabel = new JLabel("Hvis ja, hvilke klasse: ");
+		maskinForerPropertyComponent = new JTextField(5);
+		arbeidsvarslingLabel = new JLabel("Hvis ja, kurs nr: ");
+		arbeidsVarslingPropertyComponent = new JTextField(5);
+		varmeArbeiderLabel = new JLabel("Hvis ja, utløpsdato: ");
+		varmeArbeiderPropertyComponent = new JTextField(5);
+		truckKranLabel = new JLabel("Hvis ja, hvilke klasse: ");
+		truckKranPropertyComponent = new JTextField(5);		
 	}
 
 	@Override
