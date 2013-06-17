@@ -27,7 +27,7 @@ public class RegistreringPanelProgram extends JPanel {
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
 		
 		
-		//kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
+//		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
 		Personalia personaliaModel = new Personalia();
 		registreringPanel.setModel(personaliaModel);
 		
