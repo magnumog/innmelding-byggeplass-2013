@@ -7,14 +7,15 @@ package program;
  * Owner Veidekke ASA
  */
 
-import gui.KursPanel;
-import gui.PersonaliaPanel;
-import gui.SertifikatPanel;
 
 import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import panel.KursPanel;
+import panel.PersonaliaPanel;
+import panel.SertifikatPanel;
 
 import modell.Personalia;
 

@@ -1,10 +1,12 @@
-package gui;
+package panel;
 /*
  * Author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
  * Rotete kode men forståelig
  * Owner Veidekke ASA
  */
+
+import gui.Language;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

@@ -1,78 +1,42 @@
-package gui;
+package panel;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class KursPanel extends JPanel {
+public class KursPanel extends JPanel implements ActionListener,PropertyChangeListener, ChangeListener {
 	private static final long serialVersionUID = 1L;
 	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLøftereCheck, personLøftereUnderJordCheck;
 	protected JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
 	protected JCheckBox KappKlyveGjerdeSagCheck, bindeMaskinArmeringCheck, VibrostavCheck, haandholdtArmeringsKapperCheck, skjarebrennerCheck, sponBrytendeCheck, slipemaskinerCheck, trebearbeidingsMaskinerCheck;
 	protected JCheckBox asfaltArbeiderCheck, betongSagerKjerneBorCheck, veggsagerCheck, vaierSagerCheck, gulvsagerOgAsfaltsagCheck, hoytrykkspylerUtstyrCheck, ryddeSagerOgTrimmereCheck, spunteOgPaleutstyrCheck;
 	protected JCheckBox mobiltBetongPumpeUtstyr, sikkerBrukKontrollAvStillasCheck, sikkerBrukAvForskalingCheck, fallsikringutstyrCheck, forstehjelpUtstyr;
-	protected JLabel annetLabel;
+	protected JCheckBox annetLabel;
 	
 	protected JTextField verkstedOgLagerPropertyComponent, spesialKranerPropertyComponent, personlofterePropertyComponent, forstehjelpPropertyComponent, annetPropertyComponent;
 	
 	public KursPanel() {
 		//Legger ut componentene i GUI
+		
+		createKursComponents();
+		layComponents();
+	}
+
+	private void layComponents() {
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
 		c.insets = new Insets(1,1,4,15);
-		
-		verkstedOgLagerCheck = new JCheckBox("Verksted og lager, type: ");
-		verkstedOgLagerPropertyComponent = new JTextField(4);
-		SpesialKranerCheck = new JCheckBox("Spesialkraner, type: ");
-		spesialKranerPropertyComponent = new JTextField(4);
-		VinsjerOgTaljerCheck = new JCheckBox("Vinsjer oig taljer");
-		anhukingStroppingOgSignalgivningCheck = new JCheckBox("ANhuking - stropping - signalgivning");
-		klatreOgHengeStilaserCheck = new JCheckBox("Klatre- og hengestillaser(36t kurs)");
-		personLøftereCheck = new JCheckBox("Personløftere klasse: ");
-		personlofterePropertyComponent = new JTextField(4);
-		personLøftereUnderJordCheck = new JCheckBox("Personløftere under jord");
-		borVognerOgTunnelriggerCheck = new JCheckBox("Borvogner og tunnelrigger");
-		selvgåendeValserCheck = new JCheckBox("Selvgående valser");
-		TraktorutstyrCheck = new JCheckBox("Traktorutstyr");
-		vinkelSliperKutterCheck = new JCheckBox("Vinkelsliper/-kutter");
-		boltePistolCheck = new JCheckBox("Boltepistol");
-		annetLabel = new JLabel("Annet: (Beskriv):");
-		
-		spikerPistolCheck = new JCheckBox("Spikerpistol");
-		KombiHammerBorHammerCheck = new JCheckBox("Kombihammer/borhammer");
-		kjedeSagCheck = new JCheckBox("Kjedesag");
-		KappKlyveGjerdeSagCheck = new JCheckBox("Kapp-/Klyve-/Gjerdesag");
-		bindeMaskinArmeringCheck = new JCheckBox("Bindemaskin armering");
-		VibrostavCheck = new JCheckBox("Vibrostav");
-		haandholdtArmeringsKapperCheck = new JCheckBox("Håndholdt armeringskapper");
-		skjarebrennerCheck = new JCheckBox("Skjærebrenner");
-		sponBrytendeCheck = new JCheckBox("Sponbrytende");
-		slipemaskinerCheck = new JCheckBox("Slipemaskiner");
-		trebearbeidingsMaskinerCheck = new JCheckBox("Trebearbeidingsmaskiner");
-		asfaltArbeiderCheck = new JCheckBox("Asfaltarbeider");
-		
-		betongSagerKjerneBorCheck = new JCheckBox("Betongsager, kjerneboringsutstyr");
-		veggsagerCheck = new JCheckBox("Veggsager");
-		vaierSagerCheck = new JCheckBox("Vaiersager");
-		gulvsagerOgAsfaltsagCheck = new JCheckBox("Gulvsager og asfaltsag");
-		hoytrykkspylerUtstyrCheck = new JCheckBox("Høytrykkspylerutstyr");
-		ryddeSagerOgTrimmereCheck = new JCheckBox("Ryddesager og trimmere");
-		spunteOgPaleutstyrCheck = new JCheckBox("Spunte- og pæleutstyr");
-		mobiltBetongPumpeUtstyr = new JCheckBox("Mobilt betongpumpeutstyr");
-		sikkerBrukKontrollAvStillasCheck = new JCheckBox("Sikker bruk/kontroll av stillas");
-		sikkerBrukAvForskalingCheck = new JCheckBox("Sikker bruk av forskaling");
-		fallsikringutstyrCheck = new JCheckBox("Fallsikringsutstyr");
-		forstehjelpUtstyr = new JCheckBox("Førstehjelpskurs, Dato: ");
-		forstehjelpPropertyComponent = new JTextField(4);
-		annetPropertyComponent = new JTextField(51);
-
-		
 		c.anchor = GridBagConstraints.WEST;
 		c.gridx = 0;
 		c.gridy = 0;
@@ -170,5 +134,71 @@ public class KursPanel extends JPanel {
 		c.gridy=12;
 		c.gridwidth=3;
 		add(annetPropertyComponent,c);
+		
+	}
+
+	private void createKursComponents() {
+		verkstedOgLagerCheck = new JCheckBox("Verksted og lager, type:");
+		verkstedOgLagerPropertyComponent = new JTextField(5);
+		SpesialKranerCheck = new JCheckBox("Spesialkraner, type:");
+		spesialKranerPropertyComponent = new JTextField(5);
+		VinsjerOgTaljerCheck = new JCheckBox("Vinsjer oig taljer");
+		anhukingStroppingOgSignalgivningCheck = new JCheckBox("ANhuking - stropping - signalgivning");
+		klatreOgHengeStilaserCheck = new JCheckBox("Klatre- og hengestillaser(36t kurs)");
+		personLøftereCheck = new JCheckBox("Personløftere klasse: ");
+		personlofterePropertyComponent = new JTextField(6);
+		personLøftereUnderJordCheck = new JCheckBox("Personløftere under jord");
+		borVognerOgTunnelriggerCheck = new JCheckBox("Borvogner og tunnelrigger");
+		selvgåendeValserCheck = new JCheckBox("Selvgående valser");
+		TraktorutstyrCheck = new JCheckBox("Traktorutstyr");
+		vinkelSliperKutterCheck = new JCheckBox("Vinkelsliper/-kutter");
+		boltePistolCheck = new JCheckBox("Boltepistol");
+		annetLabel = new JCheckBox("Annet: (Beskriv):");
+		
+		spikerPistolCheck = new JCheckBox("Spikerpistol");
+		KombiHammerBorHammerCheck = new JCheckBox("Kombihammer/borhammer");
+		kjedeSagCheck = new JCheckBox("Kjedesag");
+		KappKlyveGjerdeSagCheck = new JCheckBox("Kapp-/Klyve-/Gjerdesag");
+		bindeMaskinArmeringCheck = new JCheckBox("Bindemaskin armering");
+		VibrostavCheck = new JCheckBox("Vibrostav");
+		haandholdtArmeringsKapperCheck = new JCheckBox("Håndholdt armeringskapper");
+		skjarebrennerCheck = new JCheckBox("Skjærebrenner");
+		sponBrytendeCheck = new JCheckBox("Sponbrytende");
+		slipemaskinerCheck = new JCheckBox("Slipemaskiner");
+		trebearbeidingsMaskinerCheck = new JCheckBox("Trebearbeidingsmaskiner");
+		asfaltArbeiderCheck = new JCheckBox("Asfaltarbeider");
+		
+		betongSagerKjerneBorCheck = new JCheckBox("Betongsager, kjerneboringsutstyr");
+		veggsagerCheck = new JCheckBox("Veggsager");
+		vaierSagerCheck = new JCheckBox("Vaiersager");
+		gulvsagerOgAsfaltsagCheck = new JCheckBox("Gulvsager og asfaltsag");
+		hoytrykkspylerUtstyrCheck = new JCheckBox("Høytrykkspylerutstyr");
+		ryddeSagerOgTrimmereCheck = new JCheckBox("Ryddesager og trimmere");
+		spunteOgPaleutstyrCheck = new JCheckBox("Spunte- og pæleutstyr");
+		mobiltBetongPumpeUtstyr = new JCheckBox("Mobilt betongpumpeutstyr");
+		sikkerBrukKontrollAvStillasCheck = new JCheckBox("Sikker bruk/kontroll av stillas");
+		sikkerBrukAvForskalingCheck = new JCheckBox("Sikker bruk av forskaling");
+		fallsikringutstyrCheck = new JCheckBox("Fallsikringsutstyr");
+		forstehjelpUtstyr = new JCheckBox("Førstehjelpskurs, Dato:");
+		forstehjelpPropertyComponent = new JTextField(5);
+		annetPropertyComponent = new JTextField(48);		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

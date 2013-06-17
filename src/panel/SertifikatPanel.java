@@ -1,4 +1,4 @@
-package gui;
+package panel;
 /*
  * Author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
