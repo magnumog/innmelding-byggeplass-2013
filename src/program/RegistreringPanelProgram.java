@@ -1,4 +1,4 @@
-package gui;
+package program;
 
 /*
  * Author Magnus Settemsli Mogstad
@@ -6,6 +6,9 @@ package gui;
  * Rotete kode men forståelig
  * Owner Veidekke ASA
  */
+
+import gui.PersonaliaPanel;
+import gui.SertifikatPanel;
 
 import java.awt.Dimension;
 import javax.swing.BoxLayout;
@@ -18,15 +21,18 @@ public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public RegistreringPanelProgram() {
-		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
+		SertifikatPanel sertifikatPanel = new SertifikatPanel();
+		
 		
 		//kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
 		Personalia personaliaModel = new Personalia();
 		registreringPanel.setModel(personaliaModel);
 		
 		add(registreringPanel);
+		add(sertifikatPanel);
 		
 	}
 	

@@ -167,7 +167,7 @@ public class Personalia {
 	}
 	public void setSpeakScandinavian(boolean speakScandinavian) {
 		boolean oldSpeakScandinavian = this.isSpeakScandinavian();
-		SpeakScandinavian = speakScandinavian;
+		this.SpeakScandinavian = speakScandinavian;
 		pcs.firePropertyChange(UNDERSTANDSKANDINAVIAN_PROPERTY, oldSpeakScandinavian, speakScandinavian);
 		
 	}
