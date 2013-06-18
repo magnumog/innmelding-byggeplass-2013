@@ -1,5 +1,4 @@
 package program;
-
 /*
  * Author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
@@ -18,6 +17,7 @@ import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
 
+import modell.ModulEn;
 import modell.Personalia;
 import modell.Sertifikat;
 
@@ -28,20 +28,24 @@ public class RegistreringPanelProgram extends JPanel {
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
-//		PersonaliaPanel registreringPanel = new PersonaliaPanel();
-		ModulEnPanel modulEn = new ModulEnPanel();
+		PersonaliaPanel registreringPanel = new PersonaliaPanel();
+		ModulEnPanel modulEnPanel = new ModulEnPanel();
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
 		KursPanel kursPanel = new KursPanel();
 		
 		
 //		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
-//		Personalia personaliaModel = new Personalia();
-//		registreringPanel.setModel(personaliaModel);
+		Personalia personaliaModel = new Personalia();
+		registreringPanel.setModel(personaliaModel);
+		
 		Sertifikat sertifikatModel = new Sertifikat();
 		sertifikatPanel.setModel(sertifikatModel);
 		
-//		add(registreringPanel);
-		add(modulEn);
+		ModulEn modulEnModel = new ModulEn();
+		modulEnPanel.setModel(modulEnModel);
+		
+		add(registreringPanel);
+		add(modulEnPanel);
 		add(sertifikatPanel);
 		add(kursPanel);
 		

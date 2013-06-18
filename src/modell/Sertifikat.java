@@ -1,13 +1,13 @@
 package modell;
-
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 /*
  * Author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
  * Rotete kode men forståelig
  * Owner Veidekke ASA
  */
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 public class Sertifikat {
 	private boolean forerkort;

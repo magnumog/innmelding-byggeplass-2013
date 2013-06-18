@@ -297,22 +297,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understandTiltakPropertyComponent.addActionListener(this);
 	}
 	
-	public void speak() {
-		if(speakSkadinvaiskJaRadio.isSelected()) {
-			speakingSkandinavisk=true;
-		} else {
-			speakingSkandinavisk = false;
-		}
-	}
-	
-	public void understand() {
-		if (understadnSkandinaviskJaRadio.isSelected()) {
-			understandingSkandinavisk=true;
-		} else {
-			understandingSkandinavisk=false;
-		}
-	}
-	
 	public void setModel(Personalia model){
 		this.model = model;
 		model.addPropertyChangeListener(this);
