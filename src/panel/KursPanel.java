@@ -143,7 +143,7 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		SpesialKranerCheck = new JCheckBox("Spesialkraner, type:");
 		spesialKranerPropertyComponent = new JTextField(5);
 		VinsjerOgTaljerCheck = new JCheckBox("Vinsjer oig taljer");
-		anhukingStroppingOgSignalgivningCheck = new JCheckBox("ANhuking - stropping - signalgivning");
+		anhukingStroppingOgSignalgivningCheck = new JCheckBox("Anhuking - stropping - signalgivning");
 		klatreOgHengeStilaserCheck = new JCheckBox("Klatre- og hengestillaser(36t kurs)");
 		personLøftereCheck = new JCheckBox("Personløftere klasse: ");
 		personlofterePropertyComponent = new JTextField(6);

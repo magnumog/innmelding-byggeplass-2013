@@ -22,18 +22,18 @@ public class Personalia {
 	
 
 	public final static String NAME_PROPERTY = "name";
-	public final static String DATE_PROPERTY = "date";
-	public final static String ID_CARDNUMBER = "id-card";
-	public final static String ID_EXPIRATION = "id-experation";
-	public final static String ADRESS_PROPERTY = "adress";
-	public final static String POSTALNR_PROPERTY = "postalnumber";
-	public final static String POSTALPLACE_PROPERTY = "postalplace";
-	public final static String PHONE_PROPERTY = "phone";
-	public final static String EMPLOYER_PROPERTY = "employer";
-	public final static String EMPLOYERPHONE_PROPERTY = "employerphone";
+	public final static String DATE_PROPERTY = "dateOfBirth";
+	public final static String ID_CARDNUMBER = "IdCardNr";
+	public final static String ID_EXPIRATION = "IdexpireDate";
+	public final static String ADRESS_PROPERTY = "adresse";
+	public final static String POSTALNR_PROPERTY = "postalNr";
+	public final static String POSTALPLACE_PROPERTY = "postalPlace";
+	public final static String PHONE_PROPERTY = "phoneNr";
+	public final static String EMPLOYER_PROPERTY = "employeer";
+	public final static String EMPLOYERPHONE_PROPERTY = "employeerPhone";
 	public final static String NEXTTO_PROPERTY = "nextToKind";
-	public final static String NEXTTOPHONE_PROPERTY = "nextToPhone";
-	public final static String SPEAKSVANDINAVIAN_PROPERTY = "speakScandinavian";
+	public final static String NEXTTOPHONE_PROPERTY = "NextToKindPhone";
+	public final static String SPEAKSVANDINAVIAN_PROPERTY = "SpeakScandinavian";
 	public final static String UNDERSTANDSKANDINAVIAN_PROPERTY = "understandScandinavian";
 	public final static String TILTAKSPEAK_PROPERTY = "tiltakSpeak";
 	public final static String TILTAKUNDERSTAND_PROPERTY = "tiltakUnderstand";

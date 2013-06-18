@@ -20,6 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import modell.Sertifikat;
+
 public class SertifikatPanel extends JPanel implements ActionListener,PropertyChangeListener {
 	private static final long serialVersionUID = 1L;	
 	protected JCheckBox driversLicenseCheck, grunnArbeidsmiljoCheck, maskinforerCheck, arbeidsVarslingCheck, varmeArbeiderCheck, truckKranBevisCheck;
@@ -28,9 +30,12 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 
 	protected JButton neste, nullstill;
 	
+	Sertifikat model = null;
+	
 	public SertifikatPanel() {		
 		createSertifikatKursComponents();
 		laySertifikatGrid();
+		addActionListeners();		
 		
 	}
 
@@ -81,8 +86,20 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		c.gridy = 7;
 		add(truckKranPropertyComponent,c);
 		
+	}
 
-		
+	private void addActionListeners() {
+		driversLicenseCheck.addActionListener(this);
+		grunnArbeidsmiljoCheck.addActionListener(this);
+		maskinforerCheck.addActionListener(this);
+		arbeidsVarslingCheck.addActionListener(this);
+		varmeArbeiderCheck.addActionListener(this);
+		truckKranBevisCheck.addActionListener(this);
+		driverLicensePropertyComponent.addActionListener(this);
+		maskinForerPropertyComponent.addActionListener(this);
+		varmeArbeiderPropertyComponent.addActionListener(this);
+		truckKranPropertyComponent.addActionListener(this);
+		arbeidsVarslingPropertyComponent.addActionListener(this);
 	}
 
 	private void createSertifikatKursComponents() {
@@ -103,16 +120,101 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		truckKranLabel = new JLabel("Hvis ja, hvilke klasse: ");
 		truckKranPropertyComponent = new JTextField(5);
 	}
+	
+	public void setModel(Sertifikat model) {
+		this.model = model;
+		model.addPropertyChangeListener(this);
+		driversLicenseCheck.setSelected(model.isForerkort());
+		driverLicensePropertyComponent.setText(model.getForerkortKlasser());
+		grunnArbeidsmiljoCheck.setSelected(model.isGrunnopplaeringArbeidsmiljo());
+		maskinforerCheck.setSelected(model.isMaskinForerBevis());
+		maskinForerPropertyComponent.setText(model.getMaskinForerKlasser());
+		arbeidsVarslingCheck.setSelected(model.isArbeidsVarsling());
+		arbeidsVarslingPropertyComponent.setText(model.getArbeidsVarslingKurs());
+		varmeArbeiderCheck.setSelected(model.isVarmeArbeider());
+		varmeArbeiderPropertyComponent.setText(model.getVarmeArbeiderdato());
+		truckKranBevisCheck.setSelected(model.isTruckKranForer());
+		truckKranPropertyComponent.setText(model.getTruckKranForerBevis());
+	}
+	
+	public Sertifikat getModel() {
+		return model;
+	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent arg0) {
-		// TODO Auto-generated method stub
+	public void propertyChange(PropertyChangeEvent evt) {
+		System.out.println("Hendelse");
+		if(evt.getPropertyName() == Sertifikat.FORERKORT_PROPERTY) {
+			driversLicenseCheck.setSelected(model.isForerkort());
+		} else if(evt.getPropertyName() == Sertifikat.FORERKORTKLASSER_PROPERTY) {
+			driverLicensePropertyComponent.setText(model.getForerkortKlasser());
+		} else if(evt.getPropertyName() == Sertifikat.GRUNNOPPLARING_PROPERTY) {
+			grunnArbeidsmiljoCheck.setSelected(model.isGrunnopplaeringArbeidsmiljo());
+		} else if(evt.getPropertyName() == Sertifikat.MASKINFORER_PROPERTY) {
+			maskinforerCheck.setSelected(model.isMaskinForerBevis());
+		} else if(evt.getPropertyName() == Sertifikat.MASKINKLASSER_PROPERTY) {
+			maskinForerPropertyComponent.setText(model.getMaskinForerKlasser());
+		} else if(evt.getPropertyName() == Sertifikat.ARBEIDSVARSLING_PROPERTY) {
+			arbeidsVarslingCheck.setSelected(model.isArbeidsVarsling());
+		} else if(evt.getPropertyName() == Sertifikat.ARBEIDSVARSLINGSKURS_PROPERTY) {
+			arbeidsVarslingPropertyComponent.setText(model.getArbeidsVarslingKurs());
+		} else if(evt.getPropertyName() == Sertifikat.VARMEARBEIDER_PROPERTY) {
+			varmeArbeiderCheck.setSelected(model.isVarmeArbeider());
+		} else if(evt.getPropertyName() == Sertifikat.VARMEARBEIDERDATO_PROPERTY) {
+			varmeArbeiderPropertyComponent.setText(model.getVarmeArbeiderdato());
+		} else if(evt.getPropertyName() == Sertifikat.TRUCKKRANFORER_PROPERTY) {
+			truckKranBevisCheck.setSelected(model.isTruckKranForer());
+		} else if(evt.getPropertyName() == Sertifikat.TRUCKKRANFORERBEVIS_PROPERTY) {
+			truckKranPropertyComponent.setText(model.getTruckKranForerBevis());
+		}
 		
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent a) {
+		if(model==null) {
+			return;
+		}
+		
+		try {
+			if(a.getSource()==driversLicenseCheck) {
+				model.setForerkort(driversLicenseCheck.isSelected());
+				System.out.println("Endret Forerkort");
+			} else if(a.getSource() == driverLicensePropertyComponent) {
+				model.setForerkortKlasser(driverLicensePropertyComponent.getText());
+				System.out.println("Endret tekst til Forerkort");
+			} else if(a.getSource() == grunnArbeidsmiljoCheck) {
+				model.setGrunnopplaeringArbeidsmiljo(grunnArbeidsmiljoCheck.isSelected());
+				System.out.println("Endret Grunnopplaring");
+			} else if(a.getSource() == maskinforerCheck) {
+				model.setMaskinForerBevis(maskinforerCheck.isSelected());
+				System.out.println("Endret maskinforer");
+			} else if(a.getSource() == maskinForerPropertyComponent) {
+				model.setMaskinForerKlasser(maskinForerPropertyComponent.getText());
+				System.out.println("Endret maskinforer tekst");
+			} else if(a.getSource() == arbeidsVarslingCheck) {
+				model.setArbeidsVarsling(arbeidsVarslingCheck.isSelected());
+				System.out.println("Endret arbeidsvarsling");
+			} else if(a.getSource() == arbeidsVarslingPropertyComponent) {
+				model.setArbeidsVarslingKurs(arbeidsVarslingPropertyComponent.getText());
+				System.out.println("Endret arbeidsvarsling tekst");
+			} else if(a.getSource() == varmeArbeiderCheck) {
+				model.setVarmeArbeider(varmeArbeiderCheck.isSelected());
+				System.out.println("Endrt varmearbeider");
+			} else if(a.getSource() == varmeArbeiderPropertyComponent) {
+				model.setVarmeArbeiderdato(varmeArbeiderPropertyComponent.getText());
+				System.out.println("Endret Varmearbeider tekst");
+			} else if(a.getSource() == truckKranBevisCheck) {
+				model.setTruckKranForer(truckKranBevisCheck.isSelected());
+				System.out.println("Endret truckKran bevis");
+			} else if(a.getSource() == truckKranPropertyComponent) {
+				model.setTruckKranForerBevis(truckKranPropertyComponent.getText());
+				System.out.println("Endret truckKran tekst");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Some shit happend in Sertifikat");
+		}
 		
 	}
 
