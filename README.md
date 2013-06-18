@@ -40,9 +40,17 @@ UKE 6: Ferie
 UKE 7: Ferie
 
 UKE 8:
+-Mandag: Vill programmering bruke litt tid på å sette seg inn i koden igjen.
+-Tirsdag Vill hardcoreprogrammering.
+-Onsdag: Håper å nærme seg slutten.
+-Torsdag: Implementere støtte for flere språk.
+-Fredag: Språkstøtte er goodt :)
+
+UKE 9:
 -Mandag: Utvide programmet fullfÃ¸re de delene som ikke er ferdige.
 -Tirsdag: Fortsette med fullfÃ¸ring
 -Onsdag: Starte med dokumentasjon
 -Torsdag: FullfÃ¸re dokumentasjon, kjÃ¸re en siste brukbarhetstest av systemet
 -Fredag: Overlevering fÃ¥r vi hÃ¥pe hvis ikke sÃ¥ blir det mer jobbing i Trondheim.
+ 
 
