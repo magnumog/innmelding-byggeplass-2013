@@ -47,7 +47,7 @@ public class Kurs {
 	public final static String SIKKERBRUKAVFORSKALING_PROPERTY = "sikkerBrukAvForskaling";
 	public final static String FALLSIKKRING_PROPERTY = "fallSikkring";
 	public final static String FORSTEHJELP_PROPERTY = "forstehjelp";
-	public final static String ANNET_Porperty = "annet";
+	public final static String ANNET_PROPERTY = "annet";
 	
 	public final static String VERKSTEDOGLAGERTEKST_PROPERTY = "VerksetedLagerTekst";
 	public final static String SPESIALKRANERTEKST_PROPERTY = "SpesialKranerTekst";
@@ -423,7 +423,7 @@ public class Kurs {
 	public void setAnnet(boolean annet) {
 		boolean oldAnnet = this.isAnnet();
 		Annet = annet;
-		pcs.firePropertyChange(ANNET_Porperty, oldAnnet, annet);
+		pcs.firePropertyChange(ANNET_PROPERTY, oldAnnet, annet);
 	}
 	
 	public String getVerksetedLagerTekst() {

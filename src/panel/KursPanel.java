@@ -294,8 +294,92 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Hendelse");
+		if(evt.getPropertyName() == Kurs.VERKSTEDOGLAGER_PROPERTY) {
+			verkstedOgLagerCheck.setSelected(model.isVerkstedOgLager());
+		} else if(evt.getPropertyName() == Kurs.SPESIALKRANER_PROPERTY) {
+			SpesialKranerCheck.setSelected(model.isSpesialKraner());
+		} else if(evt.getPropertyName() == Kurs.VINSJEROGTALJER_PROPERTY) {
+			VinsjerOgTaljerCheck.setSelected(model.isVinsjerOgTaljer());
+		} else if(evt.getPropertyName() == Kurs.ANHUKSTROPPINGSIGNAL_PROPERTY) {
+			anhukingStroppingOgSignalgivningCheck.setSelected(model.isAnhukStroppingSignalGiving());
+		} else if(evt.getPropertyName() == Kurs.KLATREHENGESTILASER_PROPERTY) {
+			klatreOgHengeStilaserCheck.setSelected(model.isKlatreOgHengestilaser());
+		} else if(evt.getPropertyName() == Kurs.PERSONLOFTERE_PROPERTY) {
+			personLoftereCheck.setSelected(model.isPersonLoftere());
+		} else if(evt.getPropertyName() == Kurs.PERSONLOFTEREUNDERJORD_PROPERTY) {
+			personLoftereUnderJordCheck.setSelected(model.isPersonLoftereUnderJord());
+		} else if(evt.getPropertyName() == Kurs.BORVOGNERTUNNELRIGGER_PROPERTY) {
+			borVognerOgTunnelriggerCheck.setSelected(model.isBorvognerTunnelrigger());
+		} else if(evt.getPropertyName() == Kurs.SELVGAENDEUTSTYR_PROPERTY) {
+			selvgåendeValserCheck.setSelected(model.isSelvgaendeUtstyr());
+		} else if(evt.getPropertyName() == Kurs.TRAKTORUTSTYR_PROPERTY){
+			TraktorutstyrCheck.setSelected(model.isTraktorUtstyr());
+		} else if(evt.getPropertyName() == Kurs.VINKELSLIPERKUTTER_PROPERTY) {
+			vinkelSliperKutterCheck.setSelected(model.isVinkelsliperKutter());
+		} else if(evt.getPropertyName() == Kurs.BOLTEPISTOL) {
+			boltePistolCheck.setSelected(model.isBoltePistol());
+		} else if(evt.getPropertyName() == Kurs.SPIKERPISTOL_PROPERTY) {
+			spikerPistolCheck.setSelected(model.isSpikerPistol());
+		} else if(evt.getPropertyName() == Kurs.KOMBIHAMMERBORHAMMER_PROPERTY) {
+			KombiHammerBorHammerCheck.setSelected(model.isKombihammerBorhammer());
+		} else if(evt.getPropertyName() == Kurs.KJEDESAG_PROPERTY) {
+			kjedeSagCheck.setSelected(model.isKjedeSag());
+		} else if(evt.getPropertyName() == Kurs.KAPPKLYVEGJERDESAG_PROPERTY) {
+			KappKlyveGjerdeSagCheck.setSelected(model.isKappklyveGjerdeSag());
+		} else if(evt.getPropertyName() == Kurs.BINDEMASKINARMERING_PROPERTY) {
+			bindeMaskinArmeringCheck.setSelected(model.isBindeMaskinArmering());
+		} else if(evt.getPropertyName() == Kurs.VIBROSTAV_PROPERTY) {
+			VibrostavCheck.setSelected(model.isVibroStav());
+		} else if(evt.getPropertyName() == Kurs.HANDHALDTARMERINGSKAPPER_PROPERTY) {
+			haandholdtArmeringsKapperCheck.setSelected(model.isHandhaldtArmeringsKapper());
+		} else if(evt.getPropertyName() == Kurs.SKJAREBRENNER_PROPERTY) {
+			skjarebrennerCheck.setSelected(model.isSkjarebrenner());
+		} else if(evt.getPropertyName() == Kurs.SPONBRYTENDE_PROPERTY) {
+			sponBrytendeCheck.setSelected(model.isSponBrytende());
+		} else if(evt.getPropertyName() == Kurs.SLIPEMASKINER_PROPERTY) {
+			slipemaskinerCheck.setSelected(model.isSlipeMaskiner());
+		} else if(evt.getPropertyName() == Kurs.TREBEARBEIDINGSMASKIN_PROPERTY) {
+			trebearbeidingsMaskinerCheck.setSelected(model.isTreBearbeidingsMaskin());
+		} else if(evt.getPropertyName() == Kurs.ASFALTARBEIDER_PROPERTY) {
+			asfaltArbeiderCheck.setSelected(model.isAsfaltarbeider());
+		} else if(evt.getPropertyName() == Kurs.BETONGSAGERKJERNEBORING_PROPERTY) {
+			betongSagerKjerneBorCheck.setSelected(model.isBetongSagerKjerneBoring());
+		} else if(evt.getPropertyName() == Kurs.VEGGSAGER_PROPERTY) {
+			veggsagerCheck.setSelected(model.isVeggSager());
+		} else if(evt.getPropertyName() == Kurs.VAIERSAGER_PROPERTY) {
+			vaierSagerCheck.setSelected(model.isVaierSager());
+		} else if(evt.getPropertyName() == Kurs.GULVOGASFALTSAG_PROPERTY) {
+			gulvsagerOgAsfaltsagCheck.setSelected(model.isGulvOgAsfaltSag());
+		} else if(evt.getPropertyName() == Kurs.HOYTRYKKSPYLER_PROPERTY) {
+			hoytrykkspylerUtstyrCheck.setSelected(model.isHoytrykkSpyler());
+		} else if(evt.getPropertyName() == Kurs.RYDDESAGEROGTRIMMERE_PROPERTY) {
+			ryddeSagerOgTrimmereCheck.setSelected(model.isRyddeSagerOgTrimmere());
+		} else if(evt.getPropertyName() == Kurs.SPUNTOGPALEUTSTYR_PROPERTY) {
+			spunteOgPaleutstyrCheck.setSelected(model.isSpunteOgPaleUtstyr());
+		} else if(evt.getPropertyName() == Kurs.MOBILTBETONGPUMPEUTSTYR) {
+			mobiltBetongPumpeUtstyr.setSelected(model.isMobiltBetongPumpeUtstyr());
+		} else if(evt.getPropertyName() == Kurs.SIKKERKONTROLLAVSTILLAS_PROPERTY) {
+			sikkerBrukKontrollAvStillasCheck.setSelected(model.isSikkerKontorllAvStillas());
+		} else if(evt.getPropertyName() == Kurs.SIKKERBRUKAVFORSKALING_PROPERTY) {
+			sikkerBrukAvForskalingCheck.setSelected(model.isSikkerBrukAvForskaling());
+		} else if(evt.getPropertyName() == Kurs.FALLSIKKRING_PROPERTY) {
+			fallsikringutstyrCheck.setSelected(model.isFallSikkring());
+		} else if(evt.getPropertyName() == Kurs.FORSTEHJELP_PROPERTY) {
+			forstehjelpUtstyrCheck.setSelected(model.isForsteHjelp());
+		} else if(evt.getPropertyName() == Kurs.VERKSTEDOGLAGERTEKST_PROPERTY) {
+			verkstedOgLagerPropertyComponent.setText(model.getVerksetedLagerTekst());
+		} else if(evt.getPropertyName() == Kurs.SPESIALKRANERTEKST_PROPERTY) {
+			spesialKranerPropertyComponent.setText(model.getSpesialKranerTekst());
+		} else if(evt.getPropertyName() == Kurs.PEROSNLOFTERETEKST_PROPERTY) {
+			personlofterePropertyComponent.setText(model.getPersonLoftereTekst());
+		} else if(evt.getPropertyName() == Kurs.FORSTEHJELPDATOTEKST_PROPERTY) {
+			forstehjelpPropertyComponent.setText(model.getForstehjelpDatoTekst());
+		} else if(evt.getPropertyName() == Kurs.ANNET_PROPERTY) {
+			annetCheck.setSelected(model.isAnnet());
+		} else if(evt.getPropertyName() == Kurs.ANNETTEKST_PROPERTY) {
+			annetPropertyComponent.setText(model.getAnnetTekst());
+		}
 	}
 
 	@Override
