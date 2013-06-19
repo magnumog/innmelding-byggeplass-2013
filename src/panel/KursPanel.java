@@ -361,6 +361,75 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		} else if(e.getSource()==haandholdtArmeringsKapperCheck) {
 			model.setHandhaldtArmeringsKapper(haandholdtArmeringsKapperCheck.isSelected());
 			System.out.println("Endret håndholdtArmeringsKapper check");
+		} else if(e.getSource()==skjarebrennerCheck) {
+			model.setSkjarebrenner(skjarebrennerCheck.isSelected());
+			System.out.println("Endret skjærebrenner check");
+		} else if(e.getSource()==sponBrytendeCheck) {
+			model.setSponBrytende(sponBrytendeCheck.isSelected());
+			System.out.println("Endret sponbrytende check");
+		} else if(e.getSource()==slipemaskinerCheck) {
+			model.setSlipeMaskiner(slipemaskinerCheck.isSelected());
+			System.out.println("Endret slipemaskiner check");
+		} else if(e.getSource()==trebearbeidingsMaskinerCheck) {
+			model.setTreBearbeidingsMaskin(trebearbeidingsMaskinerCheck.isSelected());
+			System.out.println("Endret trebearbeidingsmaskiner check");
+		} else if(e.getSource()==asfaltArbeiderCheck) {
+			model.setAsfaltarbeider(asfaltArbeiderCheck.isSelected());
+			System.out.println("Endret asfaltarbeider check");
+		} else if(e.getSource()==betongSagerKjerneBorCheck) {
+			model.setBetongSagerKjerneBoring(betongSagerKjerneBorCheck.isSelected());
+			System.out.println("Endret betongsager kjerneborutstyr Check");
+		} else if(e.getSource()==veggsagerCheck) {
+			model.setVeggSager(veggsagerCheck.isSelected());
+			System.out.println("Endret veggsager check");
+		} else if(e.getSource()==vaierSagerCheck) {
+			model.setVaierSager(vaierSagerCheck.isSelected());
+			System.out.println("Endret vaiersager check");
+		} else if(e.getSource()==gulvsagerOgAsfaltsagCheck) {
+			model.setGulvOgAsfaltSag(gulvsagerOgAsfaltsagCheck.isSelected());
+			System.out.println("Endret gulvsager og asfaltsag check");
+		} else if(e.getSource()==hoytrykkspylerUtstyrCheck) {
+			model.setHoytrykkSpyler(hoytrykkspylerUtstyrCheck.isSelected());
+			System.out.println("Endret hoytrykkspyler check");
+		} else if (e.getSource()==ryddeSagerOgTrimmereCheck) {
+			model.setRyddeSagerOgTrimmere(ryddeSagerOgTrimmereCheck.isSelected());
+			System.out.println("Endret ryddesager og trimmere check");
+		} else if(e.getSource()==spunteOgPaleutstyrCheck){
+			model.setSpunteOgPaleUtstyr(spunteOgPaleutstyrCheck.isSelected());
+			System.out.println("Endret Spunte og pæleutstyr check");
+		} else if(e.getSource()==mobiltBetongPumpeUtstyr) {
+			model.setMobiltBetongPumpeUtstyr(mobiltBetongPumpeUtstyr.isSelected());
+			System.out.println("Endret mobiltbetongpumpeutstyr check");
+		} else if(e.getSource()==sikkerBrukKontrollAvStillasCheck) {
+			model.setSikkerKontorllAvStillas(sikkerBrukKontrollAvStillasCheck.isSelected());
+			System.out.println("Endret sikkerbruk av stilas check");		
+		} else if(e.getSource()==sikkerBrukAvForskalingCheck) {
+			model.setSikkerBrukAvForskaling(sikkerBrukAvForskalingCheck.isSelected());
+			System.out.println("Endret sikker bruk av forskaling check");
+		} else if(e.getSource()==fallsikringutstyrCheck) {
+			model.setFallSikkring(fallsikringutstyrCheck.isSelected());
+			System.out.println("Endret fallsikringsutstyr check");
+		} else if(e.getSource()==forstehjelpUtstyrCheck) {
+			model.setForsteHjelp(forstehjelpUtstyrCheck.isSelected());
+			System.out.println("Endret forstehjelp utstyr check");
+		} else if(e.getSource()==annetCheck) {
+			model.setAnnet(annetCheck.isSelected());
+			System.out.println("Endret Annet check");
+		} else if(e.getSource()==verkstedOgLagerPropertyComponent) {
+			model.setVerksetedLagerTekst(verkstedOgLagerPropertyComponent.getText());
+			System.out.println("Endret teksten til verksted og lager");
+		} else if(e.getSource()==spesialKranerPropertyComponent) {
+			model.setSpesialKranerTekst(spesialKranerPropertyComponent.getText());
+			System.out.println("Endret teksten til spesialkran");
+		} else if(e.getSource()==personlofterePropertyComponent) {
+			model.setPersonLoftereTekst(personlofterePropertyComponent.getText());
+			System.out.println("Endret personlofter tekst");
+		} else if(e.getSource()==forstehjelpPropertyComponent) {
+			model.setForstehjelpDatoTekst(forstehjelpPropertyComponent.getText());
+			System.out.println("Endret teksten til forstehjelp");
+		} else if(e.getSource()==annetPropertyComponent) {
+			model.setAnnetTekst(annetPropertyComponent.getText());
+			System.out.println("Endret teksten til annet");
 		}
 	}
 }
