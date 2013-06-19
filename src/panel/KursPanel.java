@@ -304,5 +304,63 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			return;
 		}
 		
+		if(e.getSource()==verkstedOgLagerCheck) {
+			model.setVerkstedOgLager(verkstedOgLagerCheck.isSelected());
+			System.out.println("Endret verksted og lager check");
+		} else if(e.getSource()==SpesialKranerCheck) {
+			model.setSpesialKraner(SpesialKranerCheck.isSelected());
+			System.out.println("Endret spesialkraner check");
+		} else if(e.getSource()==VinsjerOgTaljerCheck) {
+			model.setVinsjerOgTaljer(VinsjerOgTaljerCheck.isSelected());
+			System.out.println("Endret Vinsjer og taljer check");
+		} else if(e.getSource()==anhukingStroppingOgSignalgivningCheck) {
+			model.setAnhukStroppingSignalGiving(anhukingStroppingOgSignalgivningCheck.isSelected());
+			System.out.println("Endret anhuk osv check");
+		} else if(e.getSource()==klatreOgHengeStilaserCheck) {
+			model.setKlatreOgHengestilaser(klatreOgHengeStilaserCheck.isSelected());
+			System.out.println("Endret Klatre og hengestialser check");
+		} else if(e.getSource()==personLoftereCheck) {
+			model.setPersonLoftere(personLoftereCheck.isSelected());
+			System.out.println("Endret Personløftere check");
+		} else if(e.getSource()==personLoftereUnderJordCheck) {
+			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
+			System.out.println("Endret personløftereunderjord Check");
+		} else if(e.getSource()==borVognerOgTunnelriggerCheck) {
+			model.setBorvognerTunnelrigger(borVognerOgTunnelriggerCheck.isSelected());
+			System.out.println("Endret borvogner og tunnelrigger check");
+		} else if(e.getSource()==selvgåendeValserCheck) {
+			model.setSelvgaendeUtstyr(selvgåendeValserCheck.isSelected());
+			System.out.println("Endret selvgåendevalse check");
+		} else if(e.getSource()==TraktorutstyrCheck) {
+			model.setTraktorUtstyr(TraktorutstyrCheck.isSelected());
+			System.out.println("Endret Traktorutstyr check");
+		} else if(e.getSource()==vinkelSliperKutterCheck) {
+			model.setVinkelsliperKutter(vinkelSliperKutterCheck.isSelected());
+			System.out.println("Endret vinkelsliperKutter check");
+		} else if(e.getSource()==boltePistolCheck) {
+			model.setBoltePistol(boltePistolCheck.isSelected());
+			System.out.println("Endret boltepistol check");
+		} else if(e.getSource()==spikerPistolCheck) {
+			model.setSpikerPistol(spikerPistolCheck.isSelected());
+			System.out.println("Endret Spikerpistol check");
+		} else if(e.getSource()==KombiHammerBorHammerCheck) {
+			model.setKombihammerBorhammer(KombiHammerBorHammerCheck.isSelected());
+			System.out.println("Endret kombihamme check");
+		} else if(e.getSource()==kjedeSagCheck) {
+			model.setKjedeSag(kjedeSagCheck.isSelected());
+			System.out.println("Endret kjedesag check");
+		} else if(e.getSource()==KappKlyveGjerdeSagCheck) {
+			model.setKappklyveGjerdeSag(KappKlyveGjerdeSagCheck.isSelected());
+			System.out.println("Endret kappklyveGjerdesag Check");
+		} else if(e.getSource()==bindeMaskinArmeringCheck) {
+			model.setBindeMaskinArmering(bindeMaskinArmeringCheck.isSelected());
+			System.out.println("Endret bindemaskinArmering check");
+		} else if(e.getSource()==VibrostavCheck) {
+			model.setVibroStav(VibrostavCheck.isSelected());
+			System.out.println("Endret vibrostav check");
+		} else if(e.getSource()==haandholdtArmeringsKapperCheck) {
+			model.setHandhaldtArmeringsKapper(haandholdtArmeringsKapperCheck.isSelected());
+			System.out.println("Endret håndholdtArmeringsKapper check");
+		}
 	}
 }

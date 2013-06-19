@@ -44,7 +44,7 @@ public class RegistreringPanelProgram extends JPanel {
 		
 		KursPanel kursPanel = new KursPanel();
 		Kurs kursModel = new Kurs();
-		//kursPanel.setModel(kursModel);
+		kursPanel.setModel(kursModel);
 		
 		
 		add(registreringPanel);
