@@ -14,22 +14,73 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class KursPanel extends JPanel implements ActionListener,PropertyChangeListener, ChangeListener {
+import modell.Kurs;
+
+public class KursPanel extends JPanel implements ActionListener, PropertyChangeListener, ChangeListener {
 	private static final long serialVersionUID = 1L;
-	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLøftereCheck, personLøftereUnderJordCheck;
+	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLoftereCheck, personLoftereUnderJordCheck;
 	protected JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
 	protected JCheckBox KappKlyveGjerdeSagCheck, bindeMaskinArmeringCheck, VibrostavCheck, haandholdtArmeringsKapperCheck, skjarebrennerCheck, sponBrytendeCheck, slipemaskinerCheck, trebearbeidingsMaskinerCheck;
 	protected JCheckBox asfaltArbeiderCheck, betongSagerKjerneBorCheck, veggsagerCheck, vaierSagerCheck, gulvsagerOgAsfaltsagCheck, hoytrykkspylerUtstyrCheck, ryddeSagerOgTrimmereCheck, spunteOgPaleutstyrCheck;
-	protected JCheckBox mobiltBetongPumpeUtstyr, sikkerBrukKontrollAvStillasCheck, sikkerBrukAvForskalingCheck, fallsikringutstyrCheck, forstehjelpUtstyr;
-	protected JCheckBox annetLabel;
+	protected JCheckBox mobiltBetongPumpeUtstyr, sikkerBrukKontrollAvStillasCheck, sikkerBrukAvForskalingCheck, fallsikringutstyrCheck, forstehjelpUtstyrCheck;
+	protected JCheckBox annetCheck;
 	
 	protected JTextField verkstedOgLagerPropertyComponent, spesialKranerPropertyComponent, personlofterePropertyComponent, forstehjelpPropertyComponent, annetPropertyComponent;
+	
+	Kurs model = null;
 	
 	public KursPanel() {
 		//Legger ut componentene i GUI
 		
 		createKursComponents();
 		layComponents();
+		addActionListeners();
+	}
+
+	private void addActionListeners() {
+		verkstedOgLagerCheck.addActionListener(this);
+		SpesialKranerCheck.addActionListener(this);
+		VinsjerOgTaljerCheck.addActionListener(this);
+		anhukingStroppingOgSignalgivningCheck.addActionListener(this);
+		klatreOgHengeStilaserCheck.addActionListener(this);
+		personLoftereCheck.addActionListener(this);
+		personLoftereUnderJordCheck.addActionListener(this);
+		borVognerOgTunnelriggerCheck.addActionListener(this);
+		selvgåendeValserCheck.addActionListener(this);
+		TraktorutstyrCheck.addActionListener(this);
+		vinkelSliperKutterCheck.addActionListener(this);
+		boltePistolCheck.addActionListener(this);
+		spikerPistolCheck.addActionListener(this);
+		KombiHammerBorHammerCheck.addActionListener(this);
+		kjedeSagCheck.addActionListener(this);
+		KappKlyveGjerdeSagCheck.addActionListener(this);
+		bindeMaskinArmeringCheck.addActionListener(this);
+		VibrostavCheck.addActionListener(this);
+		haandholdtArmeringsKapperCheck.addActionListener(this);
+		skjarebrennerCheck.addActionListener(this);
+		sponBrytendeCheck.addActionListener(this);
+		slipemaskinerCheck.addActionListener(this);
+		trebearbeidingsMaskinerCheck.addActionListener(this);
+		asfaltArbeiderCheck.addActionListener(this);
+		betongSagerKjerneBorCheck.addActionListener(this);
+		veggsagerCheck.addActionListener(this);
+		vaierSagerCheck.addActionListener(this);
+		gulvsagerOgAsfaltsagCheck.addActionListener(this);
+		hoytrykkspylerUtstyrCheck.addActionListener(this);
+		ryddeSagerOgTrimmereCheck.addActionListener(this);
+		spunteOgPaleutstyrCheck.addActionListener(this);
+		mobiltBetongPumpeUtstyr.addActionListener(this);
+		sikkerBrukKontrollAvStillasCheck.addActionListener(this);
+		sikkerBrukAvForskalingCheck.addActionListener(this);
+		fallsikringutstyrCheck.addActionListener(this);
+		forstehjelpUtstyrCheck.addActionListener(this);
+		annetCheck.addActionListener(this);
+		verkstedOgLagerPropertyComponent.addActionListener(this);
+		spesialKranerPropertyComponent.addActionListener(this);
+		personlofterePropertyComponent.addActionListener(this);
+		forstehjelpPropertyComponent.addActionListener(this);
+		annetPropertyComponent.addActionListener(this);
+		
 	}
 
 	private void layComponents() {
@@ -50,9 +101,9 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		c.gridy = 4;
 		add(klatreOgHengeStilaserCheck,c);
 		c.gridy = 5;
-		add(personLøftereCheck,c);
+		add(personLoftereCheck,c);
 		c.gridy = 6;
-		add(personLøftereUnderJordCheck,c);
+		add(personLoftereUnderJordCheck,c);
 		c.gridx=0;
 		c.gridy = 7;
 		add(borVognerOgTunnelriggerCheck,c);
@@ -65,7 +116,7 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		c.gridy = 11;
 		add(boltePistolCheck, c);
 		c.gridy = 12;
-		add(annetLabel,c);
+		add(annetCheck,c);
 		c.anchor = GridBagConstraints.EAST;
 		c.gridy = 0;
 		add(verkstedOgLagerPropertyComponent,c);
@@ -125,7 +176,7 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		c.gridy=10;
 		add(fallsikringutstyrCheck,c);
 		c.gridy=11;
-		add(forstehjelpUtstyr,c);
+		add(forstehjelpUtstyrCheck,c);
 		c.anchor = GridBagConstraints.EAST;
 		add(forstehjelpPropertyComponent,c);
 		
@@ -145,15 +196,15 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		VinsjerOgTaljerCheck = new JCheckBox("Vinsjer oig taljer");
 		anhukingStroppingOgSignalgivningCheck = new JCheckBox("Anhuking - stropping - signalgivning");
 		klatreOgHengeStilaserCheck = new JCheckBox("Klatre- og hengestillaser(36t kurs)");
-		personLøftereCheck = new JCheckBox("Personløftere klasse: ");
+		personLoftereCheck = new JCheckBox("Personløftere klasse: ");
 		personlofterePropertyComponent = new JTextField(6);
-		personLøftereUnderJordCheck = new JCheckBox("Personløftere under jord");
+		personLoftereUnderJordCheck = new JCheckBox("Personløftere under jord");
 		borVognerOgTunnelriggerCheck = new JCheckBox("Borvogner og tunnelrigger");
 		selvgåendeValserCheck = new JCheckBox("Selvgående valser");
 		TraktorutstyrCheck = new JCheckBox("Traktorutstyr");
 		vinkelSliperKutterCheck = new JCheckBox("Vinkelsliper/-kutter");
 		boltePistolCheck = new JCheckBox("Boltepistol");
-		annetLabel = new JCheckBox("Annet: (Beskriv):");
+		annetCheck = new JCheckBox("Annet: (Beskriv):");
 		
 		spikerPistolCheck = new JCheckBox("Spikerpistol");
 		KombiHammerBorHammerCheck = new JCheckBox("Kombihammer/borhammer");
@@ -179,11 +230,62 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 		sikkerBrukKontrollAvStillasCheck = new JCheckBox("Sikker bruk/kontroll av stillas");
 		sikkerBrukAvForskalingCheck = new JCheckBox("Sikker bruk av forskaling");
 		fallsikringutstyrCheck = new JCheckBox("Fallsikringsutstyr");
-		forstehjelpUtstyr = new JCheckBox("Førstehjelpskurs, Dato:");
+		forstehjelpUtstyrCheck = new JCheckBox("Førstehjelpskurs, Dato:");
 		forstehjelpPropertyComponent = new JTextField(5);
 		annetPropertyComponent = new JTextField(48);		
 	}
 
+	public void setModel(Kurs model) {
+		this.model = model;
+		model.addPropertyChangeListener(this);
+		verkstedOgLagerCheck.setSelected(model.isVerkstedOgLager());
+		SpesialKranerCheck.setSelected(model.isSpesialKraner());
+		VinsjerOgTaljerCheck.setSelected(model.isVinsjerOgTaljer());
+		anhukingStroppingOgSignalgivningCheck.setSelected(model.isAnhukStroppingSignalGiving());
+		klatreOgHengeStilaserCheck.setSelected(model.isKlatreOgHengestilaser());
+		personLoftereCheck.setSelected(model.isPersonLoftere());
+		personLoftereUnderJordCheck.setSelected(model.isPersonLoftereUnderJord());
+		borVognerOgTunnelriggerCheck.setSelected(model.isBorvognerTunnelrigger());
+		selvgåendeValserCheck.setSelected(model.isSelvgaendeUtstyr());
+		TraktorutstyrCheck.setSelected(model.isTraktorUtstyr());
+		vinkelSliperKutterCheck.setSelected(model.isVinkelsliperKutter());
+		boltePistolCheck.setSelected(model.isBoltePistol());
+		spikerPistolCheck.setSelected(model.isSpikerPistol());
+		KombiHammerBorHammerCheck.setSelected(model.isKombihammerBorhammer());
+		kjedeSagCheck.setSelected(model.isKjedeSag());
+		KappKlyveGjerdeSagCheck.setSelected(model.isKappklyveGjerdeSag());
+		bindeMaskinArmeringCheck.setSelected(model.isBindeMaskinArmering());
+		VibrostavCheck.setSelected(model.isVibroStav());
+		haandholdtArmeringsKapperCheck.setSelected(model.isVibroStav());
+		skjarebrennerCheck.setSelected(model.isSkjarebrenner());
+		sponBrytendeCheck.setSelected(model.isSponBrytende());
+		slipemaskinerCheck.setSelected(model.isSlipeMaskiner());
+		trebearbeidingsMaskinerCheck.setSelected(model.isTreBearbeidingsMaskin());
+		asfaltArbeiderCheck.setSelected(model.isAsfaltarbeider());
+		betongSagerKjerneBorCheck.setSelected(model.isBetongSagerKjerneBoring());
+		veggsagerCheck.setSelected(model.isVeggSager());
+		vaierSagerCheck.setSelected(model.isVaierSager());
+		gulvsagerOgAsfaltsagCheck.setSelected(model.isGulvOgAsfaltSag());
+		hoytrykkspylerUtstyrCheck.setSelected(model.isHoytrykkSpyler());
+		ryddeSagerOgTrimmereCheck.setSelected(model.isRyddeSagerOgTrimmere());
+		spunteOgPaleutstyrCheck.setSelected(model.isSpunteOgPaleUtstyr());
+		mobiltBetongPumpeUtstyr.setSelected(model.isMobiltBetongPumpeUtstyr());
+		sikkerBrukKontrollAvStillasCheck.setSelected(model.isSikkerKontorllAvStillas());
+		sikkerBrukAvForskalingCheck.setSelected(model.isSikkerBrukAvForskaling());
+		fallsikringutstyrCheck.setSelected(model.isFallSikkring());
+		forstehjelpUtstyrCheck.setSelected(model.isForsteHjelp());
+		annetCheck.setSelected(model.isAnnet());
+		verkstedOgLagerPropertyComponent.setText(model.getVerksetedLagerTekst());
+		spesialKranerPropertyComponent.setText(model.getSpesialKranerTekst());
+		personlofterePropertyComponent.setText(model.getPersonLoftereTekst());
+		forstehjelpPropertyComponent.setText(model.getForstehjelpDatoTekst());
+		annetPropertyComponent.setText(model.getAnnetTekst());
+	}
+	
+	public Kurs getModel() {
+		return model;
+	}
+	
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		// TODO Auto-generated method stub
@@ -198,7 +300,9 @@ public class KursPanel extends JPanel implements ActionListener,PropertyChangeLi
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(model == null) {
+			return;
+		}
 		
 	}
 }
