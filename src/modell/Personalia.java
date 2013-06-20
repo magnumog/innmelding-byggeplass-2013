@@ -1,10 +1,11 @@
 package modell;
-/*
- * Author Magnus Settemsli Mogstad
+/**
+ * @author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
  * Rotete kode men forståelig
  * Owner Veidekke ASA
- */
+ **/
+
 
 import java.beans.*;
 
