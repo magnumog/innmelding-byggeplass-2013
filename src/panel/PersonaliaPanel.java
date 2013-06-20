@@ -29,7 +29,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel, emptyLabel;
 	protected JTextField namePropertyComponent,dateOfBirthpropertyComponent,idCardPropertyComponent,idExpiresPropertyComponent,adressPropertyComponent,postNrPropertyComponent,postPlacePropertyComponent,phonePropertyComponent,employeePropertyComponent;
 	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent;
-	protected JComboBox<Language> languageChoise;
+	protected JComboBox<Language> languageChoise; 
 	
 	//GUI språk
 	protected JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
@@ -216,7 +216,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridy=16;
 		add(Neste,c);
 		Neste.setVisible(false);
-		
 		
 		
 

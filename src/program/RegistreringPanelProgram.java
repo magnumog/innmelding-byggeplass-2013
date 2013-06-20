@@ -37,11 +37,11 @@ public class RegistreringPanelProgram extends JPanel {
 		ModulEnPanel modulEnPanel = new ModulEnPanel();
 		ModulEn modulEnModel = new ModulEn();
 		modulEnPanel.setModel(modulEnModel);
-//		
+
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
 		Sertifikat sertifikatModel = new Sertifikat();
 		sertifikatPanel.setModel(sertifikatModel);
-//		
+		
 		KursPanel kursPanel = new KursPanel();
 		Kurs kursModel = new Kurs();
 		kursPanel.setModel(kursModel);
