@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,6 +27,8 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 	protected JCheckBox annetCheck;
 	
 	protected JTextField verkstedOgLagerPropertyComponent, spesialKranerPropertyComponent, personlofterePropertyComponent, forstehjelpPropertyComponent, annetPropertyComponent;
+	
+	protected JButton Neste, nullstill;
 	
 	Kurs model = null;
 	

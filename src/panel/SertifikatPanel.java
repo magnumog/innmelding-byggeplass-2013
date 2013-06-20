@@ -85,6 +85,10 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		add(varmeArbeiderPropertyComponent,c);
 		c.gridy = 7;
 		add(truckKranPropertyComponent,c);
+		c.gridy=8;
+		add(neste);
+		c.gridy=9;
+		add(nullstill);
 		
 	}
 
@@ -100,6 +104,8 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		varmeArbeiderPropertyComponent.addActionListener(this);
 		truckKranPropertyComponent.addActionListener(this);
 		arbeidsVarslingPropertyComponent.addActionListener(this);
+		neste.addActionListener(this);
+		nullstill.addActionListener(this);
 	}
 
 	private void createSertifikatKursComponents() {
@@ -119,6 +125,8 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		varmeArbeiderPropertyComponent = new JTextField(5);
 		truckKranLabel = new JLabel("Hvis ja, hvilke klasse: ");
 		truckKranPropertyComponent = new JTextField(5);
+		neste = new JButton("Neste");
+		nullstill = new JButton("Nullstill");
 	}
 	
 	public void setModel(Sertifikat model) {
@@ -177,7 +185,39 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		}
 		
 		try {
-			if(a.getSource()==driversLicenseCheck) {
+			if(a.getSource() == neste) {
+				model.setForerkort(driversLicenseCheck.isSelected());
+				model.setForerkortKlasser(driverLicensePropertyComponent.getText());
+				model.setGrunnopplaeringArbeidsmiljo(grunnArbeidsmiljoCheck.isSelected());
+				model.setMaskinForerBevis(maskinforerCheck.isSelected());
+				model.setMaskinForerKlasser(maskinForerPropertyComponent.getText());
+				model.setArbeidsVarsling(arbeidsVarslingCheck.isSelected());
+				model.setArbeidsVarslingKurs(arbeidsVarslingPropertyComponent.getText());
+				model.setVarmeArbeider(varmeArbeiderCheck.isSelected());
+				model.setVarmeArbeiderdato(varmeArbeiderPropertyComponent.getText());
+				model.setTruckKranForer(truckKranBevisCheck.isSelected());
+				model.setTruckKranForerBevis(truckKranPropertyComponent.getText());
+				System.out.println("FORERKORT:" + model.isForerkort() + " FORERKORTKLASSER:" + model.getForerkortKlasser() + " GRUNNOPPLÆRINGARBEIDSMILJØ:" + model.isGrunnopplaeringArbeidsmiljo());
+				System.out.println("MASKINFORER:" + model.isMaskinForerBevis() +  " MASKINFORERKLASSER:" + model.getMaskinForerKlasser() + " ABEIDSVARSLER:" + model.isArbeidsVarsling());
+				System.out.println("ARBEIDSVARSLERKURS:" + model.getArbeidsVarslingKurs() + " VARMEARBEIDER:" + model.isVarmeArbeider() + " VARMEDATO:" + model.getVarmeArbeiderdato());
+				System.out.println("TRUCK/KRANFORER:" + model.isTruckKranForer() + " TRUCK/KRANFORERBEVIS:" + model.getTruckKranForerBevis());
+			} else if(a.getSource()==nullstill) {
+				model.setForerkort(false);
+				model.setForerkortKlasser(null);
+				model.setGrunnopplaeringArbeidsmiljo(false);
+				model.setMaskinForerBevis(false);
+				model.setMaskinForerKlasser(null);
+				model.setArbeidsVarsling(false);
+				model.setArbeidsVarslingKurs(null);
+				model.setVarmeArbeider(false);
+				model.setVarmeArbeiderdato(null);
+				model.setTruckKranForer(false);
+				model.setTruckKranForerBevis(null);
+				System.out.println("FORERKORT:" + model.isForerkort() + " FORERKORTKLASSER:" + model.getForerkortKlasser() + " GRUNNOPPLÆRINGARBEIDSMILJØ:" + model.isGrunnopplaeringArbeidsmiljo());
+				System.out.println("MASKINFORER:" + model.isMaskinForerBevis() +  " MASKINFORERKLASSER:" + model.getMaskinForerKlasser() + " ABEIDSVARSLER:" + model.isArbeidsVarsling());
+				System.out.println("ARBEIDSVARSLERKURS:" + model.getArbeidsVarslingKurs() + " VARMEARBEIDER:" + model.isVarmeArbeider() + " VARMEDATO:" + model.getVarmeArbeiderdato());
+				System.out.println("TRUCK/KRANFORER:" + model.isTruckKranForer() + " TRUCK/KRANFORERBEVIS:" + model.getTruckKranForerBevis());	
+			} else if(a.getSource()==driversLicenseCheck) {
 				model.setForerkort(driversLicenseCheck.isSelected());
 				System.out.println("Endret Forerkort");
 			} else if(a.getSource() == driverLicensePropertyComponent) {

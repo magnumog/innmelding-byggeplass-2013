@@ -15,6 +15,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -28,6 +29,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 	protected JTextField modulEnJaDato,modulEnNeiFrist;
 	protected JLabel modulEnInfo;
 	
+	protected JButton Neste,nullstill;
+	
 	ModulEn model = null;
 	
 	public ModulEnPanel(){
@@ -36,6 +39,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		modulEnJaDato = new JTextField(5);
 		modulEnNeiFrist = new JTextField(5);
 		modulEnInfo = new JLabel("Gjennomført obligatorisk sikkerthetopplæring Modul 1:");
+		Neste = new JButton("Neste");
+		nullstill = new JButton("nullstill");
 		ButtonGroup btnGroup = new ButtonGroup();
 		btnGroup.add(modulEnJaRadio);
 		btnGroup.add(modulEnNeiRadio);
@@ -56,11 +61,18 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		add(modulEnNeiRadio,c);
 		c.gridx=4;
 		add(modulEnNeiFrist,c);
+		c.gridy=1;
+		c.gridx=1;
+		add(Neste);
+		c.gridx=2;
+		add(nullstill);
 		
 		modulEnJaDato.addActionListener(this);
 		modulEnJaRadio.addActionListener(this);
 		modulEnNeiRadio.addActionListener(this);
 		modulEnNeiFrist.addActionListener(this);
+		Neste.addActionListener(this);
+		nullstill.addActionListener(this);
 	}
 	
 	public void setModel(ModulEn model) {
@@ -96,7 +108,19 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		if(model == null) {
 			return;
 		}
-		if(e.getSource() == modulEnJaRadio) {
+		
+		if(e.getSource() == Neste) {
+			model.setModulEnJaSvar(modulEnJaRadio.isSelected());
+			model.setModulEnNeiSvar(modulEnNeiRadio.isSelected());
+			model.setModulEnJADato(modulEnJaDato.getText());
+			model.setModulEnNeiFrist(modulEnNeiFrist.getText());
+			System.out.println("JA:" + model.isModulEnJaSvar() + " NEI:" + model.isModulEnNeiSvar() + " JADATO:" + model.getModulEnJADato() +  " NEIFRIST:" + model.getModulEnNeiFrist());
+		} else if(e.getSource()==nullstill) {
+			model.setModulEnJaSvar(true);
+			model.setModulEnNeiSvar(false);
+			model.setModulEnJADato(null);
+			model.setModulEnNeiFrist(null);
+		} else if(e.getSource() == modulEnJaRadio) {
 			model.setModulEnJaSvar(modulEnJaRadio.isSelected());			
 		} else if(e.getSource() == modulEnNeiRadio) {
 			model.setModulEnNeiSvar(modulEnNeiRadio.isSelected());

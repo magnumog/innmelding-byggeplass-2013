@@ -311,7 +311,13 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		employeePropertyComponent.setText(model.getEmployeer());
 		employeePhonePropertyComponent.setText(model.getEmployeerPhone());
 		nextToKindPropertyComponent.setText(model.getNextToKind());
-		nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());		
+		nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
+		understadnSkandinaviskJaRadio.setSelected(model.isUnderstandScandinavian());
+		understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
+		understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
+		speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
+		speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
+		speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
 	}
 	public Personalia getModel() {
 		return model;
@@ -390,18 +396,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setNextToKind(nextToKindPropertyComponent.getText());
 			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-			} else if(action.getSource() == understadnSkandinaviskJaRadio) {
-				model.setUnderstandScandinavian(true);
-				System.out.println("Endret understand --> JA"); 
-			} else if(action.getSource() == understadnSkandinaviskNeiRadio) {
-				model.setUnderstandScandinavian(false);
-				System.out.println("Endret understand-->NEI");
-			} else if(action.getSource() == speakSkadinvaiskJaRadio) {
-				model.setSpeakScandinavian(true);
+			} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
+				model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
+				System.out.println("Endret understand"); 
+			} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
+				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
 				System.out.println("Endret speak-->JA");
-			} else if(action.getSource() == speakSkadinvaiskNeiRadio) {
-				model.setSpeakScandinavian(false);
-				System.out.println("speak-->NEI");
 			} else if(action.getSource() == speakTiltakPropertyComponent) {
 				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 				System.out.println("Endret tiltak speak");
@@ -454,9 +454,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 			System.out.println("Endret nextToPhone"); 
 		} else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
-			speakSkadinvaiskJaRadio.isSelected();
+			speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
+			speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
 		} else if(evt.getPropertyName() == Personalia.UNDERSTANDSKANDINAVIAN_PROPERTY) {
-			understadnSkandinaviskJaRadio.isSelected(); 
+			understadnSkandinaviskJaRadio.setSelected(model.isUnderstandScandinavian());
+			understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
 		} else if(evt.getPropertyName() == Personalia.TILTAKSPEAK_PROPERTY) {
 			speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
 			System.out.println("Endret speak tiltak");

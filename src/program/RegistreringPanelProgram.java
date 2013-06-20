@@ -29,10 +29,10 @@ public class RegistreringPanelProgram extends JPanel {
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
-		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 //		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
-		Personalia personaliaModel = new Personalia();
-		registreringPanel.setModel(personaliaModel);
+//		PersonaliaPanel registreringPanel = new PersonaliaPanel();
+//		Personalia personaliaModel = new Personalia();
+//		registreringPanel.setModel(personaliaModel);
 				
 		ModulEnPanel modulEnPanel = new ModulEnPanel();
 		ModulEn modulEnModel = new ModulEn();
@@ -42,15 +42,15 @@ public class RegistreringPanelProgram extends JPanel {
 		Sertifikat sertifikatModel = new Sertifikat();
 		sertifikatPanel.setModel(sertifikatModel);
 		
-		KursPanel kursPanel = new KursPanel();
-		Kurs kursModel = new Kurs();
-		kursPanel.setModel(kursModel);
+//		KursPanel kursPanel = new KursPanel();
+//		Kurs kursModel = new Kurs();
+//		kursPanel.setModel(kursModel);
 		
 		
-		add(registreringPanel);
+//		add(registreringPanel);
 		add(modulEnPanel);
 		add(sertifikatPanel);
-		add(kursPanel);
+//		add(kursPanel);
 		
 	}
 	
