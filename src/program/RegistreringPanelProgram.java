@@ -34,13 +34,13 @@ public class RegistreringPanelProgram extends JPanel {
 		Personalia personaliaModel = new Personalia();
 		registreringPanel.setModel(personaliaModel);
 				
-//		ModulEnPanel modulEnPanel = new ModulEnPanel();
-//		ModulEn modulEnModel = new ModulEn();
-//		modulEnPanel.setModel(modulEnModel);
+		ModulEnPanel modulEnPanel = new ModulEnPanel();
+		ModulEn modulEnModel = new ModulEn();
+		modulEnPanel.setModel(modulEnModel);
 //		
-//		SertifikatPanel sertifikatPanel = new SertifikatPanel();
-//		Sertifikat sertifikatModel = new Sertifikat();
-//		sertifikatPanel.setModel(sertifikatModel);
+		SertifikatPanel sertifikatPanel = new SertifikatPanel();
+		Sertifikat sertifikatModel = new Sertifikat();
+		sertifikatPanel.setModel(sertifikatModel);
 //		
 		KursPanel kursPanel = new KursPanel();
 		Kurs kursModel = new Kurs();
@@ -48,9 +48,9 @@ public class RegistreringPanelProgram extends JPanel {
 		
 		
 		add(registreringPanel);
-//		add(modulEnPanel);
-//		add(sertifikatPanel);
-//		add(kursPanel);
+		add(modulEnPanel);
+		add(sertifikatPanel);
+		add(kursPanel);
 		
 	}
 	

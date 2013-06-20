@@ -194,6 +194,8 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		add(Neste,c);
 		c.gridy=14;
 		add(nullstill,c);
+		Neste.setVisible(false);
+		nullstill.setVisible(false);
 		
 	}
 

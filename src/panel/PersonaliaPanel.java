@@ -206,14 +206,16 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=15;
 		add(emptyLabel,c);
-		emptyLabel.setVisible(true);
+		emptyLabel.setVisible(false);
 		c.gridx=1;
 		c.gridy=16;
 		add(nullstill,c);
+		nullstill.setVisible(false);
 		c.anchor = GridBagConstraints.EAST;
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
+		Neste.setVisible(false);
 		
 		
 		

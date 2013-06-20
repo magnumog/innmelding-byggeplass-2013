@@ -89,6 +89,8 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		add(neste,c);
 		c.gridy=9;
 		add(nullstill,c);
+		neste.setVisible(false);
+		nullstill.setVisible(false);
 		
 	}
 
