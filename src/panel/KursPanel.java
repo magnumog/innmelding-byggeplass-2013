@@ -83,6 +83,8 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		personlofterePropertyComponent.addActionListener(this);
 		forstehjelpPropertyComponent.addActionListener(this);
 		annetPropertyComponent.addActionListener(this);
+		Neste.addActionListener(this);
+		nullstill.addActionListener(this);
 		
 	}
 
@@ -188,6 +190,10 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		c.gridy=12;
 		c.gridwidth=3;
 		add(annetPropertyComponent,c);
+		c.gridy=13;
+		add(Neste,c);
+		c.gridy=14;
+		add(nullstill,c);
 		
 	}
 
@@ -235,7 +241,9 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		fallsikringutstyrCheck = new JCheckBox("Fallsikringsutstyr");
 		forstehjelpUtstyrCheck = new JCheckBox("Førstehjelpskurs, Dato:");
 		forstehjelpPropertyComponent = new JTextField(5);
-		annetPropertyComponent = new JTextField(48);		
+		annetPropertyComponent = new JTextField(48);
+		Neste = new JButton("Neste");
+		nullstill = new JButton("Nullstill");
 	}
 
 	public void setModel(Kurs model) {
@@ -391,7 +399,114 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			return;
 		}
 		
-		if(e.getSource()==verkstedOgLagerCheck) {
+		if(e.getSource()==Neste) {
+			model.setVerkstedOgLager(verkstedOgLagerCheck.isSelected());
+			model.setSpesialKraner(SpesialKranerCheck.isSelected());
+			model.setVinsjerOgTaljer(VinsjerOgTaljerCheck.isSelected());
+			model.setAnhukStroppingSignalGiving(anhukingStroppingOgSignalgivningCheck.isSelected());
+			model.setKlatreOgHengestilaser(klatreOgHengeStilaserCheck.isSelected());
+			model.setPersonLoftere(personLoftereCheck.isSelected());
+			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
+			model.setBorvognerTunnelrigger(borVognerOgTunnelriggerCheck.isSelected());
+			model.setSelvgaendeUtstyr(selvgåendeValserCheck.isSelected());
+			model.setTraktorUtstyr(TraktorutstyrCheck.isSelected());
+			model.setVinkelsliperKutter(vinkelSliperKutterCheck.isSelected());
+			model.setBoltePistol(boltePistolCheck.isSelected());
+			model.setSpikerPistol(spikerPistolCheck.isSelected());
+			model.setKombihammerBorhammer(KombiHammerBorHammerCheck.isSelected());
+			model.setKjedeSag(kjedeSagCheck.isSelected());
+			model.setKappklyveGjerdeSag(KappKlyveGjerdeSagCheck.isSelected());
+			model.setBindeMaskinArmering(bindeMaskinArmeringCheck.isSelected());
+			model.setVibroStav(VibrostavCheck.isSelected());
+			model.setHandhaldtArmeringsKapper(haandholdtArmeringsKapperCheck.isSelected());
+			model.setSkjarebrenner(skjarebrennerCheck.isSelected());
+			model.setSponBrytende(sponBrytendeCheck.isSelected());
+			model.setSlipeMaskiner(slipemaskinerCheck.isSelected());
+			model.setTreBearbeidingsMaskin(trebearbeidingsMaskinerCheck.isSelected());
+			model.setAsfaltarbeider(asfaltArbeiderCheck.isSelected());
+			model.setBetongSagerKjerneBoring(betongSagerKjerneBorCheck.isSelected());
+			model.setVeggSager(veggsagerCheck.isSelected());
+			model.setVaierSager(vaierSagerCheck.isSelected());
+			model.setGulvOgAsfaltSag(gulvsagerOgAsfaltsagCheck.isSelected());
+			model.setHoytrykkSpyler(hoytrykkspylerUtstyrCheck.isSelected());
+			model.setRyddeSagerOgTrimmere(ryddeSagerOgTrimmereCheck.isSelected());
+			model.setSpunteOgPaleUtstyr(spunteOgPaleutstyrCheck.isSelected());
+			model.setMobiltBetongPumpeUtstyr(mobiltBetongPumpeUtstyr.isSelected());
+			model.setSikkerKontorllAvStillas(sikkerBrukKontrollAvStillasCheck.isSelected());
+			model.setSikkerBrukAvForskaling(sikkerBrukAvForskalingCheck.isSelected());
+			model.setFallSikkring(fallsikringutstyrCheck.isSelected());
+			model.setForsteHjelp(forstehjelpUtstyrCheck.isSelected());
+			model.setAnnet(annetCheck.isSelected());
+			model.setVerksetedLagerTekst(verkstedOgLagerPropertyComponent.getText());
+			model.setSpesialKranerTekst(spesialKranerPropertyComponent.getText());
+			model.setPersonLoftereTekst(personlofterePropertyComponent.getText());
+			model.setForstehjelpDatoTekst(forstehjelpPropertyComponent.getText());
+			model.setAnnetTekst(annetPropertyComponent.getText());
+			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
+			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
+			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
+			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
+			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
+		} else if(e.getSource()== nullstill) {
+			model.setVerkstedOgLager(false);
+			model.setSpesialKraner(false);
+			model.setVinsjerOgTaljer(false);
+			model.setAnhukStroppingSignalGiving(false);
+			model.setKlatreOgHengestilaser(false);
+			model.setPersonLoftere(false);
+			model.setPersonLoftereUnderJord(false);
+			model.setBorvognerTunnelrigger(false);
+			model.setSelvgaendeUtstyr(false);
+			model.setTraktorUtstyr(false);
+			model.setVinkelsliperKutter(false);
+			model.setBoltePistol(false);
+			model.setSpikerPistol(false);
+			model.setKombihammerBorhammer(false);
+			model.setKjedeSag(false);
+			model.setKappklyveGjerdeSag(false);
+			model.setBindeMaskinArmering(false);
+			model.setVibroStav(false);
+			model.setHandhaldtArmeringsKapper(false);
+			model.setSkjarebrenner(false);
+			model.setSponBrytende(false);
+			model.setSlipeMaskiner(false);
+			model.setTreBearbeidingsMaskin(false);
+			model.setAsfaltarbeider(false);
+			model.setBetongSagerKjerneBoring(false);
+			model.setVeggSager(false);
+			model.setVaierSager(false);
+			model.setGulvOgAsfaltSag(false);
+			model.setHoytrykkSpyler(false);
+			model.setRyddeSagerOgTrimmere(false);
+			model.setSpunteOgPaleUtstyr(false);
+			model.setMobiltBetongPumpeUtstyr(false);
+			model.setSikkerKontorllAvStillas(false);
+			model.setSikkerBrukAvForskaling(false);
+			model.setFallSikkring(false);
+			model.setForsteHjelp(false);
+			model.setAnnet(false);
+			model.setVerksetedLagerTekst(null);
+			model.setSpesialKranerTekst(null);
+			model.setPersonLoftereTekst(null);
+			model.setForstehjelpDatoTekst(null);
+			model.setAnnetTekst(null);
+			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
+			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
+			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
+			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
+			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
+			
+		} else if(e.getSource()==verkstedOgLagerCheck) {
 			model.setVerkstedOgLager(verkstedOgLagerCheck.isSelected());
 			System.out.println("Endret verksted og lager check");
 		} else if(e.getSource()==SpesialKranerCheck) {
@@ -432,7 +547,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			System.out.println("Endret Spikerpistol check");
 		} else if(e.getSource()==KombiHammerBorHammerCheck) {
 			model.setKombihammerBorhammer(KombiHammerBorHammerCheck.isSelected());
-			System.out.println("Endret kombihamme check");
+			System.out.println("Endret kombihammer check");
 		} else if(e.getSource()==kjedeSagCheck) {
 			model.setKjedeSag(kjedeSagCheck.isSelected());
 			System.out.println("Endret kjedesag check");

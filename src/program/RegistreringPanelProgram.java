@@ -30,26 +30,26 @@ public class RegistreringPanelProgram extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
 //		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
-//		PersonaliaPanel registreringPanel = new PersonaliaPanel();
-//		Personalia personaliaModel = new Personalia();
-//		registreringPanel.setModel(personaliaModel);
+		PersonaliaPanel registreringPanel = new PersonaliaPanel();
+		Personalia personaliaModel = new Personalia();
+		registreringPanel.setModel(personaliaModel);
 				
-		ModulEnPanel modulEnPanel = new ModulEnPanel();
-		ModulEn modulEnModel = new ModulEn();
-		modulEnPanel.setModel(modulEnModel);
+//		ModulEnPanel modulEnPanel = new ModulEnPanel();
+//		ModulEn modulEnModel = new ModulEn();
+//		modulEnPanel.setModel(modulEnModel);
+//		
+//		SertifikatPanel sertifikatPanel = new SertifikatPanel();
+//		Sertifikat sertifikatModel = new Sertifikat();
+//		sertifikatPanel.setModel(sertifikatModel);
+//		
+		KursPanel kursPanel = new KursPanel();
+		Kurs kursModel = new Kurs();
+		kursPanel.setModel(kursModel);
 		
-		SertifikatPanel sertifikatPanel = new SertifikatPanel();
-		Sertifikat sertifikatModel = new Sertifikat();
-		sertifikatPanel.setModel(sertifikatModel);
 		
-//		KursPanel kursPanel = new KursPanel();
-//		Kurs kursModel = new Kurs();
-//		kursPanel.setModel(kursModel);
-		
-		
-//		add(registreringPanel);
-		add(modulEnPanel);
-		add(sertifikatPanel);
+		add(registreringPanel);
+//		add(modulEnPanel);
+//		add(sertifikatPanel);
 //		add(kursPanel);
 		
 	}

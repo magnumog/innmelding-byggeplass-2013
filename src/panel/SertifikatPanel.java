@@ -86,9 +86,9 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		c.gridy = 7;
 		add(truckKranPropertyComponent,c);
 		c.gridy=8;
-		add(neste);
+		add(neste,c);
 		c.gridy=9;
-		add(nullstill);
+		add(nullstill,c);
 		
 	}
 

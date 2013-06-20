@@ -313,10 +313,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindPropertyComponent.setText(model.getNextToKind());
 		nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
 		understadnSkandinaviskJaRadio.setSelected(model.isUnderstandScandinavian());
-		understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
+//		understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
 		understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
 		speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
-		speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
+//		speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
 		speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
 	}
 	public Personalia getModel() {
@@ -344,8 +344,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
 				model.setNextToKind(nextToKindPropertyComponent.getText());
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-				model.setUnderstandScandinavian(understandingSkandinavisk);
-				model.setSpeakScandinavian(speakingSkandinavisk);
+				model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
+				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
 				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 				System.out.println("You just updated a bunch of shit");
@@ -397,11 +397,23 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
 				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
 			} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
-				model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
+				if(action.getSource()==understadnSkandinaviskJaRadio) {
+					model.setUnderstandScandinavian(true);
+					System.out.println("Endret understand -- true");
+				} else {
+					model.setUnderstandScandinavian(false);
+					System.out.println("Endret understand -- false");
+				}
 				System.out.println("Endret understand"); 
 			} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
-				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
-				System.out.println("Endret speak-->JA");
+				if(action.getSource() == speakSkadinvaiskJaRadio) {
+					model.setSpeakScandinavian(true);
+					System.out.println("Endret Speak -- true");
+				} else {
+					model.setSpeakScandinavian(false);
+					System.out.println("Endret speak -- false");
+				}
+				System.out.println("Endret speak");
 			} else if(action.getSource() == speakTiltakPropertyComponent) {
 				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 				System.out.println("Endret tiltak speak");
@@ -455,10 +467,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			System.out.println("Endret nextToPhone"); 
 		} else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
 			speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
-			speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
+//			speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
 		} else if(evt.getPropertyName() == Personalia.UNDERSTANDSKANDINAVIAN_PROPERTY) {
 			understadnSkandinaviskJaRadio.setSelected(model.isUnderstandScandinavian());
-			understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
+//			understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
 		} else if(evt.getPropertyName() == Personalia.TILTAKSPEAK_PROPERTY) {
 			speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
 			System.out.println("Endret speak tiltak");
