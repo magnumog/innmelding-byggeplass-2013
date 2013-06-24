@@ -38,6 +38,16 @@ public class DBConnection {
 				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
 			}
 			
+			tableName = "Sprak";
+			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("sprak createt");
+			} catch(Exception e) {
+				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+			
 			//Gjør klar til versjon2 av programet
 //			tableName = "PostNr";
 //			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
@@ -51,6 +61,7 @@ public class DBConnection {
 
 			statement.close();
 			connection.close();
+			System.out.println("Connection closed");
 
 			//
 		} catch(Exception e) {
@@ -82,6 +93,23 @@ public class DBConnection {
 		
 		/*String addRow = "INSERT INTO Personalia (Name, FødselsDato, ID-kortnummer) " + "VALUES('" + name + "','" + fdato + "','" + idKort + "')";
 		statement.execute(addRow);*/
+		
+		statement.close();
+		connection.close();
+	}
+	
+	public void createSprak(boolean snakker, boolean forstar, String snakkeTiltak, String forstaTiltak) throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+		Connection connection = DriverManager.getConnection(database,"","");
+		Statement statement = connection.createStatement();
+		preparedStatement = connection.prepareStatement("INSERT INTO Sprak(Snakker, Forstar, SnakkeTiltak, ForstaTiltak) VALUES (?,?,?,?)");
+		preparedStatement.setBoolean(1, snakker);
+		preparedStatement.setBoolean(2, forstar);
+		preparedStatement.setString(3, snakkeTiltak);
+		preparedStatement.setString(4, forstaTiltak);
+		preparedStatement.execute();
 		
 		statement.close();
 		connection.close();

@@ -354,6 +354,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
+				conn.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 				System.out.println("You just updated a bunch of shit");
 				System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
 				System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
