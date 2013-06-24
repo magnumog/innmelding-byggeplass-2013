@@ -13,6 +13,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import database.DBConnection;
+
 import panel.KursPanel;
 import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
@@ -52,6 +54,8 @@ public class RegistreringPanelProgram extends JPanel {
 		add(modulEnPanel);
 		add(sertifikatPanel);
 		add(kursPanel);
+		
+		//DBConnection dbconn = new DBConnection();
 		
 	}
 	

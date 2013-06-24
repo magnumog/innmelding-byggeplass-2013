@@ -17,6 +17,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
 
+import database.DBConnection;
+
 import modell.Personalia;
 
 
@@ -45,6 +47,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JButton Neste,nullstill;
 
 	Personalia model = null;
+	
+	DBConnection conn = new DBConnection();
 
 	public PersonaliaPanel() {
 		createComponents();
@@ -375,6 +379,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
 			} else if (action.getSource() == namePropertyComponent) {
 				model.setName(namePropertyComponent.getText());
+				conn.createPersonalia(model.getName());
 			} else if(action.getSource() == dateOfBirthpropertyComponent) {
 				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
 			} else if(action.getSource() == idCardPropertyComponent) {

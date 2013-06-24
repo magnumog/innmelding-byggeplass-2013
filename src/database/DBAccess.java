@@ -11,6 +11,8 @@ import java.sql.*;
 public class DBAccess {
 	public static void main(String[] args) {
 		try{
+			
+			
 			//Denne funker
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
@@ -23,7 +25,7 @@ public class DBAccess {
 			//Create a table
 			//Dette funker ikke helt ennå
 			String tableName="Personalia";
-			String createTabel = "CREATE TABLE " + tableName + " (id INTEGER Not null AUTO_INCREMENT, Name Text(32), PRIMARY KEY (id))";
+			String createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Name Text(32), PRIMARY KEY (id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("tabel createt");
@@ -32,11 +34,11 @@ public class DBAccess {
 			}
 			
 			
-			//insert into tabellen
-//			for(int i=0;i<25;i++) {
-//				String addRow = "INSERT INTO " + tableName + " VALUES ( " + String.valueOf((int) (Math.random() * 32767)) + ", 'Text Value " + String.valueOf(Math.random()) + "')";
-//				statement.execute(addRow);
-//			}
+//			insert into tabellen
+			for(int i=0;i<25;i++) {
+				String addRow = "INSERT INTO " + tableName + " (Name) " + "VALUES('" + Integer.toString(i) + "')";
+				statement.execute(addRow);
+			}
 			
 			System.out.println("Rader lagt inn i tabellene");
 			
