@@ -22,6 +22,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import database.DBConnection;
+
 import modell.ModulEn;
 
 public class ModulEnPanel extends JPanel implements ActionListener,PropertyChangeListener {
@@ -33,6 +35,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 	protected JButton Neste,nullstill;
 	
 	ModulEn model = null;
+	
+	DBConnection conn = new DBConnection();
 	
 	public ModulEnPanel(){
 		modulEnJaRadio = new JRadioButton("Ja, dato for gjennomføring: ");
@@ -67,7 +71,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		add(Neste);
 		c.gridx=2;
 		add(nullstill);
-		Neste.setVisible(false);
+		Neste.setVisible(true);
 		nullstill.setVisible(false);
 		
 		modulEnJaDato.addActionListener(this);
@@ -117,6 +121,16 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 			model.setModulEnNeiSvar(modulEnNeiRadio.isSelected());
 			model.setModulEnJADato(modulEnJaDato.getText());
 			model.setModulEnNeiFrist(modulEnNeiFrist.getText());
+			try {
+				if(model.isModulEnJaSvar()) {
+					conn.createModulEN(model.isModulEnJaSvar(), model.getModulEnJADato());					
+				} else {
+					conn.createModulEN(model.isModulEnJaSvar(), model.getModulEnNeiFrist());
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			System.out.println("JA:" + model.isModulEnJaSvar() + " NEI:" + model.isModulEnNeiSvar() + " JADATO:" + model.getModulEnJADato() +  " NEIFRIST:" + model.getModulEnNeiFrist());
 		} else if(e.getSource()==nullstill) {
 			model.setModulEnJaSvar(true);
