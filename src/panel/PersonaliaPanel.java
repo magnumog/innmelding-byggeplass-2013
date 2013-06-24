@@ -219,7 +219,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
-		Neste.setVisible(false);
+		Neste.setVisible(true);
 		
 		
 
@@ -353,6 +353,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
 				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
 				System.out.println("You just updated a bunch of shit");
 				System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
 				System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
@@ -383,7 +384,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
 			} else if(action.getSource() == idCardPropertyComponent) {
 				model.setIdCardNr(idCardPropertyComponent.getText());
-				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr());
 			} else if(action.getSource() == idExpiresPropertyComponent) {
 				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
 			} else if(action.getSource() == adressPropertyComponent) {
