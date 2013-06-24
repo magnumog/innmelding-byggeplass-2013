@@ -379,11 +379,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
 			} else if (action.getSource() == namePropertyComponent) {
 				model.setName(namePropertyComponent.getText());
-				conn.createPersonalia(model.getName());
 			} else if(action.getSource() == dateOfBirthpropertyComponent) {
 				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
 			} else if(action.getSource() == idCardPropertyComponent) {
 				model.setIdCardNr(idCardPropertyComponent.getText());
+				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr());
 			} else if(action.getSource() == idExpiresPropertyComponent) {
 				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
 			} else if(action.getSource() == adressPropertyComponent) {
