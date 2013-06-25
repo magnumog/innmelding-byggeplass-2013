@@ -42,7 +42,7 @@ public class DBSetup {
 			}
 
 			tableName = "ModulEn";
-			createTabel = "CREATE TABLE " + tableName + " (id counter not null, Gjennomført BIT, Dato Text(10), Primary key(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Gjennomført BIT, Dato Text(10), Primary key(id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("ModulEn createt");
@@ -52,7 +52,7 @@ public class DBSetup {
 			}
 			
 			tableName = "Sertifikat";
-			createTabel = "CREATE TABLE " + tableName + " (id counter not null, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("Sertifikat createt");
@@ -62,8 +62,8 @@ public class DBSetup {
 			}
 			
 			tableName = "Kurs";
-			createTabel = "CREATE TABLE " + tableName + " (id counter not null, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
-					"PersonløfterUnderJord BIT, BorVognerOgTunnelrigger BIT, SelvgåendeValser BIT, TraktorUtstyr BIT, BoltePistol BIT, Spikerpistol BIT, KombihammerBorHammer BIT, Kjedesag BIT, KappKlyveGjerdeSag BIT, BindeMaskinArmering BIT, Vibrostav BIT, HåndholdtArmeringsKapper BIT, Skærebrenner BIT, Sponbrytende BIT, " +
+			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
+					"PersonløfterUnderJord BIT, BorVognerOgTunnelrigger BIT, SelvgåendeValser BIT, TraktorUtstyr BIT, vinkelsliper BIT, BoltePistol BIT, Spikerpistol BIT, KombihammerBorHammer BIT, Kjedesag BIT, KappKlyveGjerdeSag BIT, BindeMaskinArmering BIT, Vibrostav BIT, HåndholdtArmeringsKapper BIT, Skjærebrenner BIT, Sponbrytende BIT, " +
 					"SlipeMaskiner BIT, Trebearbeidingsmaskiner BIT, Asfaltarbeider BIT, BetongsagerKjerneboringsutstyr BIT, Veggsager BIT, Vaiersager BIT, GulvsagOgAsfaltSag BIT, HøytrykkSpylerutstyr BIT, RyddesagerOgTrimmere BIT, SpunteOgPæleutstyr BIT, MobiltBetongpumpeutstyr BIT, SikkerBrukKontollAvStillas BIT, " +
 					"SikkerBrukAvForskaling BIT, Fallsikringutstyr BIT, Førstehjelpskurs BIT, FørstehjelskursDato Text(12), Annet BIT, AnnetBeskrivels Text(120), PRIMARY KEY(id))";
 			try {

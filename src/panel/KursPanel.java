@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import database.DBConnection;
+
 import modell.Kurs;
 
 public class KursPanel extends JPanel implements ActionListener, PropertyChangeListener, ChangeListener {
@@ -38,6 +40,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 	protected JButton Neste, nullstill;
 	
 	Kurs model = null;
+	DBConnection conn = new DBConnection();
 	
 	public KursPanel() {
 		//Legger ut componentene i GUI
@@ -201,7 +204,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		add(Neste,c);
 		c.gridy=14;
 		add(nullstill,c);
-		Neste.setVisible(false);
+		Neste.setVisible(true);
 		nullstill.setVisible(false);
 		
 	}
@@ -451,6 +454,12 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			model.setPersonLoftereTekst(personlofterePropertyComponent.getText());
 			model.setForstehjelpDatoTekst(forstehjelpPropertyComponent.getText());
 			model.setAnnetTekst(annetPropertyComponent.getText());
+			try {
+				conn.createKurs(model.isVerkstedOgLager(), model.getVerksetedLagerTekst(), model.isSpesialKraner(), model.getSpesialKranerTekst(), model.isVinsjerOgTaljer(), model.isAnhukStroppingSignalGiving(), model.isKlatreOgHengestilaser(), model.isPersonLoftere(), model.getPersonLoftereTekst(), model.isPersonLoftereUnderJord(), model.isBorvognerTunnelrigger(), model.isSelvgaendeUtstyr(), model.isTraktorUtstyr(), model.isVinkelsliperKutter(), model.isBoltePistol(), model.isSpikerPistol(), model.isKombihammerBorhammer(), model.isKjedeSag(), model.isKappklyveGjerdeSag(), model.isBindeMaskinArmering(), model.isVibroStav(), model.isHandhaldtArmeringsKapper(), model.isSkjarebrenner(), model.isSponBrytende(), model.isSlipeMaskiner(), model.isTreBearbeidingsMaskin(), model.isAsfaltarbeider(), model.isBetongSagerKjerneBoring(), model.isVeggSager(), model.isVaierSager(), model.isGulvOgAsfaltSag(), model.isHoytrykkSpyler(), model.isRyddeSagerOgTrimmere(), model.isSpunteOgPaleUtstyr(), model.isMobiltBetongPumpeUtstyr(), model.isSikkerKontorllAvStillas(), model.isSikkerBrukAvForskaling(), model.isFallSikkring(), model.isForsteHjelp(), model.getForstehjelpDatoTekst(), model.isAnnet(), model.getAnnetTekst());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
 			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
 			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());

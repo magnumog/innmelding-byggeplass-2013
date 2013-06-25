@@ -102,14 +102,14 @@ public class DBConnection {
 		connection.close();
 	}
 	
-	public void createKurs(boolean verksted, String verksteTekst, boolean speskran, String speskranTekst, boolean vinsjer, boolean anhuk, boolean klatreHenge, boolean perslofter, String personlofterTekst, boolean personUnderJord, boolean borvognerTunnel, boolean selvgandeValse, boolean traktorUts, boolean vinkelsliper, boolean boltepistol, boolean spikerpistol, boolean kobihammer, boolean kjedesag, boolean kappKlyveGjerde, boolean bindeMaskin, boolean vibrostav, boolean handholdtArmerinKap, boolean skjarebrenner, boolean sponbrytende, boolean slipemaskin, boolean trebearbeidng, boolean asfaltarbeider, boolean betonsgerKjernebor, boolean veggsager, boolean vaiersag, boolean gulvSagAsfaltSag, boolean hoytrykk, boolean ryddesag, boolean spuntePæleutstyr, boolean mobilBetong, boolean sikkerStilas, boolean sikkerForskaling, boolean fallsikring, boolean forestehjelp, String forstehjelpDato, boolean annet, String AnnetTekst) throws Exception {
+	public void createKurs(boolean verksted, String verksteTekst, boolean speskran, String speskranTekst, boolean vinsjer, boolean anhuk, boolean klatreHenge, boolean perslofter, String personlofterTekst, boolean personUnderJord, boolean borvognerTunnel, boolean selvgandeValse, boolean traktorUts, boolean vinkelsliper, boolean boltepistol, boolean spikerpistol, boolean kobihammer, boolean kjedesag, boolean kappKlyveGjerde, boolean bindeMaskin, boolean vibrostav, boolean handholdtArmerinKap, boolean skjarebrenner, boolean sponbrytende, boolean slipemaskin, boolean trebearbeidng, boolean asfaltarbeider, boolean betonsgerKjernebor, boolean veggsager, boolean vaiersag, boolean gulvSagAsfaltSag, boolean hoytrykk, boolean ryddesag, boolean spuntePæleutstyr, boolean mobilBetong, boolean sikkerStilas, boolean sikkerForskaling, boolean fallsikring, boolean forestehjelp, String forstehjelpDato, boolean annet, String annetTekst) throws Exception {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
 		connection = DriverManager.getConnection(database,"","");
 		statement = connection.createStatement();
-		preparedStatement = connection.prepareStatement("INSERT INTO Kurs(VerksetdOgLager, VerkstedOgLagerType, SpesialKraner, SpesialKranerType, VinsjerOgTaljer, AnhukingStroppingSignalgiving, KlatreOgHengeStilaser, KlatreOgHengeStilaser, PersonløftereKlasse, PersonløfterUnderJord, BorVognerOgTunnelrigger, "+
-				"SelvgåendeValser, TraktorUtstyr, BoltePistol, Spikerpistol, KombihammerBorHammer, Kjedesag, KappKlyveGjerdeSag, BindeMaskinArmering, Vibrostav, HåndholdtArmeringsKapper, Skjærebrenner, Sponbrytende, SlipeMaskiner, Trebearbeidingsmaskiner, Asfaltarbeider, BetongsagerKjerneboringsutstyr, " +
+		preparedStatement = connection.prepareStatement("INSERT INTO Kurs(VerksetdOgLager, VerkstedOgLagerType, SpesialKraner, SpesialKranerType, VinsjerOgTaljer, AnhukingStroppingSignalgiving, KlatreOgHengeStilaser, PersonLøftere, PersonløftereKlasse, PersonløfterUnderJord, BorVognerOgTunnelrigger, "+
+				"SelvgåendeValser, TraktorUtstyr, vinkelsliper, BoltePistol, Spikerpistol, KombihammerBorHammer, Kjedesag, KappKlyveGjerdeSag, BindeMaskinArmering, Vibrostav, HåndholdtArmeringsKapper, Skjærebrenner, Sponbrytende, SlipeMaskiner, Trebearbeidingsmaskiner, Asfaltarbeider, BetongsagerKjerneboringsutstyr, " +
 				"Veggsager, Vaiersager, GulvsagOgAsfaltSag, HøytrykkSpylerutstyr, RyddesagerOgTrimmere, SpunteOgPæleutstyr, MobiltBetongpumpeutstyr, SikkerBrukKontollAvStillas, SikkerBrukAvForskaling, Fallsikringutstyr, Førstehjelpskurs, FørstehjelskursDato, Annet, AnnetBeskrivels) " +
 				"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		preparedStatement.setBoolean(1, verksted);
@@ -139,10 +139,24 @@ public class DBConnection {
 		preparedStatement.setBoolean(25, slipemaskin);
 		preparedStatement.setBoolean(26, trebearbeidng);
 		preparedStatement.setBoolean(27, asfaltarbeider);
+		preparedStatement.setBoolean(28, betonsgerKjernebor);
+		preparedStatement.setBoolean(29, veggsager);
+		preparedStatement.setBoolean(30, vaiersag);
+		preparedStatement.setBoolean(31, gulvSagAsfaltSag);
+		preparedStatement.setBoolean(32, hoytrykk);
+		preparedStatement.setBoolean(33, ryddesag);
+		preparedStatement.setBoolean(34, spuntePæleutstyr);
+		preparedStatement.setBoolean(35, mobilBetong);
+		preparedStatement.setBoolean(36, sikkerStilas);
+		preparedStatement.setBoolean(37, sikkerForskaling);
+		preparedStatement.setBoolean(38, fallsikring);
+		preparedStatement.setBoolean(39, forestehjelp);
+		preparedStatement.setString(40, forstehjelpDato);
+		preparedStatement.setBoolean(41, annet);
+		preparedStatement.setString(42, annetTekst);
+		preparedStatement.execute();
 		
-		
-		
-		
-		
+		statement.close();
+		connection.close();
 	}
 }
