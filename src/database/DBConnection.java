@@ -15,86 +15,14 @@ public class DBConnection {
 	private PreparedStatement preparedStatement = null;
 
 	public DBConnection() {
-		try{
-
-
-			//Denne funker
-			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
-			connection = DriverManager.getConnection(database,"","");
-			statement = connection.createStatement();
-
-			System.out.println("Connected");
-
-			//Create a table
-			String tableName="Personalia";
-			String createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Navn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), PRIMARY KEY (id))";
-			try {
-				statement.execute(createTabel);				
-				System.out.println("Personalia createt");
-			} catch(Exception e) {
-//				e.printStackTrace();
-//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-			}
-
-			tableName = "Sprak";
-			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
-			try {
-				statement.execute(createTabel);				
-				System.out.println("sprak createt");
-			} catch(Exception e) {
-//				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-			}
-
-			tableName = "ModulEn";
-			createTabel = "CREATE TABLE " + tableName + " (id counter not null, Gjennomført BIT, Dato Text(10), Primary key(id))";
-			try {
-				statement.execute(createTabel);				
-				System.out.println("ModulEn createt");
-			} catch(Exception e) {
-//				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-			}
-			
-			tableName = "Sertifikat";
-			createTabel = "CREATE Table " + tableName + " (id counter not null, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
-			try {
-				statement.execute(createTabel);				
-				System.out.println("Sertifikat createt");
-			} catch(Exception e) {
-//				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-			}
-
-			//Gjør klar til versjon2 av programet
-//			tableName = "PostNr";
-//			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
-//			try {
-//				statement.execute(createTabel);				
-//				System.out.println("PostNr createt");
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-//			}
-
-			statement.close();
-			connection.close();
-			System.out.println("Connection closed");
-
-			//
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public void createPersonalia(String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
-		Connection connection = DriverManager.getConnection(database,"","");
-		Statement statement = connection.createStatement();
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
 
 		preparedStatement = connection.prepareStatement("INSERT INTO Personalia(Navn, FødselsDato, IDkortnummer, Utløpsdato_ID_kort, Adresse, PostNr, PostSted, TelefornNr, Arbeidsgiver, ArbeidsgiverTelefon, NærmestePårørende, NærmestePårørendeTelefon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		preparedStatement.setString(1, name);
@@ -122,8 +50,8 @@ public class DBConnection {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
-		Connection connection = DriverManager.getConnection(database,"","");
-		Statement statement = connection.createStatement();
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
 		preparedStatement = connection.prepareStatement("INSERT INTO Sprak(Snakker, Forstar, SnakkeTiltak, ForstaTiltak) VALUES (?,?,?,?)");
 		preparedStatement.setBoolean(1, snakker);
 		preparedStatement.setBoolean(2, forstar);
@@ -139,8 +67,8 @@ public class DBConnection {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
-		Connection connection = DriverManager.getConnection(database,"","");
-		Statement statement = connection.createStatement();
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
 		preparedStatement = connection.prepareStatement("INSERT INTO ModulEn(Gjennomført, Dato) VALUES(?,?)");
 		preparedStatement.setBoolean(1, gjennomfort);
 		preparedStatement.setString(2, dato);
@@ -154,8 +82,8 @@ public class DBConnection {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
-		Connection connection = DriverManager.getConnection(database,"","");
-		Statement statement = connection.createStatement();
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
 		preparedStatement = connection.prepareStatement("INSERT INTO Sertifikat(Førerkort, GrunnopplæringIArbeidsmiljø, Maskinførerbevis, Arbeidsvarslingskurs, VarmeArbeider, TruckKranførerBevis, FørerkortKlasser, MaskinførerKlasser, ArbeidsVarslingsKursNr, VarmeArbeiderUtløpDato, TruckKranBevis) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 		preparedStatement.setBoolean(1, forerkort);
 		preparedStatement.setBoolean(2, grunnopplaring);
@@ -172,5 +100,49 @@ public class DBConnection {
 		
 		statement.close();
 		connection.close();
+	}
+	
+	public void createKurs(boolean verksted, String verksteTekst, boolean speskran, String speskranTekst, boolean vinsjer, boolean anhuk, boolean klatreHenge, boolean perslofter, String personlofterTekst, boolean personUnderJord, boolean borvognerTunnel, boolean selvgandeValse, boolean traktorUts, boolean vinkelsliper, boolean boltepistol, boolean spikerpistol, boolean kobihammer, boolean kjedesag, boolean kappKlyveGjerde, boolean bindeMaskin, boolean vibrostav, boolean handholdtArmerinKap, boolean skjarebrenner, boolean sponbrytende, boolean slipemaskin, boolean trebearbeidng, boolean asfaltarbeider, boolean betonsgerKjernebor, boolean veggsager, boolean vaiersag, boolean gulvSagAsfaltSag, boolean hoytrykk, boolean ryddesag, boolean spuntePæleutstyr, boolean mobilBetong, boolean sikkerStilas, boolean sikkerForskaling, boolean fallsikring, boolean forestehjelp, String forstehjelpDato, boolean annet, String AnnetTekst) throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
+		preparedStatement = connection.prepareStatement("INSERT INTO Kurs(VerksetdOgLager, VerkstedOgLagerType, SpesialKraner, SpesialKranerType, VinsjerOgTaljer, AnhukingStroppingSignalgiving, KlatreOgHengeStilaser, KlatreOgHengeStilaser, PersonløftereKlasse, PersonløfterUnderJord, BorVognerOgTunnelrigger, "+
+				"SelvgåendeValser, TraktorUtstyr, BoltePistol, Spikerpistol, KombihammerBorHammer, Kjedesag, KappKlyveGjerdeSag, BindeMaskinArmering, Vibrostav, HåndholdtArmeringsKapper, Skjærebrenner, Sponbrytende, SlipeMaskiner, Trebearbeidingsmaskiner, Asfaltarbeider, BetongsagerKjerneboringsutstyr, " +
+				"Veggsager, Vaiersager, GulvsagOgAsfaltSag, HøytrykkSpylerutstyr, RyddesagerOgTrimmere, SpunteOgPæleutstyr, MobiltBetongpumpeutstyr, SikkerBrukKontollAvStillas, SikkerBrukAvForskaling, Fallsikringutstyr, Førstehjelpskurs, FørstehjelskursDato, Annet, AnnetBeskrivels) " +
+				"VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		preparedStatement.setBoolean(1, verksted);
+		preparedStatement.setString(2, verksteTekst);
+		preparedStatement.setBoolean(3, speskran);
+		preparedStatement.setString(4, speskranTekst);
+		preparedStatement.setBoolean(5, vinsjer);
+		preparedStatement.setBoolean(6, anhuk);
+		preparedStatement.setBoolean(7, klatreHenge);
+		preparedStatement.setBoolean(8, perslofter);
+		preparedStatement.setString(9, personlofterTekst);
+		preparedStatement.setBoolean(10, personUnderJord);
+		preparedStatement.setBoolean(11, borvognerTunnel);
+		preparedStatement.setBoolean(12, selvgandeValse);
+		preparedStatement.setBoolean(13, traktorUts);
+		preparedStatement.setBoolean(14, vinkelsliper);
+		preparedStatement.setBoolean(15, boltepistol);
+		preparedStatement.setBoolean(16, spikerpistol);
+		preparedStatement.setBoolean(17, kobihammer);
+		preparedStatement.setBoolean(18, kjedesag);
+		preparedStatement.setBoolean(19, kappKlyveGjerde);
+		preparedStatement.setBoolean(20, bindeMaskin);
+		preparedStatement.setBoolean(21, vibrostav);
+		preparedStatement.setBoolean(22, handholdtArmerinKap);
+		preparedStatement.setBoolean(23, skjarebrenner);
+		preparedStatement.setBoolean(24, sponbrytende);
+		preparedStatement.setBoolean(25, slipemaskin);
+		preparedStatement.setBoolean(26, trebearbeidng);
+		preparedStatement.setBoolean(27, asfaltarbeider);
+		
+		
+		
+		
+		
 	}
 }

@@ -1,0 +1,99 @@
+package database;
+
+import java.sql.DriverManager;
+import java.sql.Statement;
+
+public class DBSetup {
+	private java.sql.Connection connection = null;
+	private Statement statement = null;
+	
+	public DBSetup() {
+		try{
+
+
+			//Denne funker
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			connection = DriverManager.getConnection(database,"","");
+			statement = connection.createStatement();
+
+			System.out.println("Connected");
+
+			//Create a table
+			String tableName="Personalia";
+			String createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Navn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), PRIMARY KEY (id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("Personalia createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+
+			tableName = "Sprak";
+			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("sprak createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+
+			tableName = "ModulEn";
+			createTabel = "CREATE TABLE " + tableName + " (id counter not null, Gjennomført BIT, Dato Text(10), Primary key(id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("ModulEn createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+			
+			tableName = "Sertifikat";
+			createTabel = "CREATE TABLE " + tableName + " (id counter not null, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("Sertifikat createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+			
+			tableName = "Kurs";
+			createTabel = "CREATE TABLE " + tableName + " (id counter not null, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
+					"PersonløfterUnderJord BIT, BorVognerOgTunnelrigger BIT, SelvgåendeValser BIT, TraktorUtstyr BIT, BoltePistol BIT, Spikerpistol BIT, KombihammerBorHammer BIT, Kjedesag BIT, KappKlyveGjerdeSag BIT, BindeMaskinArmering BIT, Vibrostav BIT, HåndholdtArmeringsKapper BIT, Skærebrenner BIT, Sponbrytende BIT, " +
+					"SlipeMaskiner BIT, Trebearbeidingsmaskiner BIT, Asfaltarbeider BIT, BetongsagerKjerneboringsutstyr BIT, Veggsager BIT, Vaiersager BIT, GulvsagOgAsfaltSag BIT, HøytrykkSpylerutstyr BIT, RyddesagerOgTrimmere BIT, SpunteOgPæleutstyr BIT, MobiltBetongpumpeutstyr BIT, SikkerBrukKontollAvStillas BIT, " +
+					"SikkerBrukAvForskaling BIT, Fallsikringutstyr BIT, Førstehjelpskurs BIT, FørstehjelskursDato Text(12), Annet BIT, AnnetBeskrivels Text(120), PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);
+				System.out.println("Kurs createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
+					
+
+			//Gjør klar til versjon2 av programet
+//			tableName = "PostNr";
+//			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
+//			try {
+//				statement.execute(createTabel);				
+//				System.out.println("PostNr createt");
+//			} catch(Exception e) {
+//				e.printStackTrace();
+//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+//			}
+
+			statement.close();
+			connection.close();
+			System.out.println("Connection closed");
+
+			//
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+}
