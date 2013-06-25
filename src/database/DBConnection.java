@@ -44,8 +44,8 @@ public class DBConnection {
 				statement.execute(createTabel);				
 				System.out.println("sprak createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
-//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
 			}
 
 			tableName = "ModulEn";
