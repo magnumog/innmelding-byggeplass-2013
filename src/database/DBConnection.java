@@ -34,8 +34,8 @@ public class DBConnection {
 				statement.execute(createTabel);				
 				System.out.println("Personalia createt");
 			} catch(Exception e) {
-				//				e.printStackTrace();
-				//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+//				e.printStackTrace();
+//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
 			}
 
 			tableName = "Sprak";
@@ -44,7 +44,7 @@ public class DBConnection {
 				statement.execute(createTabel);				
 				System.out.println("sprak createt");
 			} catch(Exception e) {
-				e.printStackTrace();
+//				e.printStackTrace();
 				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
 			}
 
@@ -57,8 +57,18 @@ public class DBConnection {
 //				e.printStackTrace();
 				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
 			}
+			
+			tableName = "Sertifikat";
+			createTabel = "CREATE Table " + tableName + " (id counter not null, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);				
+				System.out.println("Sertifikat createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			}
 
-//Gjør klar til versjon2 av programet
+			//Gjør klar til versjon2 av programet
 //			tableName = "PostNr";
 //			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
 //			try {
@@ -140,4 +150,27 @@ public class DBConnection {
 		connection.close();
 	}
 
+	public void createSertifikat(boolean forerkort, boolean grunnopplaring, boolean maskin, boolean arbeidsvarsling, boolean varme, boolean trukKran, String forerKlasser, String  maskinKlasser, String arbeidsVarslingKurs, String varmeArbeiderDato, String truckKranBevis) throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+		Connection connection = DriverManager.getConnection(database,"","");
+		Statement statement = connection.createStatement();
+		preparedStatement = connection.prepareStatement("INSERT INTO Sertifikat(Førerkort, GrunnopplæringIArbeidsmiljø, Maskinførerbevis, Arbeidsvarslingskurs, VarmeArbeider, TruckKranførerBevis, FørerkortKlasser, MaskinførerKlasser, ArbeidsVarslingsKursNr, VarmeArbeiderUtløpDato, TruckKranBevis) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+		preparedStatement.setBoolean(1, forerkort);
+		preparedStatement.setBoolean(2, grunnopplaring);
+		preparedStatement.setBoolean(3, maskin);
+		preparedStatement.setBoolean(4, arbeidsvarsling);
+		preparedStatement.setBoolean(5, varme);
+		preparedStatement.setBoolean(6, trukKran);
+		preparedStatement.setString(7, forerKlasser);
+		preparedStatement.setString(8, maskinKlasser);
+		preparedStatement.setString(9, arbeidsVarslingKurs);
+		preparedStatement.setString(10, varmeArbeiderDato);
+		preparedStatement.setString(11, truckKranBevis);
+		preparedStatement.execute();
+		
+		statement.close();
+		connection.close();
+	}
 }

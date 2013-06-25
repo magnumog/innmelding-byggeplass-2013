@@ -21,6 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import database.DBConnection;
+
 import modell.Sertifikat;
 
 public class SertifikatPanel extends JPanel implements ActionListener,PropertyChangeListener {
@@ -32,6 +34,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 	protected JButton neste, nullstill;
 	
 	Sertifikat model = null;
+	DBConnection conn = new DBConnection();
 	
 	public SertifikatPanel() {		
 		createSertifikatKursComponents();
@@ -90,7 +93,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		add(neste,c);
 		c.gridy=9;
 		add(nullstill,c);
-		neste.setVisible(false);
+		neste.setVisible(true);
 		nullstill.setVisible(false);
 		
 	}
@@ -200,6 +203,7 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 				model.setVarmeArbeiderdato(varmeArbeiderPropertyComponent.getText());
 				model.setTruckKranForer(truckKranBevisCheck.isSelected());
 				model.setTruckKranForerBevis(truckKranPropertyComponent.getText());
+				conn.createSertifikat(model.isForerkort(), model.isGrunnopplaeringArbeidsmiljo(), model.isMaskinForerBevis(), model.isArbeidsVarsling(), model.isVarmeArbeider(), model.isTruckKranForer(), model.getForerkortKlasser(), model.getMaskinForerKlasser(), model.getArbeidsVarslingKurs(), model.getVarmeArbeiderdato(), model.getTruckKranForerBevis());
 				System.out.println("FORERKORT:" + model.isForerkort() + " FORERKORTKLASSER:" + model.getForerkortKlasser() + " GRUNNOPPLÆRINGARBEIDSMILJØ:" + model.isGrunnopplaeringArbeidsmiljo());
 				System.out.println("MASKINFORER:" + model.isMaskinForerBevis() +  " MASKINFORERKLASSER:" + model.getMaskinForerKlasser() + " ABEIDSVARSLER:" + model.isArbeidsVarsling());
 				System.out.println("ARBEIDSVARSLERKURS:" + model.getArbeidsVarslingKurs() + " VARMEARBEIDER:" + model.isVarmeArbeider() + " VARMEDATO:" + model.getVarmeArbeiderdato());

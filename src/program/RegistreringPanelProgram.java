@@ -55,7 +55,7 @@ public class RegistreringPanelProgram extends JPanel {
 		add(sertifikatPanel);
 		add(kursPanel);
 		
-		//DBConnection dbconn = new DBConnection();
+//		DBConnection dbconn = new DBConnection();
 		
 	}
 	
