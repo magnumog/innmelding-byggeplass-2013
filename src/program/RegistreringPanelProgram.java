@@ -14,11 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.DBSetup;
+import panel.BekreftMedbraktPanel;
 import panel.DoClickPanel;
 import panel.KursPanel;
 import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
+import modell.BekreftMedbrakt;
 import modell.Kurs;
 import modell.ModulEn;
 import modell.Personalia;
@@ -48,14 +50,19 @@ public class RegistreringPanelProgram extends JPanel {
 		Kurs kursModel = new Kurs();
 		kursPanel.setModel(kursModel);
 		
+		BekreftMedbraktPanel medbraktPanel = new BekreftMedbraktPanel();
+		BekreftMedbrakt medbraktModel = new BekreftMedbrakt();
+		medbraktPanel.setModel(medbraktModel);
+		
 		DoClickPanel doClickPanel = new DoClickPanel();
 		
 		
-		add(registreringPanel);
-		add(modulEnPanel);
-		add(sertifikatPanel);
-		add(kursPanel);
-		add(doClickPanel);
+//		add(registreringPanel);
+//		add(modulEnPanel);
+//		add(sertifikatPanel);
+//		add(kursPanel);
+		add(medbraktPanel);
+//		add(doClickPanel);
 		
 		@SuppressWarnings("unused")
 		DBSetup dbconn = new DBSetup();

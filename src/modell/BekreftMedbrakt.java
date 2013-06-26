@@ -13,6 +13,10 @@ public class BekreftMedbrakt {
 	public final static String NAVNPAAARBEIDSGIVER_PROPERTY = "navnPaaArbeidgiver";
 	
 	private PropertyChangeSupport pcs;
+	
+	public BekreftMedbrakt() {
+		pcs = new PropertyChangeSupport(this);
+	}
 
 	public boolean isPabudtVerneutstyr() {
 		return pabudtVerneutstyr;

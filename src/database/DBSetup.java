@@ -32,7 +32,7 @@ public class DBSetup {
 				System.out.println("Personalia createt");
 			} catch(Exception e) {
 //				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				System.out.println("Personalia eksisterer allerede eller feil skjedde");
 			}
 
 			tableName = "Sprak";
@@ -42,7 +42,7 @@ public class DBSetup {
 				System.out.println("sprak createt");
 			} catch(Exception e) {
 //				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				System.out.println("sprak eksisterer allerede eller feil skjedde");
 			}
 
 			tableName = "ModulEn";
@@ -52,7 +52,7 @@ public class DBSetup {
 				System.out.println("ModulEn createt");
 			} catch(Exception e) {
 //				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				System.out.println("ModulEn eksisterer allerede eller feil skjedde");
 			}
 			
 			tableName = "Sertifikat";
@@ -62,7 +62,7 @@ public class DBSetup {
 				System.out.println("Sertifikat createt");
 			} catch(Exception e) {
 //				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				System.out.println("Sertifikat eksisterer allerede eller feil skjedde");
 			}
 			
 			tableName = "Kurs";
@@ -75,7 +75,17 @@ public class DBSetup {
 				System.out.println("Kurs createt");
 			} catch(Exception e) {
 //				e.printStackTrace();
-				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+				System.out.println("Kurs eksisterer allerede eller feil skjedde");
+			}
+			
+			tableName = "VerneUtstyr";
+			createTabel = "CREATE TABLE " + tableName +  " (id counter NOT NULL, Påbudtverneutstyr BIT, Tilgjengeligverneutstyr BIT, Dato Text(10), ArbeidsGiverUnderskrift Text(45), PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);
+				System.out.println("verneutstyr createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("verneutstyr eksisterer allerede eller feil skjedde");
 			}
 					
 

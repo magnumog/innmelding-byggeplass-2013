@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import database.DBConnection;
+
 import modell.BekreftMedbrakt;
 
 public class BekreftMedbraktPanel extends JPanel implements ActionListener, PropertyChangeListener {
@@ -25,6 +27,8 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	protected JButton neste;
 	
 	BekreftMedbrakt model = null;
+	
+	DBConnection conn = new DBConnection();
 	
 	public BekreftMedbraktPanel() {
 		harMedVerneUtstyr = new JCheckBox("Påbudt verneutstyr: Hjelm(Standard: EN397) og vernesko(Standard: EN345(EN ISO20345)) med spikertrampsåle.");
@@ -46,11 +50,16 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		add(tillgjengeligVerneUtstyr,c);
 		c.gridy=2;
 		add(datoLabel,c);
-		c.gridx=1;
+		c.gridx=0;
+//		c.anchor = GridBagConstraints.CENTER;
+//		c.ipadx=50;
+		c.insets = new Insets(5,35,1,1);
 		add(datoBekreftet,c);
-		c.gridx=2;
+		c.gridx=0;
+		c.insets = new Insets(5,150,1,1);
 		add(arbeidsgiverLabel,c);
-		c.gridx=3;
+		c.gridx=0;
+		c.insets = new Insets(5,280,1,1);
 		add(navnPaaArbeidstaker,c);
 		c.gridy=3;
 		add(neste,c);
@@ -78,12 +87,45 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
+		System.out.println("Hendelse");
+		if(evt.getPropertyName() == BekreftMedbrakt.PAABUDTVERNEUTSTYR_PROPERTY) {
+			harMedVerneUtstyr.setSelected(model.isPabudtVerneutstyr());
+		} else if(evt.getPropertyName() == BekreftMedbrakt.TILGJENGELIGVERNEUTSTYR_PROPERTY) {
+			tillgjengeligVerneUtstyr.setSelected(model.isTilgjengeligVerneutstyr());
+		} else if(evt.getPropertyName() == BekreftMedbrakt.DATO_PROPERTY) {
+			datoBekreftet.setText(model.getDato());
+		} else if(evt.getPropertyName() == BekreftMedbrakt.NAVNPAAARBEIDSGIVER_PROPERTY) {
+			navnPaaArbeidstaker.setText(model.getNavnPaaArbeidgiver());
+		}
 		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if(model == null) {
+			return;
+		}
+		
+		if(e.getSource() == neste) {
+			model.setDato(datoBekreftet.getText());
+			model.setNavnPaaArbeidgiver(navnPaaArbeidstaker.getText());
+			model.setPabudtVerneutstyr(harMedVerneUtstyr.isSelected());
+			model.setTilgjengeligVerneutstyr(tillgjengeligVerneUtstyr.isSelected());
+			try {
+				conn.createVerneutstyr(model.isPabudtVerneutstyr(), model.isTilgjengeligVerneutstyr(), model.getDato(), model.getNavnPaaArbeidgiver());
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
+		} else if(e.getSource() == datoBekreftet) {
+			model.setDato(datoBekreftet.getText());
+		} else if(e.getSource() == navnPaaArbeidstaker) {
+			model.setNavnPaaArbeidgiver(navnPaaArbeidstaker.getText());
+		} else if(e.getSource() == harMedVerneUtstyr) {
+			model.setPabudtVerneutstyr(harMedVerneUtstyr.isSelected());
+		} else if(e.getSource() == tillgjengeligVerneUtstyr) {
+			model.setTilgjengeligVerneutstyr(tillgjengeligVerneUtstyr.isSelected());
+		}
 		
 	}
 

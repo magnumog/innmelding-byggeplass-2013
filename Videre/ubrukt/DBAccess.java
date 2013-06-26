@@ -1,4 +1,4 @@
-package database;
+package ubrukt;
 /**
  * @author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no

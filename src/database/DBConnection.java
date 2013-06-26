@@ -166,4 +166,21 @@ public class DBConnection {
 		statement.close();
 		connection.close();
 	}
+	
+	public void createVerneutstyr(boolean pabudt, boolean tilgjengelig, String dato, String arbeidsgivernavn) throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
+		preparedStatement = connection.prepareStatement("INSERT INTO VerneUtstyr(Påbudtverneutstyr, Tilgjengeligverneutstyr, Dato, ArbeidsGiverUnderskrift) VALUES(?,?,?,?)");
+		preparedStatement.setBoolean(1, pabudt);
+		preparedStatement.setBoolean(2, tilgjengelig);
+		preparedStatement.setString(3, dato);
+		preparedStatement.setString(4, arbeidsgivernavn);
+		preparedStatement.execute();
+		
+		statement.close();
+		connection.close();
+	}
 }
