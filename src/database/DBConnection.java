@@ -183,4 +183,24 @@ public class DBConnection {
 		statement.close();
 		connection.close();
 	}
+	
+	public void createModulTo(boolean fravar, boolean sikkerhet, boolean gjennomfortModulTo, boolean klistremerkeModulEn, boolean reaksjonsmonster, boolean avviksblokk, boolean shaplan) throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
+		preparedStatement = connection.prepareStatement("INSERT INTO ModulTo(infoOmFravær, SkrevetunderSikkerhetsinstruks, GjennomførtModulTo, KlistremerkeModulEn, ForstårVeidekkesReaksjon, UtdeltblokkOgRisikovurdering, KjentMedSHA_Plan) VALUES(?,?,?,?,?,?,?)");
+		preparedStatement.setBoolean(1, fravar);
+		preparedStatement.setBoolean(2, sikkerhet);
+		preparedStatement.setBoolean(3, gjennomfortModulTo);
+		preparedStatement.setBoolean(4, klistremerkeModulEn);
+		preparedStatement.setBoolean(5, reaksjonsmonster);
+		preparedStatement.setBoolean(6, avviksblokk);
+		preparedStatement.setBoolean(7, shaplan);
+		preparedStatement.execute();
+		
+		statement.close();
+		connection.close();
+	}
 }

@@ -18,11 +18,13 @@ import panel.BekreftMedbraktPanel;
 import panel.DoClickPanel;
 import panel.KursPanel;
 import panel.ModulEnPanel;
+import panel.ModulToPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
 import modell.BekreftMedbrakt;
 import modell.Kurs;
 import modell.ModulEn;
+import modell.ModulTo;
 import modell.Personalia;
 import modell.Sertifikat;
 
@@ -54,14 +56,19 @@ public class RegistreringPanelProgram extends JPanel {
 		BekreftMedbrakt medbraktModel = new BekreftMedbrakt();
 		medbraktPanel.setModel(medbraktModel);
 		
+		ModulToPanel modulToPanel = new ModulToPanel();
+		ModulTo modulTo = new ModulTo();
+		modulToPanel.setModel(modulTo);
+		
 		DoClickPanel doClickPanel = new DoClickPanel();
 		
 		
-//		add(registreringPanel);
-//		add(modulEnPanel);
-//		add(sertifikatPanel);
-//		add(kursPanel);
-//		add(medbraktPanel);
+		add(registreringPanel);
+		add(modulEnPanel);
+		add(sertifikatPanel);
+		add(kursPanel);
+		add(medbraktPanel);
+		add(modulToPanel);
 //		add(doClickPanel);
 		
 		@SuppressWarnings("unused")

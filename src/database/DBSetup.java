@@ -87,7 +87,16 @@ public class DBSetup {
 //				e.printStackTrace();
 				System.out.println("verneutstyr eksisterer allerede eller feil skjedde");
 			}
-					
+			
+			tableName = "ModulTo";
+			createTabel = "CREATE TABLE " + tableName + " (id counter not null, infoOmFravær BIT, SkrevetunderSikkerhetsinstruks BIT, GjennomførtModulTo BIT, KlistremerkeModulEn BIT, ForstårVeidekkesReaksjon BIT, UtdeltblokkOgRisikovurdering BIT, KjentMedSHA_Plan BIT, PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);
+				System.out.println("ModulTo createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("ModulTo eksisterer allerede eller feil skjedde");
+			}		
 
 			//Gjør klar til versjon2 av programet
 //			tableName = "PostNr";
