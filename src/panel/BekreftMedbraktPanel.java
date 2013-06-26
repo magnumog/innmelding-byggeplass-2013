@@ -51,15 +51,13 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		c.gridy=2;
 		add(datoLabel,c);
 		c.gridx=0;
-//		c.anchor = GridBagConstraints.CENTER;
-//		c.ipadx=50;
 		c.insets = new Insets(5,35,1,1);
 		add(datoBekreftet,c);
 		c.gridx=0;
-		c.insets = new Insets(5,150,1,1);
+		c.insets = new Insets(0,148,1,1);
 		add(arbeidsgiverLabel,c);
 		c.gridx=0;
-		c.insets = new Insets(5,280,1,1);
+		c.insets = new Insets(4,268,1,1);
 		add(navnPaaArbeidstaker,c);
 		c.gridy=3;
 		add(neste,c);

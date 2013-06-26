@@ -61,7 +61,7 @@ public class RegistreringPanelProgram extends JPanel {
 //		add(modulEnPanel);
 //		add(sertifikatPanel);
 //		add(kursPanel);
-		add(medbraktPanel);
+//		add(medbraktPanel);
 //		add(doClickPanel);
 		
 		@SuppressWarnings("unused")
@@ -72,7 +72,7 @@ public class RegistreringPanelProgram extends JPanel {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
 		frame.getContentPane().add(new RegistreringPanelProgram());
-		frame.setMinimumSize(new Dimension(800, 1000));
+		frame.setMinimumSize(new Dimension(900, 1000));
 //		frame.setMaximumSize(new Dimension(470, 600));
 		frame.pack();
 		frame.setLocation(0, 100);
