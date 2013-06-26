@@ -9,12 +9,7 @@ package modell;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-/*
- * Author Magnus Settemsli Mogstad
- * mail @ magnumog@stud.ntnu.no
- * Rotete kode men forståelig
- * Owner Veidekke ASA
- */
+
 
 public class ModulEn {
 	private boolean modulEnJaSvar;
