@@ -13,6 +13,11 @@ public class DBConnection {
 	private java.sql.Connection connection = null;
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
+	private int id = 0;
+	
+	public void setID(int nyId) {
+		this.id = nyId;
+	}
 
 	public DBConnection() {
 	}
@@ -61,6 +66,8 @@ public class DBConnection {
 
 		statement.close();
 		connection.close();
+		
+		System.out.println("Idnr: " + id);
 	}
 
 	public void createModulEN(boolean gjennomfort, String dato) throws Exception {

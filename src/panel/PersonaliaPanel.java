@@ -16,9 +16,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
-
 import database.DBConnection;
-
 import modell.Personalia;
 
 
@@ -219,7 +217,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
-		Neste.setVisible(true);
+		Neste.setVisible(false);
 		
 		
 
@@ -333,105 +331,109 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		if(model == null) {
 			return;
 		}
-
-		try {
-			if(action.getSource() == Neste) {
-				System.out.println("Du trykket på knappen");
-				model.setName(namePropertyComponent.getText());
-				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
-				model.setIdCardNr(idCardPropertyComponent.getText());
-				model.setIdexpireDate(idExpiresPropertyComponent.getText());
-				model.setAdresse(adressPropertyComponent.getText());
-				model.setPostalNr(postNrPropertyComponent.getText());
-				model.setPostalPlace(postPlacePropertyComponent.getText());
-				model.setPhoneNr(phonePropertyComponent.getText());
-				model.setEmployeer(employeePropertyComponent.getText());
-				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
-				model.setNextToKind(nextToKindPropertyComponent.getText());
-				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-				model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
-				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
-				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
-				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+		if(action.getSource() == Neste) {
+			System.out.println("Du trykket på knappen");
+			model.setName(namePropertyComponent.getText());
+			model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
+			model.setIdCardNr(idCardPropertyComponent.getText());
+			model.setIdexpireDate(idExpiresPropertyComponent.getText());
+			model.setAdresse(adressPropertyComponent.getText());
+			model.setPostalNr(postNrPropertyComponent.getText());
+			model.setPostalPlace(postPlacePropertyComponent.getText());
+			model.setPhoneNr(phonePropertyComponent.getText());
+			model.setEmployeer(employeePropertyComponent.getText());
+			model.setEmployeerPhone(employeePhonePropertyComponent.getText());
+			model.setNextToKind(nextToKindPropertyComponent.getText());
+			model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+			model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
+			model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
+			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
+			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+			try {
+				conn.setID(Integer.parseInt(model.getIdCardNr()));
 				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
 				conn.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
-				System.out.println("You just updated a bunch of shit");
-				System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
-				System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
-				System.out.println("NERMESTE:" +model.getNextToKind() + " NERMESTETELE:" +model.getNextToKindPhone() + " SNAKKER:" + model.isSpeakScandinavian() + " FORSTAR:" +model.isUnderstandScandinavian() + " SNAKKETILTAK:" +model.getTiltakSpeak() + " FORSTATILTAK:" + model.getTiltakUnderstand());
-			} else if (action.getSource() == nullstill) {
-				model.setName(null);
-				model.setDateOfBirth(null);
-				model.setIdCardNr(null);
-				model.setIdexpireDate(null);
-				model.setAdresse(null);
-				model.setPostalNr(null);
-				model.setPostalPlace(null);
-				model.setPhoneNr(null);
-				model.setEmployeer(null);
-				model.setEmployeerPhone(null);
-				model.setNextToKind(null);
-				model.setNextToKindPhone(null);
-				model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
-				model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
-				model.setTiltakSpeak(null);
-				model.setTiltakUnderstand(null);
-				System.out.println("You just nulled a bunch of shit");
-			}else if(action.getSource() == languageChoise) {
-				System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
-			} else if (action.getSource() == namePropertyComponent) {
-				model.setName(namePropertyComponent.getText());
-			} else if(action.getSource() == dateOfBirthpropertyComponent) {
-				model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
-			} else if(action.getSource() == idCardPropertyComponent) {
-				model.setIdCardNr(idCardPropertyComponent.getText());
-			} else if(action.getSource() == idExpiresPropertyComponent) {
-				model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
-			} else if(action.getSource() == adressPropertyComponent) {
-				model.setAdresse(adressPropertyComponent.getText());
-			} else if(action.getSource() == postNrPropertyComponent) {
-				model.setPostalNr(postNrPropertyComponent.getText());
-			} else if(action.getSource() == postalPlaceLabel) {
-				model.setPostalPlace(postPlacePropertyComponent.getText());
-			} else if(action.getSource()==phonePropertyComponent) {
-				model.setPhoneNr(phonePropertyComponent.getText());
-			} else if(action.getSource()==employeePropertyComponent) {
-				model.setEmployeer(employeePropertyComponent.getText());
-			} else if(action.getSource()==employeePhonePropertyComponent) {
-				model.setEmployeerPhone(employeePhonePropertyComponent.getText());
-			} else if(action.getSource()==nextToKindPropertyComponent) {
-				model.setNextToKind(nextToKindPropertyComponent.getText());
-			} else if(action.getSource()==nextToKindPhonePropertyComponent) {
-				model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
-			} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
-				if(action.getSource()==understadnSkandinaviskJaRadio) {
-					model.setUnderstandScandinavian(true);
-					System.out.println("Endret understand -- true");
-				} else {
-					model.setUnderstandScandinavian(false);
-					System.out.println("Endret understand -- false");
-				}
-				System.out.println("Endret understand"); 
-			} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
-				if(action.getSource() == speakSkadinvaiskJaRadio) {
-					model.setSpeakScandinavian(true);
-					System.out.println("Endret Speak -- true");
-				} else {
-					model.setSpeakScandinavian(false);
-					System.out.println("Endret speak -- false");
-				}
-				System.out.println("Endret speak");
-			} else if(action.getSource() == speakTiltakPropertyComponent) {
-				model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
-				System.out.println("Endret tiltak speak");
-			} else if(action.getSource() == understandTiltakPropertyComponent) {
-				model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
-				System.out.println("Endret tiltak understand");
+			} catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
+			} catch (Exception e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Some shit happend in Personalia");
+
+			System.out.println("You just updated a bunch of shit");
+			System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
+			System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
+			System.out.println("NERMESTE:" +model.getNextToKind() + " NERMESTETELE:" +model.getNextToKindPhone() + " SNAKKER:" + model.isSpeakScandinavian() + " FORSTAR:" +model.isUnderstandScandinavian() + " SNAKKETILTAK:" +model.getTiltakSpeak() + " FORSTATILTAK:" + model.getTiltakUnderstand());
+		} else if (action.getSource() == nullstill) {
+			model.setName(null);
+			model.setDateOfBirth(null);
+			model.setIdCardNr(null);
+			model.setIdexpireDate(null);
+			model.setAdresse(null);
+			model.setPostalNr(null);
+			model.setPostalPlace(null);
+			model.setPhoneNr(null);
+			model.setEmployeer(null);
+			model.setEmployeerPhone(null);
+			model.setNextToKind(null);
+			model.setNextToKindPhone(null);
+			model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
+			model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
+			model.setTiltakSpeak(null);
+			model.setTiltakUnderstand(null);
+			System.out.println("You just nulled a bunch of shit");
+		}else if(action.getSource() == languageChoise) {
+			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+		} else if (action.getSource() == namePropertyComponent) {
+			model.setName(namePropertyComponent.getText());
+		} else if(action.getSource() == dateOfBirthpropertyComponent) {
+			model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
+		} else if(action.getSource() == idCardPropertyComponent) {
+			model.setIdCardNr(idCardPropertyComponent.getText());
+		} else if(action.getSource() == idExpiresPropertyComponent) {
+			model.setIdexpireDate(idExpiresPropertyComponent.getText()); 
+		} else if(action.getSource() == adressPropertyComponent) {
+			model.setAdresse(adressPropertyComponent.getText());
+		} else if(action.getSource() == postNrPropertyComponent) {
+			model.setPostalNr(postNrPropertyComponent.getText());
+		} else if(action.getSource() == postalPlaceLabel) {
+			model.setPostalPlace(postPlacePropertyComponent.getText());
+		} else if(action.getSource()==phonePropertyComponent) {
+			model.setPhoneNr(phonePropertyComponent.getText());
+		} else if(action.getSource()==employeePropertyComponent) {
+			model.setEmployeer(employeePropertyComponent.getText());
+		} else if(action.getSource()==employeePhonePropertyComponent) {
+			model.setEmployeerPhone(employeePhonePropertyComponent.getText());
+		} else if(action.getSource()==nextToKindPropertyComponent) {
+			model.setNextToKind(nextToKindPropertyComponent.getText());
+		} else if(action.getSource()==nextToKindPhonePropertyComponent) {
+			model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+		} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
+			if(action.getSource()==understadnSkandinaviskJaRadio) {
+				model.setUnderstandScandinavian(true);
+				System.out.println("Endret understand -- true");
+			} else {
+				model.setUnderstandScandinavian(false);
+				System.out.println("Endret understand -- false");
+			}
+			System.out.println("Endret understand"); 
+		} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
+			if(action.getSource() == speakSkadinvaiskJaRadio) {
+				model.setSpeakScandinavian(true);
+				System.out.println("Endret Speak -- true");
+			} else {
+				model.setSpeakScandinavian(false);
+				System.out.println("Endret speak -- false");
+			}
+			System.out.println("Endret speak");
+		} else if(action.getSource() == speakTiltakPropertyComponent) {
+			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
+			System.out.println("Endret tiltak speak");
+		} else if(action.getSource() == understandTiltakPropertyComponent) {
+			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+			System.out.println("Endret tiltak understand");
 		}
+
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {

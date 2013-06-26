@@ -1,4 +1,10 @@
 package database;
+/**
+ * @author Magnus Settemsli Mogstad
+ * mail @ magnumog@stud.ntnu.no
+ * Rotete kode men forståelig
+ * Owner Veidekke ASA
+ **/
 
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -9,8 +15,6 @@ public class DBSetup {
 	
 	public DBSetup() {
 		try{
-
-
 			//Denne funker
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";

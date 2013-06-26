@@ -71,7 +71,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		add(Neste);
 		c.gridx=2;
 		add(nullstill);
-		Neste.setVisible(true);
+		Neste.setVisible(false);
 		nullstill.setVisible(false);
 		
 		modulEnJaDato.addActionListener(this);

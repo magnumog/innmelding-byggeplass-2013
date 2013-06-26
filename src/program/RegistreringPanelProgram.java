@@ -14,12 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.DBSetup;
-
+import panel.DoClickPanel;
 import panel.KursPanel;
 import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
-
 import modell.Kurs;
 import modell.ModulEn;
 import modell.Personalia;
@@ -49,11 +48,14 @@ public class RegistreringPanelProgram extends JPanel {
 		Kurs kursModel = new Kurs();
 		kursPanel.setModel(kursModel);
 		
+		DoClickPanel doClickPanel = new DoClickPanel();
+		
 		
 		add(registreringPanel);
 		add(modulEnPanel);
 		add(sertifikatPanel);
 		add(kursPanel);
+		add(doClickPanel);
 		
 		@SuppressWarnings("unused")
 		DBSetup dbconn = new DBSetup();
