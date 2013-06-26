@@ -42,7 +42,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	
 	
 	//GUI knapper
-	protected JButton Neste,nullstill;
+	public JButton Neste,nullstill;
 
 	Personalia model = null;
 	

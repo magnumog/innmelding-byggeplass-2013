@@ -28,10 +28,10 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	public ModulToPanel() {
 		fravar = new JCheckBox("Informert om fraværsoppfølging, alternativt arbeid ved skade/sykdom, AKAN, varslingsrutiner ved sykdom og skade.");
 		bedriftsikkerhetsinstruks = new JCheckBox("Underskrevet bedriftens sikkerhetsInstruks.");
-		gjennomfortModulTo = new JCheckBox("Gjennomført obligatorisk sikkerhetsopplæring på prosjektet (Modul 2). (utdelt klistremerke for hjelm der dette benyttes.");
+		gjennomfortModulTo = new JCheckBox("Gjennomført obligatorisk sikkerhetsopplæring på prosjektet (Modul 2). (utdelt klistremerke for hjelm der dette benyttes).");
 		klistremerkeModulEn = new JCheckBox("Mottatt klistremerke for godkjent Modul 1 og festet denne på hjelm.");
 		veidekkesReaksjonsMonster = new JCheckBox("Arbeidstakeren er inneforstått med Veidekkes reaksjonsmønster ved brudd på sikkerhetsbestemmelser.");
-		avviskblokkOgRisikovurdering = new JCheckBox("Fått utdelt avviksblokk og Risikovurdering - \"Blokk - løpende risikovurderin\"");
+		avviskblokkOgRisikovurdering = new JCheckBox("Fått utdelt avviksblokk og Risikovurdering - \"Blokk - løpende risikovurdering\"");
 		SHAplan = new JCheckBox("Gjort kjent med Byggherrens SHA-plan - oppslagstavle");
 		neste = new JButton("Neste");
 		

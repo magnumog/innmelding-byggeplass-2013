@@ -66,10 +66,10 @@ public class RegistreringPanelProgram extends JPanel {
 		add(registreringPanel);
 		add(modulEnPanel);
 		add(sertifikatPanel);
-		add(kursPanel);
+//		add(kursPanel);
 		add(medbraktPanel);
 		add(modulToPanel);
-//		add(doClickPanel);
+		add(doClickPanel);
 		
 		@SuppressWarnings("unused")
 		DBSetup dbconn = new DBSetup();
