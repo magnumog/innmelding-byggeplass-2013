@@ -28,7 +28,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	
 	BekreftMedbrakt model = null;
 	
-	DBConnection conn = new DBConnection();
+//	DBConnection conn = new DBConnection();
 	
 	public BekreftMedbraktPanel() {
 		harMedVerneUtstyr = new JCheckBox("Påbudt verneutstyr: Hjelm(Standard: EN397) og vernesko(Standard: EN345(EN ISO20345)) med spikertrampsåle.");
@@ -109,7 +109,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 			model.setPabudtVerneutstyr(harMedVerneUtstyr.isSelected());
 			model.setTilgjengeligVerneutstyr(tillgjengeligVerneUtstyr.isSelected());
 			try {
-				conn.createVerneutstyr(model.isPabudtVerneutstyr(), model.isTilgjengeligVerneutstyr(), model.getDato(), model.getNavnPaaArbeidgiver());
+				DBConnection.createVerneutstyr(model.isPabudtVerneutstyr(), model.isTilgjengeligVerneutstyr(), model.getDato(), model.getNavnPaaArbeidgiver());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

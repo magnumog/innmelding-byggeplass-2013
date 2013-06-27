@@ -36,7 +36,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 	
 	ModulEn model = null;
 	
-	DBConnection conn = new DBConnection();
+//	DBConnection conn = new DBConnection();
 	
 	public ModulEnPanel(){
 		modulEnJaRadio = new JRadioButton("Ja, dato for gjennomføring: ");
@@ -123,9 +123,9 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 			model.setModulEnNeiFrist(modulEnNeiFrist.getText());
 			try {
 				if(model.isModulEnJaSvar()) {
-					conn.createModulEN(model.isModulEnJaSvar(), model.getModulEnJADato());					
+					DBConnection.createModulEN(model.isModulEnJaSvar(), model.getModulEnJADato());					
 				} else {
-					conn.createModulEN(model.isModulEnJaSvar(), model.getModulEnNeiFrist());
+					DBConnection.createModulEN(model.isModulEnJaSvar(), model.getModulEnNeiFrist());
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

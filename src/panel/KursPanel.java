@@ -40,7 +40,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 	protected JButton Neste, nullstill;
 	
 	Kurs model = null;
-	DBConnection conn = new DBConnection();
+//	DBConnection conn = new DBConnection();
 	
 	public KursPanel() {
 		//Legger ut componentene i GUI
@@ -455,7 +455,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			model.setForstehjelpDatoTekst(forstehjelpPropertyComponent.getText());
 			model.setAnnetTekst(annetPropertyComponent.getText());
 			try {
-				conn.createKurs(model.isVerkstedOgLager(), model.getVerksetedLagerTekst(), model.isSpesialKraner(), model.getSpesialKranerTekst(), model.isVinsjerOgTaljer(), model.isAnhukStroppingSignalGiving(), model.isKlatreOgHengestilaser(), model.isPersonLoftere(), model.getPersonLoftereTekst(), model.isPersonLoftereUnderJord(), model.isBorvognerTunnelrigger(), model.isSelvgaendeUtstyr(), model.isTraktorUtstyr(), model.isVinkelsliperKutter(), model.isBoltePistol(), model.isSpikerPistol(), model.isKombihammerBorhammer(), model.isKjedeSag(), model.isKappklyveGjerdeSag(), model.isBindeMaskinArmering(), model.isVibroStav(), model.isHandhaldtArmeringsKapper(), model.isSkjarebrenner(), model.isSponBrytende(), model.isSlipeMaskiner(), model.isTreBearbeidingsMaskin(), model.isAsfaltarbeider(), model.isBetongSagerKjerneBoring(), model.isVeggSager(), model.isVaierSager(), model.isGulvOgAsfaltSag(), model.isHoytrykkSpyler(), model.isRyddeSagerOgTrimmere(), model.isSpunteOgPaleUtstyr(), model.isMobiltBetongPumpeUtstyr(), model.isSikkerKontorllAvStillas(), model.isSikkerBrukAvForskaling(), model.isFallSikkring(), model.isForsteHjelp(), model.getForstehjelpDatoTekst(), model.isAnnet(), model.getAnnetTekst());
+				DBConnection.createKurs(model.isVerkstedOgLager(), model.getVerksetedLagerTekst(), model.isSpesialKraner(), model.getSpesialKranerTekst(), model.isVinsjerOgTaljer(), model.isAnhukStroppingSignalGiving(), model.isKlatreOgHengestilaser(), model.isPersonLoftere(), model.getPersonLoftereTekst(), model.isPersonLoftereUnderJord(), model.isBorvognerTunnelrigger(), model.isSelvgaendeUtstyr(), model.isTraktorUtstyr(), model.isVinkelsliperKutter(), model.isBoltePistol(), model.isSpikerPistol(), model.isKombihammerBorhammer(), model.isKjedeSag(), model.isKappklyveGjerdeSag(), model.isBindeMaskinArmering(), model.isVibroStav(), model.isHandhaldtArmeringsKapper(), model.isSkjarebrenner(), model.isSponBrytende(), model.isSlipeMaskiner(), model.isTreBearbeidingsMaskin(), model.isAsfaltarbeider(), model.isBetongSagerKjerneBoring(), model.isVeggSager(), model.isVaierSager(), model.isGulvOgAsfaltSag(), model.isHoytrykkSpyler(), model.isRyddeSagerOgTrimmere(), model.isSpunteOgPaleUtstyr(), model.isMobiltBetongPumpeUtstyr(), model.isSikkerKontorllAvStillas(), model.isSikkerBrukAvForskaling(), model.isFallSikkring(), model.isForsteHjelp(), model.getForstehjelpDatoTekst(), model.isAnnet(), model.getAnnetTekst());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

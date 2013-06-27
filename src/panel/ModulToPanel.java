@@ -23,7 +23,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	protected JButton neste;
 	
 	ModulTo model = null;
-	DBConnection conn = new DBConnection();
+//	DBConnection conn = new DBConnection();
 	
 	public ModulToPanel() {
 		fravar = new JCheckBox("Informert om fraværsoppfølging, alternativt arbeid ved skade/sykdom, AKAN, varslingsrutiner ved sykdom og skade.");
@@ -120,7 +120,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 			model.setUnderskrevetsikkerhetsinstruks(bedriftsikkerhetsinstruks.isSelected());
 			model.setUtdeltBlokkLopendeRisiko(avviskblokkOgRisikovurdering.isSelected());
 			try {
-				conn.createModulTo(model.isFravaroppfolging(), model.isUnderskrevetsikkerhetsinstruks(), model.isGjennomfortModulTo(), model.isKlistremerkeModulEn(), model.isInneforstattMedReaksjonsmonster(), model.isUtdeltBlokkLopendeRisiko(), model.isSHAPlan());
+				DBConnection.createModulTo(model.isFravaroppfolging(), model.isUnderskrevetsikkerhetsinstruks(), model.isGjennomfortModulTo(), model.isKlistremerkeModulEn(), model.isInneforstattMedReaksjonsmonster(), model.isUtdeltBlokkLopendeRisiko(), model.isSHAPlan());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

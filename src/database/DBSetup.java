@@ -26,7 +26,7 @@ public class DBSetup {
 
 			//Create a table
 			String tableName="Personalia";
-			String createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Navn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), PRIMARY KEY (id))";
+			String createTabel = "CREATE TABLE " + tableName + " (id Integer, Navn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), PRIMARY KEY (id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("Personalia createt");
@@ -36,7 +36,7 @@ public class DBSetup {
 			}
 
 			tableName = "Sprak";
-			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("sprak createt");
@@ -46,7 +46,7 @@ public class DBSetup {
 			}
 
 			tableName = "ModulEn";
-			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Gjennomført BIT, Dato Text(10), Primary key(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, Gjennomført BIT, Dato Text(10), Primary key(id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("ModulEn createt");
@@ -56,7 +56,7 @@ public class DBSetup {
 			}
 			
 			tableName = "Sertifikat";
-			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("Sertifikat createt");
@@ -66,7 +66,7 @@ public class DBSetup {
 			}
 			
 			tableName = "Kurs";
-			createTabel = "CREATE TABLE " + tableName + " (id COUNTER NOT NULL, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
 					"PersonløfterUnderJord BIT, BorVognerOgTunnelrigger BIT, SelvgåendeValser BIT, TraktorUtstyr BIT, vinkelsliper BIT, BoltePistol BIT, Spikerpistol BIT, KombihammerBorHammer BIT, Kjedesag BIT, KappKlyveGjerdeSag BIT, BindeMaskinArmering BIT, Vibrostav BIT, HåndholdtArmeringsKapper BIT, Skjærebrenner BIT, Sponbrytende BIT, " +
 					"SlipeMaskiner BIT, Trebearbeidingsmaskiner BIT, Asfaltarbeider BIT, BetongsagerKjerneboringsutstyr BIT, Veggsager BIT, Vaiersager BIT, GulvsagOgAsfaltSag BIT, HøytrykkSpylerutstyr BIT, RyddesagerOgTrimmere BIT, SpunteOgPæleutstyr BIT, MobiltBetongpumpeutstyr BIT, SikkerBrukKontollAvStillas BIT, " +
 					"SikkerBrukAvForskaling BIT, Fallsikringutstyr BIT, Førstehjelpskurs BIT, FørstehjelskursDato Text(12), Annet BIT, AnnetBeskrivels Text(120), PRIMARY KEY(id))";
@@ -79,7 +79,7 @@ public class DBSetup {
 			}
 			
 			tableName = "VerneUtstyr";
-			createTabel = "CREATE TABLE " + tableName +  " (id counter NOT NULL, Påbudtverneutstyr BIT, Tilgjengeligverneutstyr BIT, Dato Text(10), ArbeidsGiverUnderskrift Text(45), PRIMARY KEY(id))";
+			createTabel = "CREATE TABLE " + tableName +  " (id Integer, Påbudtverneutstyr BIT, Tilgjengeligverneutstyr BIT, Dato Text(10), ArbeidsGiverUnderskrift Text(45), PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("verneutstyr createt");
@@ -89,7 +89,7 @@ public class DBSetup {
 			}
 			
 			tableName = "ModulTo";
-			createTabel = "CREATE TABLE " + tableName + " (id counter not null, infoOmFravær BIT, SkrevetunderSikkerhetsinstruks BIT, GjennomførtModulTo BIT, KlistremerkeModulEn BIT, ForstårVeidekkesReaksjon BIT, UtdeltblokkOgRisikovurdering BIT, KjentMedSHA_Plan BIT, PRIMARY KEY(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, infoOmFravær BIT, SkrevetunderSikkerhetsinstruks BIT, GjennomførtModulTo BIT, KlistremerkeModulEn BIT, ForstårVeidekkesReaksjon BIT, UtdeltblokkOgRisikovurdering BIT, KjentMedSHA_Plan BIT, PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("ModulTo createt");

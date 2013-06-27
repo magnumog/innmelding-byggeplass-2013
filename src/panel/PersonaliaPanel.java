@@ -46,7 +46,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 
 	Personalia model = null;
 	
-	DBConnection conn = new DBConnection();
+//	DBConnection conn = new DBConnection();
 
 	public PersonaliaPanel() {
 		createComponents();
@@ -113,11 +113,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 0;
 		c.gridy = 6;
 		add(postalNrLabel,c);
-		c.gridx = 2;
-		c.gridy = 6;
+		c.gridx = 1;
+		c.insets = new Insets(2, 0, 2, 2);
 		add(postalPlaceLabel,c);
 		c.gridx = 0;
 		c.gridy = 8;
+		c.insets = new Insets(2,2,2,2);
 		add(telefoneNrLabel,c);
 		c.gridx = 0;
 		c.gridy = 9;
@@ -157,7 +158,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 6;
 		add(postNrPropertyComponent,c);
-		c.gridx = 3;
+		c.gridx = 2;
 		c.gridy = 6;
 		add(postPlacePropertyComponent,c);
 		c.gridx = 1;
@@ -217,7 +218,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
-		Neste.setVisible(false);
+		Neste.setVisible(true);
 		
 		
 
@@ -236,7 +237,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		adressLabel = new JLabel("Adresse: ");
 		adressPropertyComponent = new JTextField(15);
 		postalNrLabel = new JLabel("Postnr: ");
-		postNrPropertyComponent = new JTextField(8);
+		postNrPropertyComponent = new JTextField(5);
 		postalPlaceLabel = new JLabel("Poststed: ");
 		postPlacePropertyComponent = new JTextField(15);
 		telefoneNrLabel = new JLabel("Telefon/Mobil: ");
@@ -350,9 +351,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 			try {
-				conn.setID(Integer.parseInt(model.getIdCardNr()));
-				conn.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
-				conn.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
+				DBConnection.setID(Integer.parseInt(model.getIdCardNr()));
+				DBConnection.createPersonalia(model.getIdCardNr(), model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
+				DBConnection.createSprak(model.getIdCardNr(), model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
 			} catch (Exception e) {
