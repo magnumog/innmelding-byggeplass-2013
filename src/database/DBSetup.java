@@ -99,7 +99,7 @@ public class DBSetup {
 			}
 			
 			tableName = "RegistreingsDato";
-			createTabel = "CREATE TABLE " + tableName + " (id Integer, dato Text(12), PRIMARY KEY(id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, dato Date, PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("RegDato createt");
