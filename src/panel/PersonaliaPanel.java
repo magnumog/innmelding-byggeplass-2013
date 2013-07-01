@@ -361,10 +361,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen");
 			}
 
-			System.out.println("You just updated a bunch of shit");
-			System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
-			System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
-			System.out.println("NERMESTE:" +model.getNextToKind() + " NERMESTETELE:" +model.getNextToKindPhone() + " SNAKKER:" + model.isSpeakScandinavian() + " FORSTAR:" +model.isUnderstandScandinavian() + " SNAKKETILTAK:" +model.getTiltakSpeak() + " FORSTATILTAK:" + model.getTiltakUnderstand());
+//			System.out.println("You just updated a bunch of shit");
+//			System.out.println("NAVN:" + model.getName() + " FODT: " + model.getDateOfBirth() + " ID:" + model.getIdCardNr() + " IDUT:" + model.getIdexpireDate() + " ADRESSE:" + model.getAdresse());
+//			System.out.println("POSTNR:" + model.getPostalNr() + " POSTSTED:" + model.getPostalPlace() + " TELE:" + model.getPhoneNr() + " ARBEIDS:" +model.getEmployeer() + " ARBEIDTELE:" + model.getEmployeerPhone());
+//			System.out.println("NERMESTE:" +model.getNextToKind() + " NERMESTETELE:" +model.getNextToKindPhone() + " SNAKKER:" + model.isSpeakScandinavian() + " FORSTAR:" +model.isUnderstandScandinavian() + " SNAKKETILTAK:" +model.getTiltakSpeak() + " FORSTATILTAK:" + model.getTiltakUnderstand());
 		} else if (action.getSource() == nullstill) {
 			model.setName(null);
 			model.setDateOfBirth(null);

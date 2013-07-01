@@ -125,8 +125,8 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("Fravær:" + model.isFravaroppfolging() + " Sikkerhetsinstruks:" + model.isUnderskrevetsikkerhetsinstruks() + "gjennomførtModulTo:" + model.isGjennomfortModulTo() + "Klistremerke:" +model.isKlistremerkeModulEn());
-			System.out.println("Reaksjonsmønster:" + model.isInneforstattMedReaksjonsmonster() + " Avviksblokk:" + model.isUtdeltBlokkLopendeRisiko() + " SHA-plan:" + model.isSHAPlan());
+//			System.out.println("Fravær:" + model.isFravaroppfolging() + " Sikkerhetsinstruks:" + model.isUnderskrevetsikkerhetsinstruks() + "gjennomførtModulTo:" + model.isGjennomfortModulTo() + "Klistremerke:" +model.isKlistremerkeModulEn());
+//			System.out.println("Reaksjonsmønster:" + model.isInneforstattMedReaksjonsmonster() + " Avviksblokk:" + model.isUtdeltBlokkLopendeRisiko() + " SHA-plan:" + model.isSHAPlan());
 		} else if(e.getSource()==fravar) {
 			model.setFravaroppfolging(fravar.isSelected());
 		} else if(e.getSource()==bedriftsikkerhetsinstruks) {

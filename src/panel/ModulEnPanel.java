@@ -131,7 +131,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("JA:" + model.isModulEnJaSvar() + " NEI:" + model.isModulEnNeiSvar() + " JADATO:" + model.getModulEnJADato() +  " NEIFRIST:" + model.getModulEnNeiFrist());
+//			System.out.println("JA:" + model.isModulEnJaSvar() + " NEI:" + model.isModulEnNeiSvar() + " JADATO:" + model.getModulEnJADato() +  " NEIFRIST:" + model.getModulEnNeiFrist());
 		} else if(e.getSource()==nullstill) {
 			model.setModulEnJaSvar(true);
 			model.setModulEnNeiSvar(false);

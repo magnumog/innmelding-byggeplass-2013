@@ -204,10 +204,10 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 				model.setTruckKranForer(truckKranBevisCheck.isSelected());
 				model.setTruckKranForerBevis(truckKranPropertyComponent.getText());
 				DBInnsertion.createSertifikat(model.isForerkort(), model.isGrunnopplaeringArbeidsmiljo(), model.isMaskinForerBevis(), model.isArbeidsVarsling(), model.isVarmeArbeider(), model.isTruckKranForer(), model.getForerkortKlasser(), model.getMaskinForerKlasser(), model.getArbeidsVarslingKurs(), model.getVarmeArbeiderdato(), model.getTruckKranForerBevis());
-				System.out.println("FORERKORT:" + model.isForerkort() + " FORERKORTKLASSER:" + model.getForerkortKlasser() + " GRUNNOPPLÆRINGARBEIDSMILJØ:" + model.isGrunnopplaeringArbeidsmiljo());
-				System.out.println("MASKINFORER:" + model.isMaskinForerBevis() +  " MASKINFORERKLASSER:" + model.getMaskinForerKlasser() + " ABEIDSVARSLER:" + model.isArbeidsVarsling());
-				System.out.println("ARBEIDSVARSLERKURS:" + model.getArbeidsVarslingKurs() + " VARMEARBEIDER:" + model.isVarmeArbeider() + " VARMEDATO:" + model.getVarmeArbeiderdato());
-				System.out.println("TRUCK/KRANFORER:" + model.isTruckKranForer() + " TRUCK/KRANFORERBEVIS:" + model.getTruckKranForerBevis());
+//				System.out.println("FORERKORT:" + model.isForerkort() + " FORERKORTKLASSER:" + model.getForerkortKlasser() + " GRUNNOPPLÆRINGARBEIDSMILJØ:" + model.isGrunnopplaeringArbeidsmiljo());
+//				System.out.println("MASKINFORER:" + model.isMaskinForerBevis() +  " MASKINFORERKLASSER:" + model.getMaskinForerKlasser() + " ABEIDSVARSLER:" + model.isArbeidsVarsling());
+//				System.out.println("ARBEIDSVARSLERKURS:" + model.getArbeidsVarslingKurs() + " VARMEARBEIDER:" + model.isVarmeArbeider() + " VARMEDATO:" + model.getVarmeArbeiderdato());
+//				System.out.println("TRUCK/KRANFORER:" + model.isTruckKranForer() + " TRUCK/KRANFORERBEVIS:" + model.getTruckKranForerBevis());
 			} else if(a.getSource()==nullstill) {
 				model.setForerkort(false);
 				model.setForerkortKlasser(null);

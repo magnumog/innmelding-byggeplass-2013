@@ -460,16 +460,16 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
-			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
-			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
-			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
-			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
-			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
-			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
-			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
-			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
-			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
+//			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
+//			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
+//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+//			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
+//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+//			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+//			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
+//			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
 		} else if(e.getSource()== nullstill) {
 			model.setVerkstedOgLager(false);
 			model.setSpesialKraner(false);

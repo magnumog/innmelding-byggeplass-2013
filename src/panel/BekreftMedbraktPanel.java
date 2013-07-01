@@ -115,7 +115,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
+//			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
 		} else if(e.getSource() == datoBekreftet) {
 			model.setDato(datoBekreftet.getText());
 		} else if(e.getSource() == navnPaaArbeidstaker) {
