@@ -57,6 +57,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 		add(SHAplan,c);
 		c.gridy=7;
 		add(neste,c);
+		neste.setVisible(false);
 		
 		fravar.addActionListener(this);
 		bedriftsikkerhetsinstruks.addActionListener(this);
@@ -86,7 +87,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("Hendelse");
+//		System.out.println("Hendelse");
 		if(evt.getPropertyName() == ModulTo.FRAVAROPPFOLGING_PROPERTY) {
 			fravar.setSelected(model.isFravaroppfolging());
 		} else if(evt.getPropertyName() == ModulTo.UNDERSKREVETSIKKERHETSINSTRUKS_PROPERTY) {

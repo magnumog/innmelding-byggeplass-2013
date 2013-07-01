@@ -31,13 +31,13 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == neste) {
-			System.out.println("du trykket");
+			PersonaliaPanel.Neste.doClick();
+			ModulEnPanel.Neste.doClick();
+			SertifikatPanel.neste.doClick();
+			KursPanel.Neste.doClick();
+			BekreftMedbraktPanel.neste.doClick();
+			ModulToPanel.neste.doClick();
+//			System.out.println("du trykket");
 		}
-		PersonaliaPanel.Neste.doClick();
-		ModulEnPanel.Neste.doClick();
-		SertifikatPanel.neste.doClick();
-		KursPanel.Neste.doClick();
-		BekreftMedbraktPanel.neste.doClick();
-		ModulToPanel.neste.doClick();
 	}
 }

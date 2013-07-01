@@ -96,7 +96,17 @@ public class DBSetup {
 			} catch(Exception e) {
 //				e.printStackTrace();
 				System.out.println("ModulTo eksisterer allerede eller feil skjedde");
-			}		
+			}
+			
+			tableName = "RegistreingsDato";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, dato Text(12), PRIMARY KEY(id))";
+			try {
+				statement.execute(createTabel);
+				System.out.println("RegDato createt");
+			} catch(Exception e) {
+//				e.printStackTrace();
+				System.out.println("RegDato eksisterer allerede eller feil skjedde");
+			}
 
 			//Gjør klar til versjon2 av programet
 //			tableName = "PostNr";

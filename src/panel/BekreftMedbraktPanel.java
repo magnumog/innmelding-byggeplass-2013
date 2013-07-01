@@ -86,7 +86,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("Hendelse");
+//		System.out.println("Hendelse");
 		if(evt.getPropertyName() == BekreftMedbrakt.PAABUDTVERNEUTSTYR_PROPERTY) {
 			harMedVerneUtstyr.setSelected(model.isPabudtVerneutstyr());
 		} else if(evt.getPropertyName() == BekreftMedbrakt.TILGJENGELIGVERNEUTSTYR_PROPERTY) {

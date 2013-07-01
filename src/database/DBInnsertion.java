@@ -45,7 +45,7 @@ public class DBInnsertion {
 			preparedStatement.setString(12, nermestepaarorende);
 			preparedStatement.setString(13, narmesteparorendetelefon);
 			preparedStatement.execute();
-			System.out.println(id);
+//			System.out.println(id);
 
 			statement.close();
 			connection.close();
@@ -235,6 +235,23 @@ public class DBInnsertion {
 			connection.close();
 		} else {
 			System.out.println("id var lik null og modulTo ble ikke satt inn");
+		}
+	}
+	
+	public static void creatRegDato(String regDato) throws Exception {
+		if(id!=0) {
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			connection = DriverManager.getConnection(database,"","");
+			statement = connection.createStatement();
+			preparedStatement = connection.prepareStatement("INSERT INTO RegistreingsDato(id,dato) VALUES(?,?)");
+			preparedStatement.setInt(1, id);
+			preparedStatement.setString(2, regDato);
+			preparedStatement.execute();
+			
+			statement.close();
+			connection.close();
 		}
 	}
 }

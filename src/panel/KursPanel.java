@@ -19,14 +19,12 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import database.DBInnsertion;
 
 import modell.Kurs;
 
-public class KursPanel extends JPanel implements ActionListener, PropertyChangeListener, ChangeListener {
+public class KursPanel extends JPanel implements ActionListener, PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	protected JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLoftereCheck, personLoftereUnderJordCheck;
 	protected JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
@@ -308,12 +306,6 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 	public Kurs getModel() {
 		return model;
 	}
-	
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
@@ -513,143 +505,143 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			model.setPersonLoftereTekst(null);
 			model.setForstehjelpDatoTekst(null);
 			model.setAnnetTekst(null);
-			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
-			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
-			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
-			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
-			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
-			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
-			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
-			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
-			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
-			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
+//			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
+//			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
+//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+//			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
+//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+//			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+//			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
+//			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
 			
 		} else if(e.getSource()==verkstedOgLagerCheck) {
 			model.setVerkstedOgLager(verkstedOgLagerCheck.isSelected());
-			System.out.println("Endret verksted og lager check");
+//			System.out.println("Endret verksted og lager check");
 		} else if(e.getSource()==SpesialKranerCheck) {
 			model.setSpesialKraner(SpesialKranerCheck.isSelected());
-			System.out.println("Endret spesialkraner check");
+//			System.out.println("Endret spesialkraner check");
 		} else if(e.getSource()==VinsjerOgTaljerCheck) {
 			model.setVinsjerOgTaljer(VinsjerOgTaljerCheck.isSelected());
-			System.out.println("Endret Vinsjer og taljer check");
+//			System.out.println("Endret Vinsjer og taljer check");
 		} else if(e.getSource()==anhukingStroppingOgSignalgivningCheck) {
 			model.setAnhukStroppingSignalGiving(anhukingStroppingOgSignalgivningCheck.isSelected());
-			System.out.println("Endret anhuk osv check");
+//			System.out.println("Endret anhuk osv check");
 		} else if(e.getSource()==klatreOgHengeStilaserCheck) {
 			model.setKlatreOgHengestilaser(klatreOgHengeStilaserCheck.isSelected());
-			System.out.println("Endret Klatre og hengestialser check");
+//			System.out.println("Endret Klatre og hengestialser check");
 		} else if(e.getSource()==personLoftereCheck) {
 			model.setPersonLoftere(personLoftereCheck.isSelected());
-			System.out.println("Endret Personløftere check");
+//			System.out.println("Endret Personløftere check");
 		} else if(e.getSource()==personLoftereUnderJordCheck) {
 			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
-			System.out.println("Endret personløftereunderjord Check");
+//			System.out.println("Endret personløftereunderjord Check");
 		} else if(e.getSource()==borVognerOgTunnelriggerCheck) {
 			model.setBorvognerTunnelrigger(borVognerOgTunnelriggerCheck.isSelected());
-			System.out.println("Endret borvogner og tunnelrigger check");
+//			System.out.println("Endret borvogner og tunnelrigger check");
 		} else if(e.getSource()==selvgåendeValserCheck) {
 			model.setSelvgaendeUtstyr(selvgåendeValserCheck.isSelected());
-			System.out.println("Endret selvgåendevalse check");
+//			System.out.println("Endret selvgåendevalse check");
 		} else if(e.getSource()==TraktorutstyrCheck) {
 			model.setTraktorUtstyr(TraktorutstyrCheck.isSelected());
-			System.out.println("Endret Traktorutstyr check");
+//			System.out.println("Endret Traktorutstyr check");
 		} else if(e.getSource()==vinkelSliperKutterCheck) {
 			model.setVinkelsliperKutter(vinkelSliperKutterCheck.isSelected());
-			System.out.println("Endret vinkelsliperKutter check");
+//			System.out.println("Endret vinkelsliperKutter check");
 		} else if(e.getSource()==boltePistolCheck) {
 			model.setBoltePistol(boltePistolCheck.isSelected());
-			System.out.println("Endret boltepistol check");
+//			System.out.println("Endret boltepistol check");
 		} else if(e.getSource()==spikerPistolCheck) {
 			model.setSpikerPistol(spikerPistolCheck.isSelected());
-			System.out.println("Endret Spikerpistol check");
+//			System.out.println("Endret Spikerpistol check");
 		} else if(e.getSource()==KombiHammerBorHammerCheck) {
 			model.setKombihammerBorhammer(KombiHammerBorHammerCheck.isSelected());
-			System.out.println("Endret kombihammer check");
+//			System.out.println("Endret kombihammer check");
 		} else if(e.getSource()==kjedeSagCheck) {
 			model.setKjedeSag(kjedeSagCheck.isSelected());
-			System.out.println("Endret kjedesag check");
+//			System.out.println("Endret kjedesag check");
 		} else if(e.getSource()==KappKlyveGjerdeSagCheck) {
 			model.setKappklyveGjerdeSag(KappKlyveGjerdeSagCheck.isSelected());
-			System.out.println("Endret kappklyveGjerdesag Check");
+//			System.out.println("Endret kappklyveGjerdesag Check");
 		} else if(e.getSource()==bindeMaskinArmeringCheck) {
 			model.setBindeMaskinArmering(bindeMaskinArmeringCheck.isSelected());
-			System.out.println("Endret bindemaskinArmering check");
+//			System.out.println("Endret bindemaskinArmering check");
 		} else if(e.getSource()==VibrostavCheck) {
 			model.setVibroStav(VibrostavCheck.isSelected());
-			System.out.println("Endret vibrostav check");
+//			System.out.println("Endret vibrostav check");
 		} else if(e.getSource()==haandholdtArmeringsKapperCheck) {
 			model.setHandhaldtArmeringsKapper(haandholdtArmeringsKapperCheck.isSelected());
-			System.out.println("Endret håndholdtArmeringsKapper check");
+//			System.out.println("Endret håndholdtArmeringsKapper check");
 		} else if(e.getSource()==skjarebrennerCheck) {
 			model.setSkjarebrenner(skjarebrennerCheck.isSelected());
-			System.out.println("Endret skjærebrenner check");
+//			System.out.println("Endret skjærebrenner check");
 		} else if(e.getSource()==sponBrytendeCheck) {
 			model.setSponBrytende(sponBrytendeCheck.isSelected());
-			System.out.println("Endret sponbrytende check");
+//			System.out.println("Endret sponbrytende check");
 		} else if(e.getSource()==slipemaskinerCheck) {
 			model.setSlipeMaskiner(slipemaskinerCheck.isSelected());
-			System.out.println("Endret slipemaskiner check");
+//			System.out.println("Endret slipemaskiner check");
 		} else if(e.getSource()==trebearbeidingsMaskinerCheck) {
 			model.setTreBearbeidingsMaskin(trebearbeidingsMaskinerCheck.isSelected());
-			System.out.println("Endret trebearbeidingsmaskiner check");
+//			System.out.println("Endret trebearbeidingsmaskiner check");
 		} else if(e.getSource()==asfaltArbeiderCheck) {
 			model.setAsfaltarbeider(asfaltArbeiderCheck.isSelected());
-			System.out.println("Endret asfaltarbeider check");
+//			System.out.println("Endret asfaltarbeider check");
 		} else if(e.getSource()==betongSagerKjerneBorCheck) {
 			model.setBetongSagerKjerneBoring(betongSagerKjerneBorCheck.isSelected());
-			System.out.println("Endret betongsager kjerneborutstyr Check");
+//			System.out.println("Endret betongsager kjerneborutstyr Check");
 		} else if(e.getSource()==veggsagerCheck) {
 			model.setVeggSager(veggsagerCheck.isSelected());
-			System.out.println("Endret veggsager check");
+//			System.out.println("Endret veggsager check");
 		} else if(e.getSource()==vaierSagerCheck) {
 			model.setVaierSager(vaierSagerCheck.isSelected());
-			System.out.println("Endret vaiersager check");
+//			System.out.println("Endret vaiersager check");
 		} else if(e.getSource()==gulvsagerOgAsfaltsagCheck) {
 			model.setGulvOgAsfaltSag(gulvsagerOgAsfaltsagCheck.isSelected());
-			System.out.println("Endret gulvsager og asfaltsag check");
+//			System.out.println("Endret gulvsager og asfaltsag check");
 		} else if(e.getSource()==hoytrykkspylerUtstyrCheck) {
 			model.setHoytrykkSpyler(hoytrykkspylerUtstyrCheck.isSelected());
-			System.out.println("Endret hoytrykkspyler check");
+//			System.out.println("Endret hoytrykkspyler check");
 		} else if (e.getSource()==ryddeSagerOgTrimmereCheck) {
 			model.setRyddeSagerOgTrimmere(ryddeSagerOgTrimmereCheck.isSelected());
-			System.out.println("Endret ryddesager og trimmere check");
+//			System.out.println("Endret ryddesager og trimmere check");
 		} else if(e.getSource()==spunteOgPaleutstyrCheck){
 			model.setSpunteOgPaleUtstyr(spunteOgPaleutstyrCheck.isSelected());
-			System.out.println("Endret Spunte og pæleutstyr check");
+//			System.out.println("Endret Spunte og pæleutstyr check");
 		} else if(e.getSource()==mobiltBetongPumpeUtstyr) {
 			model.setMobiltBetongPumpeUtstyr(mobiltBetongPumpeUtstyr.isSelected());
-			System.out.println("Endret mobiltbetongpumpeutstyr check");
+//			System.out.println("Endret mobiltbetongpumpeutstyr check");
 		} else if(e.getSource()==sikkerBrukKontrollAvStillasCheck) {
 			model.setSikkerKontorllAvStillas(sikkerBrukKontrollAvStillasCheck.isSelected());
-			System.out.println("Endret sikkerbruk av stilas check");		
+//			System.out.println("Endret sikkerbruk av stilas check");		
 		} else if(e.getSource()==sikkerBrukAvForskalingCheck) {
 			model.setSikkerBrukAvForskaling(sikkerBrukAvForskalingCheck.isSelected());
-			System.out.println("Endret sikker bruk av forskaling check");
+//			System.out.println("Endret sikker bruk av forskaling check");
 		} else if(e.getSource()==fallsikringutstyrCheck) {
 			model.setFallSikkring(fallsikringutstyrCheck.isSelected());
-			System.out.println("Endret fallsikringsutstyr check");
+//			System.out.println("Endret fallsikringsutstyr check");
 		} else if(e.getSource()==forstehjelpUtstyrCheck) {
 			model.setForsteHjelp(forstehjelpUtstyrCheck.isSelected());
-			System.out.println("Endret forstehjelp utstyr check");
+//			System.out.println("Endret forstehjelp utstyr check");
 		} else if(e.getSource()==annetCheck) {
 			model.setAnnet(annetCheck.isSelected());
-			System.out.println("Endret Annet check");
+//			System.out.println("Endret Annet check");
 		} else if(e.getSource()==verkstedOgLagerPropertyComponent) {
 			model.setVerksetedLagerTekst(verkstedOgLagerPropertyComponent.getText());
-			System.out.println("Endret teksten til verksted og lager");
+//			System.out.println("Endret teksten til verksted og lager");
 		} else if(e.getSource()==spesialKranerPropertyComponent) {
 			model.setSpesialKranerTekst(spesialKranerPropertyComponent.getText());
-			System.out.println("Endret teksten til spesialkran");
+//			System.out.println("Endret teksten til spesialkran");
 		} else if(e.getSource()==personlofterePropertyComponent) {
 			model.setPersonLoftereTekst(personlofterePropertyComponent.getText());
-			System.out.println("Endret personlofter tekst");
+//			System.out.println("Endret personlofter tekst");
 		} else if(e.getSource()==forstehjelpPropertyComponent) {
 			model.setForstehjelpDatoTekst(forstehjelpPropertyComponent.getText());
-			System.out.println("Endret teksten til forstehjelp");
+//			System.out.println("Endret teksten til forstehjelp");
 		} else if(e.getSource()==annetPropertyComponent) {
 			model.setAnnetTekst(annetPropertyComponent.getText());
-			System.out.println("Endret teksten til annet");
+//			System.out.println("Endret teksten til annet");
 		}
 	}
 }

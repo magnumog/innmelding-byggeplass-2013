@@ -80,18 +80,9 @@ public class RegistreringPanelProgram extends JPanel {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
 		frame.getContentPane().add(new RegistreringPanelProgram());
 		frame.setMinimumSize(new Dimension(900, 1000));
-//		frame.setMaximumSize(new Dimension(470, 600));
 		frame.pack();
 		frame.setLocation(0, 100);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		//frame.setBounds(450, 500, 450, 500)
-		
-		/*JFrame frame = new JFrame("Oving 3");
-		frame.getContentPane().add(new RegistreringPanelProgram());
-		frame.pack();
-		frame.setLocation(0, 100);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);*/
 	}
 }

@@ -382,7 +382,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setUnderstandScandinavian(understadnSkandinaviskJaRadio.isSelected());
 			model.setTiltakSpeak(null);
 			model.setTiltakUnderstand(null);
-			System.out.println("You just nulled a bunch of shit");
+//			System.out.println("You just nulled a bunch of shit");
 		}else if(action.getSource() == languageChoise) {
 			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
 		} else if (action.getSource() == namePropertyComponent) {
@@ -412,69 +412,69 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
 			if(action.getSource()==understadnSkandinaviskJaRadio) {
 				model.setUnderstandScandinavian(true);
-				System.out.println("Endret understand -- true");
+//				System.out.println("Endret understand -- true");
 			} else {
 				model.setUnderstandScandinavian(false);
-				System.out.println("Endret understand -- false");
+//				System.out.println("Endret understand -- false");
 			}
 			System.out.println("Endret understand"); 
 		} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
 			if(action.getSource() == speakSkadinvaiskJaRadio) {
 				model.setSpeakScandinavian(true);
-				System.out.println("Endret Speak -- true");
+//				System.out.println("Endret Speak -- true");
 			} else {
 				model.setSpeakScandinavian(false);
-				System.out.println("Endret speak -- false");
+//				System.out.println("Endret speak -- false");
 			}
-			System.out.println("Endret speak");
+//			System.out.println("Endret speak");
 		} else if(action.getSource() == speakTiltakPropertyComponent) {
 			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
-			System.out.println("Endret tiltak speak");
+//			System.out.println("Endret tiltak speak");
 		} else if(action.getSource() == understandTiltakPropertyComponent) {
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
-			System.out.println("Endret tiltak understand");
+//			System.out.println("Endret tiltak understand");
 		}
 
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("hendelse");
+//		System.out.println("hendelse");
 		if(evt.getPropertyName() == Personalia.NAME_PROPERTY) {
 			namePropertyComponent.setText(model.getName());
-			System.out.println("Navn endret");
+//			System.out.println("Navn endret");
 		} else if (evt.getPropertyName() == Personalia.DATE_PROPERTY) {
 			dateOfBirthpropertyComponent.setText(model.getDateOfBirth());
-			System.out.println("Endret dateOfBirth");
+//			System.out.println("Endret dateOfBirth");
 		} else if (evt.getPropertyName() == Personalia.ID_CARDNUMBER) {
 			idCardPropertyComponent.setText(model.getIdCardNr());
-			System.out.println("Endret id_cardNumber"); 
+//			System.out.println("Endret id_cardNumber"); 
 		} else if (evt.getPropertyName() == Personalia.ID_EXPIRATION) {
 			idExpiresPropertyComponent.setText(model.getIdexpireDate());
-			System.out.println("Endret id_expirationdate"); 
+//			System.out.println("Endret id_expirationdate"); 
 		} else if (evt.getPropertyName() == Personalia.ADRESS_PROPERTY) {
 			adressPropertyComponent.setText(model.getAdresse());
-			System.out.println("Endret adresse"); 
+//			System.out.println("Endret adresse"); 
 		} else if (evt.getPropertyName() == Personalia.POSTALNR_PROPERTY) {
 			postNrPropertyComponent.setText(model.getPostalNr());
-			System.out.println("Endret postnr"); 
+//			System.out.println("Endret postnr"); 
 		} else if (evt.getPropertyName() == Personalia.POSTALPLACE_PROPERTY) {
 			postPlacePropertyComponent.setText(model.getPostalPlace());
-			System.out.println("Endret poststed"); 
+//			System.out.println("Endret poststed"); 
 		} else if (evt.getPropertyName() == Personalia.PHONE_PROPERTY) {
 			phonePropertyComponent.setText(model.getPhoneNr());
-			System.out.println("Endret TelefonNr"); 
+//			System.out.println("Endret TelefonNr"); 
 		} else if (evt.getPropertyName() == Personalia.EMPLOYER_PROPERTY) {
 			employeePropertyComponent.setText(model.getEmployeer());
-			System.out.println("Endret employee"); 
+//			System.out.println("Endret employee"); 
 		} else if (evt.getPropertyName() == Personalia.EMPLOYERPHONE_PROPERTY) {
 			employeePhonePropertyComponent.setText(model.getEmployeerPhone());
-			System.out.println("Endret employeePhone"); 
+//			System.out.println("Endret employeePhone"); 
 		} else if (evt.getPropertyName() == Personalia.NEXTTO_PROPERTY) {
 			nextToKindPropertyComponent.setText(model.getNextToKind());
-			System.out.println("Endret nextToKind"); 
+//			System.out.println("Endret nextToKind"); 
 		} else if (evt.getPropertyName() == Personalia.NEXTTOPHONE_PROPERTY) {
 			nextToKindPhonePropertyComponent.setText(model.getNextToKindPhone());
-			System.out.println("Endret nextToPhone"); 
+//			System.out.println("Endret nextToPhone"); 
 		} else if(evt.getPropertyName() == Personalia.SPEAKSVANDINAVIAN_PROPERTY) {
 			speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
 //			speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
@@ -483,10 +483,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 //			understadnSkandinaviskNeiRadio.setSelected(!model.isUnderstandScandinavian());
 		} else if(evt.getPropertyName() == Personalia.TILTAKSPEAK_PROPERTY) {
 			speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
-			System.out.println("Endret speak tiltak");
+//			System.out.println("Endret speak tiltak");
 		} else if(evt.getPropertyName() == Personalia.TILTAKUNDERSTAND_PROPERTY) {
 			understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
-			System.out.println("Endret understand tiltak");
+//			System.out.println("Endret understand tiltak");
 		}
 	}
 }

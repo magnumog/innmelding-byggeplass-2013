@@ -97,7 +97,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("Hendelse");
+//		System.out.println("Hendelse");
 		if(evt.getPropertyName() == ModulEn.MODULENJA_PROPERTY) {
 			modulEnJaRadio.setSelected(model.isModulEnJaSvar());
 		} else if(evt.getPropertyName() == ModulEn.MODULENNEI_PROPERTY) {
