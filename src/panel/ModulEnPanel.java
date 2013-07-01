@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import database.DBConnection;
+import database.DBInnsertion;
 
 import modell.ModulEn;
 
@@ -32,7 +32,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 	protected JTextField modulEnJaDato,modulEnNeiFrist;
 	protected JLabel modulEnInfo;
 	
-	protected JButton Neste,nullstill;
+	protected static JButton Neste,nullstill;
 	
 	ModulEn model = null;
 	
@@ -71,7 +71,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		add(Neste);
 		c.gridx=2;
 		add(nullstill);
-		Neste.setVisible(true);
+		Neste.setVisible(false);
 		nullstill.setVisible(false);
 		
 		modulEnJaDato.addActionListener(this);
@@ -123,9 +123,9 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 			model.setModulEnNeiFrist(modulEnNeiFrist.getText());
 			try {
 				if(model.isModulEnJaSvar()) {
-					DBConnection.createModulEN(model.isModulEnJaSvar(), model.getModulEnJADato());					
+					DBInnsertion.createModulEN(model.isModulEnJaSvar(), model.getModulEnJADato());					
 				} else {
-					DBConnection.createModulEN(model.isModulEnJaSvar(), model.getModulEnNeiFrist());
+					DBInnsertion.createModulEN(model.isModulEnJaSvar(), model.getModulEnNeiFrist());
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

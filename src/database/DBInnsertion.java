@@ -9,7 +9,7 @@ package database;
 
 import java.sql.*;
 
-public class DBConnection {
+public class DBInnsertion {
 	private static java.sql.Connection connection = null;
 	private static Statement statement = null;
 	private static PreparedStatement preparedStatement = null;
@@ -19,7 +19,7 @@ public class DBConnection {
 		id = nyId;
 	}
 
-	public DBConnection() {
+	public DBInnsertion() {
 	}
 
 	public static void createPersonalia(String id, String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {

@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import database.DBConnection;
+import database.DBInnsertion;
 
 import modell.BekreftMedbrakt;
 
@@ -24,7 +24,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	protected JTextField datoBekreftet, navnPaaArbeidstaker;
 	protected JLabel datoLabel, arbeidsgiverLabel;
 	
-	protected JButton neste;
+	protected static JButton neste;
 	
 	BekreftMedbrakt model = null;
 	
@@ -61,6 +61,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		add(navnPaaArbeidstaker,c);
 		c.gridy=3;
 		add(neste,c);
+		neste.setVisible(false);
 		
 		harMedVerneUtstyr.addActionListener(this);
 		tillgjengeligVerneUtstyr.addActionListener(this);
@@ -109,7 +110,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 			model.setPabudtVerneutstyr(harMedVerneUtstyr.isSelected());
 			model.setTilgjengeligVerneutstyr(tillgjengeligVerneUtstyr.isSelected());
 			try {
-				DBConnection.createVerneutstyr(model.isPabudtVerneutstyr(), model.isTilgjengeligVerneutstyr(), model.getDato(), model.getNavnPaaArbeidgiver());
+				DBInnsertion.createVerneutstyr(model.isPabudtVerneutstyr(), model.isTilgjengeligVerneutstyr(), model.getDato(), model.getNavnPaaArbeidgiver());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

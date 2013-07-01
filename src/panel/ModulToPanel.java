@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
-import database.DBConnection;
+import database.DBInnsertion;
 
 import modell.ModulTo;
 
@@ -20,7 +20,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	private static final long serialVersionUID = 1L;
 	protected JCheckBox fravar, bedriftsikkerhetsinstruks, gjennomfortModulTo, klistremerkeModulEn, veidekkesReaksjonsMonster, avviskblokkOgRisikovurdering, SHAplan;
 	
-	protected JButton neste;
+	protected static JButton neste;
 	
 	ModulTo model = null;
 //	DBConnection conn = new DBConnection();
@@ -120,7 +120,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 			model.setUnderskrevetsikkerhetsinstruks(bedriftsikkerhetsinstruks.isSelected());
 			model.setUtdeltBlokkLopendeRisiko(avviskblokkOgRisikovurdering.isSelected());
 			try {
-				DBConnection.createModulTo(model.isFravaroppfolging(), model.isUnderskrevetsikkerhetsinstruks(), model.isGjennomfortModulTo(), model.isKlistremerkeModulEn(), model.isInneforstattMedReaksjonsmonster(), model.isUtdeltBlokkLopendeRisiko(), model.isSHAPlan());
+				DBInnsertion.createModulTo(model.isFravaroppfolging(), model.isUnderskrevetsikkerhetsinstruks(), model.isGjennomfortModulTo(), model.isKlistremerkeModulEn(), model.isInneforstattMedReaksjonsmonster(), model.isUtdeltBlokkLopendeRisiko(), model.isSHAPlan());
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

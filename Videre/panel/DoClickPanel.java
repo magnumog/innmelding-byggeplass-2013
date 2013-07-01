@@ -13,11 +13,6 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JButton neste;
 	
-	KursPanel kurspanel = new KursPanel();
-	ModulEnPanel modulEnPanel = new ModulEnPanel();
-	PersonaliaPanel personaliaPanel = new PersonaliaPanel();
-	SertifikatPanel sertifikatpanel = new SertifikatPanel();	
-	
 	public DoClickPanel() {
 		neste = new JButton("Neste");
 		neste.addActionListener(this);
@@ -38,5 +33,11 @@ public class DoClickPanel extends JPanel implements ActionListener {
 		if(e.getSource() == neste) {
 			System.out.println("du trykket");
 		}
+		PersonaliaPanel.Neste.doClick();
+		ModulEnPanel.Neste.doClick();
+		SertifikatPanel.neste.doClick();
+		KursPanel.Neste.doClick();
+		BekreftMedbraktPanel.neste.doClick();
+		ModulToPanel.neste.doClick();
 	}
 }

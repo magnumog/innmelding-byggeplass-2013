@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
-import database.DBConnection;
+import database.DBInnsertion;
 import modell.Personalia;
 
 
@@ -42,7 +42,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	
 	
 	//GUI knapper
-	public JButton Neste,nullstill;
+	public static JButton Neste,nullstill;
 
 	Personalia model = null;
 	
@@ -218,7 +218,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx=1;
 		c.gridy=16;
 		add(Neste,c);
-		Neste.setVisible(true);
+		Neste.setVisible(false);
 		
 		
 
@@ -351,9 +351,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 			try {
-				DBConnection.setID(Integer.parseInt(model.getIdCardNr()));
-				DBConnection.createPersonalia(model.getIdCardNr(), model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
-				DBConnection.createSprak(model.getIdCardNr(), model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
+				DBInnsertion.setID(Integer.parseInt(model.getIdCardNr()));
+				DBInnsertion.createPersonalia(model.getIdCardNr(), model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
+				DBInnsertion.createSprak(model.getIdCardNr(), model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
 			} catch (Exception e) {
