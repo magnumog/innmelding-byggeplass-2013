@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import database.DBInnsertion;
@@ -38,13 +39,19 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == neste) {
+			try {
+				DBInnsertion.getCount();				
+			} catch(Exception e1) {
+				e1.printStackTrace();
+			}
 			PersonaliaPanel.Neste.doClick();
 			ModulEnPanel.Neste.doClick();
 			SertifikatPanel.neste.doClick();
 			KursPanel.Neste.doClick();
 			BekreftMedbraktPanel.neste.doClick();
 			ModulToPanel.neste.doClick();
-//			System.out.println("du trykket");
+			System.out.println("Dataene er oppdatert i databasen");
+//			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
 			try {
 				DBInnsertion.creatRegDato(dateFormat.format(date));				
 			} catch (Exception e1) {

@@ -86,7 +86,7 @@ public class DBInnsertion {
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO ModulEn(id, Gjennomført, Dato) VALUES(?,?,?)");
-			System.out.println("" + id + gjennomfort + dato);
+//			System.out.println("" + id + gjennomfort + dato);
 			preparedStatement.setInt(1, id);
 			preparedStatement.setBoolean(2, gjennomfort);
 			preparedStatement.setString(3, dato);
@@ -253,5 +253,22 @@ public class DBInnsertion {
 			statement.close();
 			connection.close();
 		}
+	}
+	
+	public static void getCount() throws Exception {
+		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;	
+		connection = DriverManager.getConnection(database,"","");
+		statement = connection.createStatement();
+		ResultSet rs = statement.executeQuery("SELECT Count(*) AS Antall From Personalia;");
+		while(rs.next()) {
+			int antall = rs.getInt("Antall");
+			setID(antall);
+			System.out.println("Count: " + antall);
+		}
+		rs.close();
+		statement.close();
+		connection.close();
 	}
 }

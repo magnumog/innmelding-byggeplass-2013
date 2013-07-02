@@ -36,7 +36,7 @@ public class DBSetup {
 			}
 
 			tableName = "Sprak";
-			createTabel = "CREATE TABLE " + tableName + " (id Integer, Snakker BIT, Forstar BIT, SnakkeTiltak Text(50), ForstaTiltak Text(50), Primary key (id))";
+			createTabel = "CREATE TABLE " + tableName + " (id Integer, Snakker BIT, Forstar BIT, SnakkeTiltak Text(100), ForstaTiltak Text(100), Primary key (id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("sprak createt");

@@ -123,14 +123,16 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 0;
 		c.gridy = 9;
 		add(employeerLabel,c);
-		c.gridx = 0;
-		c.gridy = 10;
+		c.insets = new Insets(2,2,2,2);
+		c.gridx = 2;
+		c.gridy = 9;
 		add(employerPhoneLabel,c);
 		c.gridx = 0;
 		c.gridy = 11;
 		add(nextToKindNameLabel,c);
-		c.gridx = 0;
-		c.gridy = 12;
+//		c.anchor = GridBagConstraints.WEST;
+		c.gridx = 2;
+		c.gridy = 11;
 		add(nextToKindPhoneLabel,c);
 		c.gridx=0;
 		c.gridy=13;
@@ -167,30 +169,38 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 9;
 		add(employeePropertyComponent,c);
-		c.gridx = 1;
-		c.gridy = 10;
+		c.insets = new Insets(2,2,2,2);
+		c.gridx = 3;
+		c.gridy = 9;
 		add(employeePhonePropertyComponent,c);
+		c.insets = new Insets(2,2,2,2);
 		c.gridx = 1;
 		c.gridy = 11;
 		add(nextToKindPropertyComponent,c);
-		c.gridx = 1;
-		c.gridy = 12;
+		c.gridx = 3;
+		c.gridy = 11;
 		add(nextToKindPhonePropertyComponent,c);
 		c.gridx=1;
 		c.gridy=13;
 		add(speakSkadinvaiskJaRadio,c);
-		c.anchor=GridBagConstraints.EAST;
+		c.insets = new Insets(1, 60, 1, 1);
+//		c.anchor=GridBagConstraints.EAST;
 		c.gridx=1;
 		c.gridy=13;
 		add(speakSkadinvaiskNeiRadio,c);
 		c.anchor=GridBagConstraints.WEST;
+		c.insets = new Insets(2, 2, 2, 2);
 		c.gridx=1;
 		c.gridy=14;
 		add(understadnSkandinaviskJaRadio,c);
-		c.anchor=GridBagConstraints.EAST;
+		c.insets = new Insets(1, 60, 1, 1);
+//		c.anchor=GridBagConstraints.EAST;
 		c.gridx=1;
 		c.gridy=14;
 		add(understadnSkandinaviskNeiRadio,c);
+		c.anchor = GridBagConstraints.WEST;
+		c.insets = new Insets(2, 2, 2, 2);
+		c.gridwidth=2;
 		c.gridx=2;
 		c.gridy=13;
 		add(speakTiltakLabel,c);
@@ -198,10 +208,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridy=14;
 		add(understandTiltakLabel,c);
 		c.anchor = GridBagConstraints.WEST;
-		c.gridx=3;
+		c.insets = new Insets(1, 85, 1, 1);
+		c.gridx=2;
 		c.gridy=13;
 		add(speakTiltakPropertyComponent, c);
-		c.gridx=3;
+		c.gridx=2;
 		c.gridy=14;
 		add(understandTiltakPropertyComponent,c);
 		
@@ -245,11 +256,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		employeerLabel = new JLabel("Arbeidsgiver: ");
 		employeePropertyComponent = new JTextField(15);
 		employerPhoneLabel = new JLabel("Arbeidsgivers telefon: ");
-		employeePhonePropertyComponent = new JTextField(15);
+		employeePhonePropertyComponent = new JTextField(10);
 		nextToKindNameLabel = new JLabel("Nærmeste pårørende: ");
 		nextToKindPropertyComponent = new JTextField(15);
-		nextToKindPhoneLabel = new JLabel("Telefon/Mobil til nærmeste pårørende: ");
-		nextToKindPhonePropertyComponent = new JTextField(	10);
+		nextToKindPhoneLabel = new JLabel("Telefon til nærmeste pårørende: ");
+		nextToKindPhonePropertyComponent = new JTextField(10);
 		selectLanguageLabel = new JLabel("Velg Språk/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
 		
@@ -266,9 +277,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		speakSkandinavisk.add(speakSkadinvaiskNeiRadio);
 		understandSkandinavisk.add(understadnSkandinaviskJaRadio);
 		understandSkandinavisk.add(understadnSkandinaviskNeiRadio);
-		understandTiltakPropertyComponent = new JTextField(5);
-		speakTiltakPropertyComponent = new JTextField(5);
-		understandTiltakLabel = new JLabel("Ved nei, tiltak; ");
+		understandTiltakPropertyComponent = new JTextField(19);
+		speakTiltakPropertyComponent = new JTextField(19);
+		understandTiltakLabel = new JLabel("Ved nei, tiltak: ");
 		speakTiltakLabel = new JLabel("Ved nei, tiltak: ");
 		
 		
@@ -333,7 +344,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			return;
 		}
 		if(action.getSource() == Neste) {
-			System.out.println("Du trykket på knappen");
+//			System.out.println("Du trykket på knappen");
 			model.setName(namePropertyComponent.getText());
 			model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
 			model.setIdCardNr(idCardPropertyComponent.getText());
@@ -351,7 +362,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 			try {
-				DBInnsertion.setID(Integer.parseInt(model.getIdCardNr()));
+				DBInnsertion.getCount();
+//				DBInnsertion.setID(Integer.parseInt(model.getIdCardNr()));
 				DBInnsertion.createPersonalia(model.getIdCardNr(), model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
 				DBInnsertion.createSprak(model.getIdCardNr(), model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
@@ -384,7 +396,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakUnderstand(null);
 //			System.out.println("You just nulled a bunch of shit");
 		}else if(action.getSource() == languageChoise) {
-			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
+//			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
 		} else if (action.getSource() == namePropertyComponent) {
 			model.setName(namePropertyComponent.getText());
 		} else if(action.getSource() == dateOfBirthpropertyComponent) {
@@ -412,18 +424,26 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
 			if(action.getSource()==understadnSkandinaviskJaRadio) {
 				model.setUnderstandScandinavian(true);
+				understandTiltakPropertyComponent.setVisible(false);
+				understandTiltakLabel.setVisible(false);
 //				System.out.println("Endret understand -- true");
-			} else {
+			} else if(action.getSource() == understadnSkandinaviskNeiRadio) {
 				model.setUnderstandScandinavian(false);
+				understandTiltakPropertyComponent.setVisible(true);
+				understandTiltakLabel.setVisible(true);
 //				System.out.println("Endret understand -- false");
 			}
 			System.out.println("Endret understand"); 
 		} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
 			if(action.getSource() == speakSkadinvaiskJaRadio) {
 				model.setSpeakScandinavian(true);
+				speakTiltakLabel.setVisible(false);
+				speakTiltakPropertyComponent.setVisible(false);
 //				System.out.println("Endret Speak -- true");
 			} else {
 				model.setSpeakScandinavian(false);
+				speakTiltakLabel.setVisible(true);
+				speakTiltakPropertyComponent.setVisible(true);
 //				System.out.println("Endret speak -- false");
 			}
 //			System.out.println("Endret speak");

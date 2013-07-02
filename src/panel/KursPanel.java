@@ -309,7 +309,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("Hendelse");
+//		System.out.println("Hendelse");
 		if(evt.getPropertyName() == Kurs.VERKSTEDOGLAGER_PROPERTY) {
 			verkstedOgLagerCheck.setSelected(model.isVerkstedOgLager());
 		} else if(evt.getPropertyName() == Kurs.SPESIALKRANER_PROPERTY) {
