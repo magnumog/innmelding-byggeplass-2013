@@ -7,7 +7,6 @@ package panel;
  **/
 
 import gui.Language;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -38,6 +37,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JTextField speakTiltakPropertyComponent,understandTiltakPropertyComponent;
 	protected JLabel speakTiltakLabel,understandTiltakLabel;
 	
+	protected ImageIcon veidekke = new ImageIcon("C:/workspace/innmelding-byggeplass-2013/src/panel/Veidekke-logo.jpg");
+	protected JLabel logo = new JLabel(veidekke);
+	
 	boolean speakingSkandinavisk, understandingSkandinavisk;
 	
 	
@@ -49,6 +51,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 //	DBConnection conn = new DBConnection();
 
 	public PersonaliaPanel() {
+		logo.setSize(1, 1);
 		createComponents();
 		addactionListeners();
 		layGUI();
@@ -216,6 +219,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridy=14;
 		add(understandTiltakPropertyComponent,c);
 		
+//		c.gridx=4;
+//		c.gridy=0;
+//		c.gridheight=12;
+//		c.gridwidth=4;
+//		add(logo,c);
+		
 		c.anchor = GridBagConstraints.WEST;
 		c.gridx=1;
 		c.gridy=15;
@@ -363,9 +372,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
 			try {
 				DBInnsertion.getCount();
-//				DBInnsertion.setID(Integer.parseInt(model.getIdCardNr()));
-				DBInnsertion.createPersonalia(model.getIdCardNr(), model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
-				DBInnsertion.createSprak(model.getIdCardNr(), model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
+				DBInnsertion.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
+				DBInnsertion.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
 			} catch (Exception e) {

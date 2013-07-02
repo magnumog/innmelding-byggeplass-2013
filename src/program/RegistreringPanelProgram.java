@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import database.DBSetup;
 import panel.BekreftMedbraktPanel;
@@ -66,7 +67,7 @@ public class RegistreringPanelProgram extends JPanel {
 		add(registreringPanel);
 		add(modulEnPanel);
 		add(sertifikatPanel);
-//		add(kursPanel);
+		add(kursPanel);
 		add(medbraktPanel);
 		add(modulToPanel);
 		add(doClickPanel);
@@ -78,10 +79,16 @@ public class RegistreringPanelProgram extends JPanel {
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Registrering av personell på prosjekt");
+//		JPanel p = new JPanel();
+//		JScrollPane scrollframe = new JScrollPane(new RegistreringPanelProgram());
+//		frame.add(p);
+//		p.setVisible(true);
 		frame.getContentPane().add(new RegistreringPanelProgram());
+//		frame.add(scrollframe);
 		frame.setMinimumSize(new Dimension(900, 1000));
 		frame.pack();
-		frame.setLocation(0, 100);
+		frame.setSize(900, 1000);//Denne som må brukes for å bestemme hvor stort vinduet skal være!
+		frame.setLocation(400, 100);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	}

@@ -22,7 +22,7 @@ public class DBInnsertion {
 	public DBInnsertion() {
 	}
 
-	public static void createPersonalia(String idstr, String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {
+	public static void createPersonalia(String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
@@ -31,7 +31,7 @@ public class DBInnsertion {
 			statement = connection.createStatement();
 
 			preparedStatement = connection.prepareStatement("INSERT INTO Personalia(id, Navn, FødselsDato, IDkortnummer, Utløpsdato_ID_kort, Adresse, PostNr, PostSted, TelefornNr, Arbeidsgiver, ArbeidsgiverTelefon, NærmestePårørende, NærmestePårørendeTelefon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			preparedStatement.setInt(1,Integer.parseInt(idstr));
+			preparedStatement.setInt(1,id);
 			preparedStatement.setString(2, name);
 			preparedStatement.setString(3, fdato);
 			preparedStatement.setString(4, idKort);
@@ -54,7 +54,7 @@ public class DBInnsertion {
 		}
 	}
 
-	public static void createSprak(String idstr, boolean snakker, boolean forstar, String snakkeTiltak, String forstaTiltak) throws Exception {
+	public static void createSprak(boolean snakker, boolean forstar, String snakkeTiltak, String forstaTiltak) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
@@ -62,7 +62,7 @@ public class DBInnsertion {
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO Sprak(id, Snakker, Forstar, SnakkeTiltak, ForstaTiltak) VALUES (?,?,?,?,?)");
-			preparedStatement.setInt(1, Integer.parseInt(idstr));
+			preparedStatement.setInt(1, id);
 			preparedStatement.setBoolean(2, snakker);
 			preparedStatement.setBoolean(3, forstar);
 			preparedStatement.setString(4, snakkeTiltak);
@@ -264,7 +264,7 @@ public class DBInnsertion {
 		ResultSet rs = statement.executeQuery("SELECT Count(*) AS Antall From Personalia;");
 		while(rs.next()) {
 			int antall = rs.getInt("Antall");
-			setID(antall);
+			setID((antall+1));
 			System.out.println("Count: " + antall);
 		}
 		rs.close();
