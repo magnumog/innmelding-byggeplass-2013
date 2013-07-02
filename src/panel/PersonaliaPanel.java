@@ -37,8 +37,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	protected JTextField speakTiltakPropertyComponent,understandTiltakPropertyComponent;
 	protected JLabel speakTiltakLabel,understandTiltakLabel;
 	
-	protected ImageIcon veidekke = new ImageIcon("C:/workspace/innmelding-byggeplass-2013/src/panel/Veidekke-logo.jpg");
-	protected JLabel logo = new JLabel(veidekke);
+//	protected ImageIcon veidekke = new ImageIcon("C:/workspace/innmelding-byggeplass-2013/src/panel/Veidekke-logo.jpg");
+//	protected JLabel logo = new JLabel(veidekke);
 	
 	boolean speakingSkandinavisk, understandingSkandinavisk;
 	
@@ -51,7 +51,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 //	DBConnection conn = new DBConnection();
 
 	public PersonaliaPanel() {
-		logo.setSize(1, 1);
 		createComponents();
 		addactionListeners();
 		layGUI();
@@ -211,9 +210,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridy=14;
 		add(understandTiltakLabel,c);
 		c.anchor = GridBagConstraints.WEST;
-		c.insets = new Insets(1, 85, 1, 1);
 		c.gridx=2;
 		c.gridy=13;
+		c.insets = new Insets(1, 85, 1, 1);
 		add(speakTiltakPropertyComponent, c);
 		c.gridx=2;
 		c.gridy=14;
@@ -222,7 +221,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 //		c.gridx=4;
 //		c.gridy=0;
 //		c.gridheight=12;
-//		c.gridwidth=4;
+//		c.gridwidth=1;
 //		add(logo,c);
 		
 		c.anchor = GridBagConstraints.WEST;
