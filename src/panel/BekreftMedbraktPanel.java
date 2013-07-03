@@ -31,8 +31,8 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 //	DBConnection conn = new DBConnection();
 	
 	public BekreftMedbraktPanel() {
-		harMedVerneUtstyr = new JCheckBox("Påbudt verneutstyr: Hjelm(Standard: EN397) og vernesko(Standard: EN345(EN ISO20345)) med spikertrampsåle.");
-		tillgjengeligVerneUtstyr = new JCheckBox("Alltid tilgengelig: Hørselvern, øyevern, arbeidshansker og ved behov Åndedrettsvern, kjemikalie-/kuttreduserende-/spesialhansker og synbarhetstøy");
+		harMedVerneUtstyr = new JCheckBox("<html>Påbudt verneutstyr: Hjelm(Standard: EN397)<br> og vernesko(Standard: EN345(EN ISO20345)) med spikertrampsåle.</html>");
+		tillgjengeligVerneUtstyr = new JCheckBox("<html>Alltid tilgengelig: Hørselvern, øyevern, arbeidshansker<br> og ved behov Åndedrettsvern, kjemikalie-/kuttreduserende-/spesialhansker og synbarhetstøy</html>");
 		datoBekreftet = new JTextField(8);
 		navnPaaArbeidstaker = new JTextField(15);
 		datoLabel = new JLabel("Dato:");

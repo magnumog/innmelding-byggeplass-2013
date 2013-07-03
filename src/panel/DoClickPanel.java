@@ -21,7 +21,7 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	java.util.Date date = new java.util.Date();
 	
 	public DoClickPanel() {
-		neste = new JButton("Neste");
+		neste = new JButton("Lagre og Avslutt");
 		neste.addActionListener(this);
 		
 		GridBagConstraints c;
@@ -39,19 +39,21 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == neste) {
-			PersonaliaPanel.Neste.doClick();
-			ModulEnPanel.Neste.doClick();
-			SertifikatPanel.neste.doClick();
-			KursPanel.Neste.doClick();
-			BekreftMedbraktPanel.neste.doClick();
-			ModulToPanel.neste.doClick();
-			System.out.println("Dataene er oppdatert i databasen");
-			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
 			try {
+				PersonaliaPanel.Neste.doClick();
+				ModulEnPanel.Neste.doClick();
+				SertifikatPanel.neste.doClick();
+				KursPanel.Neste.doClick();
+				BekreftMedbraktPanel.neste.doClick();
+				ModulToPanel.neste.doClick();
 				DBInnsertion.creatRegDato(dateFormat.format(date));				
 			} catch (Exception e1) {
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Noe feil skjedde når dataene skulle overføres til databsen");
 			}
+			System.out.println("Dataene er oppdatert i databasen");
+			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
+			System.exit(0);
 		}
 	}
 }
