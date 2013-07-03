@@ -14,6 +14,7 @@ public class DBInnsertion {
 	private static Statement statement = null;
 	private static PreparedStatement preparedStatement = null;
 	public static int id = 0;
+	static String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
 
 	public static void setID(int nyId) {
 		id = nyId;
@@ -25,8 +26,7 @@ public class DBInnsertion {
 	public static void createPersonalia(String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 
@@ -57,8 +57,7 @@ public class DBInnsertion {
 	public static void createSprak(boolean snakker, boolean forstar, String snakkeTiltak, String forstaTiltak) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO Sprak(id, Snakker, Forstar, SnakkeTiltak, ForstaTiltak) VALUES (?,?,?,?,?)");
@@ -81,8 +80,7 @@ public class DBInnsertion {
 	public static void createModulEN(boolean gjennomfort, String dato) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO ModulEn(id, Gjennomført, Dato) VALUES(?,?,?)");
@@ -102,8 +100,7 @@ public class DBInnsertion {
 	public static void createSertifikat(boolean forerkort, boolean grunnopplaring, boolean maskin, boolean arbeidsvarsling, boolean varme, boolean trukKran, String forerKlasser, String  maskinKlasser, String arbeidsVarslingKurs, String varmeArbeiderDato, String truckKranBevis) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO Sertifikat(id, Førerkort, GrunnopplæringIArbeidsmiljø, Maskinførerbevis, Arbeidsvarslingskurs, VarmeArbeider, TruckKranførerBevis, FørerkortKlasser, MaskinførerKlasser, ArbeidsVarslingsKursNr, VarmeArbeiderUtløpDato, TruckKranBevis) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -131,8 +128,7 @@ public class DBInnsertion {
 	public static void createKurs(boolean verksted, String verksteTekst, boolean speskran, String speskranTekst, boolean vinsjer, boolean anhuk, boolean klatreHenge, boolean perslofter, String personlofterTekst, boolean personUnderJord, boolean borvognerTunnel, boolean selvgandeValse, boolean traktorUts, boolean vinkelsliper, boolean boltepistol, boolean spikerpistol, boolean kobihammer, boolean kjedesag, boolean kappKlyveGjerde, boolean bindeMaskin, boolean vibrostav, boolean handholdtArmerinKap, boolean skjarebrenner, boolean sponbrytende, boolean slipemaskin, boolean trebearbeidng, boolean asfaltarbeider, boolean betonsgerKjernebor, boolean veggsager, boolean vaiersag, boolean gulvSagAsfaltSag, boolean hoytrykk, boolean ryddesag, boolean spuntePæleutstyr, boolean mobilBetong, boolean sikkerStilas, boolean sikkerForskaling, boolean fallsikring, boolean forestehjelp, String forstehjelpDato, boolean annet, String annetTekst) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO Kurs(id, VerksetdOgLager, VerkstedOgLagerType, SpesialKraner, SpesialKranerType, VinsjerOgTaljer, AnhukingStroppingSignalgiving, KlatreOgHengeStilaser, PersonLøftere, PersonløftereKlasse, PersonløfterUnderJord, BorVognerOgTunnelrigger, "+
@@ -194,8 +190,7 @@ public class DBInnsertion {
 	public static void createVerneutstyr(boolean pabudt, boolean tilgjengelig, String dato, String arbeidsgivernavn) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO VerneUtstyr(id, Påbudtverneutstyr, Tilgjengeligverneutstyr, Dato, ArbeidsGiverUnderskrift) VALUES(?,?,?,?,?)");
@@ -216,8 +211,7 @@ public class DBInnsertion {
 	public static void createModulTo(boolean fravar, boolean sikkerhet, boolean gjennomfortModulTo, boolean klistremerkeModulEn, boolean reaksjonsmonster, boolean avviksblokk, boolean shaplan) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO ModulTo(id, infoOmFravær, SkrevetunderSikkerhetsinstruks, GjennomførtModulTo, KlistremerkeModulEn, ForstårVeidekkesReaksjon, UtdeltblokkOgRisikovurdering, KjentMedSHA_Plan) VALUES(?,?,?,?,?,?,?,?)");
@@ -241,8 +235,7 @@ public class DBInnsertion {
 	public static void creatRegDato(String regDato) throws Exception {
 		if(id!=0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-			String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;
+			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO RegistreingsDato(id,dato) VALUES(?,?)");
@@ -257,8 +250,7 @@ public class DBInnsertion {
 	
 	public static void getCount() throws Exception {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-		String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
-		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + filename;	
+		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 		connection = DriverManager.getConnection(database,"","");
 		statement = connection.createStatement();
 		ResultSet rs = statement.executeQuery("SELECT Count(*) AS Antall From Personalia;");

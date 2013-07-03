@@ -133,6 +133,11 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 		truckKranPropertyComponent = new JTextField(5);
 		neste = new JButton("Neste");
 		nullstill = new JButton("Nullstill");
+		driverLicensePropertyComponent.setEditable(false);
+		maskinForerPropertyComponent.setEditable(false);
+		arbeidsVarslingPropertyComponent.setEditable(false);
+		varmeArbeiderPropertyComponent.setEditable(false);
+		truckKranPropertyComponent.setEditable(false);
 	}
 	
 	public void setModel(Sertifikat model) {
@@ -226,6 +231,10 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 //				System.out.println("TRUCK/KRANFORER:" + model.isTruckKranForer() + " TRUCK/KRANFORERBEVIS:" + model.getTruckKranForerBevis());	
 			} else if(a.getSource()==driversLicenseCheck) {
 				model.setForerkort(driversLicenseCheck.isSelected());
+				if(driversLicenseCheck.isSelected()) {
+					driverLicensePropertyComponent.setEditable(true);
+				} else
+					driverLicensePropertyComponent.setEditable(false);
 //				System.out.println("Endret Forerkort");
 			} else if(a.getSource() == driverLicensePropertyComponent) {
 				model.setForerkortKlasser(driverLicensePropertyComponent.getText());
@@ -235,24 +244,40 @@ public class SertifikatPanel extends JPanel implements ActionListener,PropertyCh
 //				System.out.println("Endret Grunnopplaring");
 			} else if(a.getSource() == maskinforerCheck) {
 				model.setMaskinForerBevis(maskinforerCheck.isSelected());
+				if(maskinforerCheck.isSelected()) {
+					maskinForerPropertyComponent.setEditable(true);
+				} else
+					maskinForerPropertyComponent.setEditable(false);
 //				System.out.println("Endret maskinforer");
 			} else if(a.getSource() == maskinForerPropertyComponent) {
 				model.setMaskinForerKlasser(maskinForerPropertyComponent.getText());
 //				System.out.println("Endret maskinforer tekst");
 			} else if(a.getSource() == arbeidsVarslingCheck) {
 				model.setArbeidsVarsling(arbeidsVarslingCheck.isSelected());
+				if(arbeidsVarslingCheck.isSelected()) {
+					arbeidsVarslingPropertyComponent.setEditable(true);
+				} else
+					arbeidsVarslingPropertyComponent.setEditable(false);
 //				System.out.println("Endret arbeidsvarsling");
 			} else if(a.getSource() == arbeidsVarslingPropertyComponent) {
 				model.setArbeidsVarslingKurs(arbeidsVarslingPropertyComponent.getText());
 //				System.out.println("Endret arbeidsvarsling tekst");
 			} else if(a.getSource() == varmeArbeiderCheck) {
 				model.setVarmeArbeider(varmeArbeiderCheck.isSelected());
+				if(varmeArbeiderCheck.isSelected()) {
+					varmeArbeiderPropertyComponent.setEditable(true);
+				} else
+					varmeArbeiderPropertyComponent.setEditable(false);
 //				System.out.println("Endrt varmearbeider");
 			} else if(a.getSource() == varmeArbeiderPropertyComponent) {
 				model.setVarmeArbeiderdato(varmeArbeiderPropertyComponent.getText());
 //				System.out.println("Endret Varmearbeider tekst");
 			} else if(a.getSource() == truckKranBevisCheck) {
 				model.setTruckKranForer(truckKranBevisCheck.isSelected());
+				if(truckKranBevisCheck.isSelected()) {
+					truckKranPropertyComponent.setEditable(true);
+				} else
+					truckKranPropertyComponent.setEditable(false);
 //				System.out.println("Endret truckKran bevis");
 			} else if(a.getSource() == truckKranPropertyComponent) {
 				model.setTruckKranForerBevis(truckKranPropertyComponent.getText());

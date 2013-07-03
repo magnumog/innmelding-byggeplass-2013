@@ -6,8 +6,6 @@ package program;
  * Owner Veidekke ASA
  **/
 
-
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,6 +38,7 @@ public class RegistreringPanelProgram extends JPanel {
 	JPanel panel1;
 	JPanel panel2;
 	JPanel panel3;
+	JButton velkommeNext;
 
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -76,12 +75,11 @@ public class RegistreringPanelProgram extends JPanel {
 		main = new JFrame("Regustrering av personell på prosjekt");
 		main.setSize(760, 800);
 		main.setLocation(400, 100);
-		main.setResizable(false);
+		main.setResizable(true);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Welcomme = new JPanel();
 		panel1 = new JPanel();
 		panel2 = new JPanel();
-//		panel2.setBackground(Color.RED);
 		panel3 = new JPanel();
 		Welcomme.add(velkommen);
 		panel1.add(registreringPanel, BorderLayout.NORTH);
@@ -91,7 +89,7 @@ public class RegistreringPanelProgram extends JPanel {
 		panel3.add(medbraktPanel, BorderLayout.NORTH);
 		panel3.add(modulToPanel, BorderLayout.NORTH);
 		
-		JButton velkommeNext = new JButton("Gå Videre");
+		velkommeNext = new JButton("Start registrering");
 		velkommeNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				main.setContentPane(panel1);
@@ -133,6 +131,7 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
+		panelOneNext.setAlignmentY(JButton.SOUTH);
 		
 		Welcomme.add(velkommeNext, BorderLayout.SOUTH);
 		panel1.add(panelOneNext, BorderLayout.SOUTH);
@@ -173,5 +172,10 @@ public class RegistreringPanelProgram extends JPanel {
 //		frame.setVisible(true);
 		@SuppressWarnings("unused")
 		RegistreringPanelProgram prog = new RegistreringPanelProgram();
+	}
+	
+	public static void changeLanguage(int i) {
+		if(i==0) {
+		}
 	}
 }

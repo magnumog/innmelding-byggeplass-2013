@@ -254,6 +254,12 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		annetPropertyComponent = new JTextField(48);
 		Neste = new JButton("Neste");
 		nullstill = new JButton("Nullstill");
+		verkstedOgLagerPropertyComponent.setEditable(false);
+		spesialKranerPropertyComponent.setEditable(false);
+		personlofterePropertyComponent.setEditable(false);
+		forstehjelpPropertyComponent.setEditable(false);
+		annetPropertyComponent.setEditable(false);
+		
 	}
 
 	public void setModel(Kurs model) {
@@ -518,9 +524,17 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			
 		} else if(e.getSource()==verkstedOgLagerCheck) {
 			model.setVerkstedOgLager(verkstedOgLagerCheck.isSelected());
+			if(verkstedOgLagerCheck.isSelected()) {
+				verkstedOgLagerPropertyComponent.setEditable(true);
+			} else
+				verkstedOgLagerPropertyComponent.setEditable(false);
 //			System.out.println("Endret verksted og lager check");
 		} else if(e.getSource()==SpesialKranerCheck) {
 			model.setSpesialKraner(SpesialKranerCheck.isSelected());
+			if(SpesialKranerCheck.isSelected()) {
+				spesialKranerPropertyComponent.setEditable(true);
+			} else 
+				spesialKranerPropertyComponent.setEditable(false);
 //			System.out.println("Endret spesialkraner check");
 		} else if(e.getSource()==VinsjerOgTaljerCheck) {
 			model.setVinsjerOgTaljer(VinsjerOgTaljerCheck.isSelected());
@@ -533,6 +547,10 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 //			System.out.println("Endret Klatre og hengestialser check");
 		} else if(e.getSource()==personLoftereCheck) {
 			model.setPersonLoftere(personLoftereCheck.isSelected());
+			if(personLoftereCheck.isSelected()) {
+				personlofterePropertyComponent.setEditable(true);
+			} else 
+				personlofterePropertyComponent.setEditable(false);
 //			System.out.println("Endret Personløftere check");
 		} else if(e.getSource()==personLoftereUnderJordCheck) {
 			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
@@ -623,9 +641,17 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 //			System.out.println("Endret fallsikringsutstyr check");
 		} else if(e.getSource()==forstehjelpUtstyrCheck) {
 			model.setForsteHjelp(forstehjelpUtstyrCheck.isSelected());
+			if(forstehjelpUtstyrCheck.isSelected()) {
+				forstehjelpPropertyComponent.setEditable(true);
+			} else
+				forstehjelpPropertyComponent.setEditable(false);
 //			System.out.println("Endret forstehjelp utstyr check");
 		} else if(e.getSource()==annetCheck) {
 			model.setAnnet(annetCheck.isSelected());
+			if(annetCheck.isSelected()) {
+				annetPropertyComponent.setEditable(true);
+			} else
+				annetPropertyComponent.setEditable(false);
 //			System.out.println("Endret Annet check");
 		} else if(e.getSource()==verkstedOgLagerPropertyComponent) {
 			model.setVerksetedLagerTekst(verkstedOgLagerPropertyComponent.getText());

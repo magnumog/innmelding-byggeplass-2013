@@ -80,6 +80,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		modulEnNeiFrist.addActionListener(this);
 		Neste.addActionListener(this);
 		nullstill.addActionListener(this);
+		modulEnJaDato.setEditable(false);
+		modulEnNeiFrist.setEditable(false);
 	}
 	
 	public void setModel(ModulEn model) {
@@ -138,9 +140,13 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 			model.setModulEnJADato(null);
 			model.setModulEnNeiFrist(null);
 		} else if(e.getSource() == modulEnJaRadio) {
-			model.setModulEnJaSvar(modulEnJaRadio.isSelected());			
+			model.setModulEnJaSvar(modulEnJaRadio.isSelected());
+			modulEnJaDato.setEditable(true);
+			modulEnNeiFrist.setEditable(false);
 		} else if(e.getSource() == modulEnNeiRadio) {
 			model.setModulEnNeiSvar(modulEnNeiRadio.isSelected());
+			modulEnNeiFrist.setEditable(true);
+			modulEnJaDato.setEditable(false);
 		} else if(e.getSource() == modulEnJaDato) {
 			model.setModulEnJADato(modulEnJaDato.getText());
 		} else if(e.getSource() == modulEnNeiFrist) {

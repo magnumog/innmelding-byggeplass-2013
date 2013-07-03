@@ -52,6 +52,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		addactionListeners();
 		layGUI();
 		setNameOnComponenents();
+		speakTiltakPropertyComponent.setEditable(false);
+		understandTiltakPropertyComponent.setEditable(false);
 		
 	}
 
@@ -393,8 +395,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setTiltakSpeak(null);
 			model.setTiltakUnderstand(null);
 //			System.out.println("You just nulled a bunch of shit");
-		}else if(action.getSource() == languageChoise) {
-//			System.out.println("Du endret språk til: " + (Language)languageChoise.getSelectedItem() + " index: " + languageChoise.getSelectedIndex());
 		} else if (action.getSource() == namePropertyComponent) {
 			model.setName(namePropertyComponent.getText());
 		} else if(action.getSource() == dateOfBirthpropertyComponent) {
@@ -422,12 +422,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
 			if(action.getSource()==understadnSkandinaviskJaRadio) {
 				model.setUnderstandScandinavian(true);
-				understandTiltakPropertyComponent.setVisible(false);
-				understandTiltakLabel.setVisible(false);
+				understandTiltakPropertyComponent.setEditable(false);
 //				System.out.println("Endret understand -- true");
 			} else if(action.getSource() == understadnSkandinaviskNeiRadio) {
 				model.setUnderstandScandinavian(false);
-				understandTiltakPropertyComponent.setVisible(true);
+				understandTiltakPropertyComponent.setEditable(true);
 				understandTiltakLabel.setVisible(true);
 //				System.out.println("Endret understand -- false");
 			}
@@ -435,13 +434,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(action.getSource() == speakSkadinvaiskJaRadio || action.getSource() == speakSkadinvaiskNeiRadio) {
 			if(action.getSource() == speakSkadinvaiskJaRadio) {
 				model.setSpeakScandinavian(true);
-				speakTiltakLabel.setVisible(false);
-				speakTiltakPropertyComponent.setVisible(false);
+				speakTiltakPropertyComponent.setEditable(false);
 //				System.out.println("Endret Speak -- true");
 			} else {
 				model.setSpeakScandinavian(false);
-				speakTiltakLabel.setVisible(true);
-				speakTiltakPropertyComponent.setVisible(true);
+				speakTiltakPropertyComponent.setEditable(true);
 //				System.out.println("Endret speak -- false");
 			}
 //			System.out.println("Endret speak");
