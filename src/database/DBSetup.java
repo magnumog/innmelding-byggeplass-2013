@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class DBSetup {
 	private java.sql.Connection connection = null;
 	private Statement statement = null;
-	
+
 	public DBSetup() {
 		try{
 			//Denne funker
@@ -31,7 +31,7 @@ public class DBSetup {
 				statement.execute(createTabel);				
 				System.out.println("Personalia createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("Personalia eksisterer allerede eller feil skjedde");
 			}
 
@@ -41,7 +41,7 @@ public class DBSetup {
 				statement.execute(createTabel);				
 				System.out.println("sprak createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("sprak eksisterer allerede eller feil skjedde");
 			}
 
@@ -51,20 +51,20 @@ public class DBSetup {
 				statement.execute(createTabel);				
 				System.out.println("ModulEn createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("ModulEn eksisterer allerede eller feil skjedde");
 			}
-			
+
 			tableName = "Sertifikat";
 			createTabel = "CREATE TABLE " + tableName + " (id Integer, Førerkort BIT, GrunnopplæringIArbeidsmiljø BIT, Maskinførerbevis BIT, Arbeidsvarslingskurs BIT, VarmeArbeider BIT, TruckKranførerBevis BIT, FørerkortKlasser TEXT(30), MaskinførerKlasser TEXT(30), ArbeidsVarslingsKursNr TEXT(30), VarmeArbeiderUtløpDato TEXT(20), TruckKranBevis TEXT(30), PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("Sertifikat createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("Sertifikat eksisterer allerede eller feil skjedde");
 			}
-			
+
 			tableName = "Kurs";
 			createTabel = "CREATE TABLE " + tableName + " (id Integer, VerksetdOgLager BIT, VerkstedOgLagerType Text(30), SpesialKraner BIT, SpesialKranerType TEXT(30), VinsjerOgTaljer BIT, AnhukingStroppingSignalgiving BIT, KlatreOgHengeStilaser BIT, PersonLøftere BIT, PersonløftereKlasse TEXT(30), " +
 					"PersonløfterUnderJord BIT, BorVognerOgTunnelrigger BIT, SelvgåendeValser BIT, TraktorUtstyr BIT, vinkelsliper BIT, BoltePistol BIT, Spikerpistol BIT, KombihammerBorHammer BIT, Kjedesag BIT, KappKlyveGjerdeSag BIT, BindeMaskinArmering BIT, Vibrostav BIT, HåndholdtArmeringsKapper BIT, Skjærebrenner BIT, Sponbrytende BIT, " +
@@ -74,50 +74,50 @@ public class DBSetup {
 				statement.execute(createTabel);
 				System.out.println("Kurs createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("Kurs eksisterer allerede eller feil skjedde");
 			}
-			
+
 			tableName = "VerneUtstyr";
 			createTabel = "CREATE TABLE " + tableName +  " (id Integer, Påbudtverneutstyr BIT, Tilgjengeligverneutstyr BIT, Dato Text(10), ArbeidsGiverUnderskrift Text(45), PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("verneutstyr createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("verneutstyr eksisterer allerede eller feil skjedde");
 			}
-			
+
 			tableName = "ModulTo";
 			createTabel = "CREATE TABLE " + tableName + " (id Integer, infoOmFravær BIT, SkrevetunderSikkerhetsinstruks BIT, GjennomførtModulTo BIT, KlistremerkeModulEn BIT, ForstårVeidekkesReaksjon BIT, UtdeltblokkOgRisikovurdering BIT, KjentMedSHA_Plan BIT, PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("ModulTo createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("ModulTo eksisterer allerede eller feil skjedde");
 			}
-			
+
 			tableName = "RegistreingsDato";
 			createTabel = "CREATE TABLE " + tableName + " (id Integer, dato Date, PRIMARY KEY(id))";
 			try {
 				statement.execute(createTabel);
 				System.out.println("RegDato createt");
 			} catch(Exception e) {
-//				e.printStackTrace();
+				//				e.printStackTrace();
 				System.out.println("RegDato eksisterer allerede eller feil skjedde");
 			}
 
 			//Gjør klar til versjon2 av programet
-//			tableName = "PostNr";
-//			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
-//			try {
-//				statement.execute(createTabel);				
-//				System.out.println("PostNr createt");
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
-//			}
+			//			tableName = "PostNr";
+			//			createTabel = "CREATE TABLE " + tableName + " (PostNr Text(8), PostSted Text(25), Primary Key(PostNr))";
+			//			try {
+			//				statement.execute(createTabel);				
+			//				System.out.println("PostNr createt");
+			//			} catch(Exception e) {
+			//				e.printStackTrace();
+			//				System.out.println("Tabellen eksisterer allerede eller feil skjedde");
+			//			}
 
 			statement.close();
 			connection.close();

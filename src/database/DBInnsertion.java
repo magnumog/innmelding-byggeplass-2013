@@ -45,7 +45,7 @@ public class DBInnsertion {
 			preparedStatement.setString(12, nermestepaarorende);
 			preparedStatement.setString(13, narmesteparorendetelefon);
 			preparedStatement.execute();
-//			System.out.println(id);
+			//			System.out.println(id);
 
 			statement.close();
 			connection.close();
@@ -74,7 +74,7 @@ public class DBInnsertion {
 			System.out.println("id var lik null og språk ble ikke satt inn");
 		}
 
-//		System.out.println("Idnr: " + id);
+		//		System.out.println("Idnr: " + id);
 	}
 
 	public static void createModulEN(boolean gjennomfort, String dato) throws Exception {
@@ -84,7 +84,7 @@ public class DBInnsertion {
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 			preparedStatement = connection.prepareStatement("INSERT INTO ModulEn(id, Gjennomført, Dato) VALUES(?,?,?)");
-//			System.out.println("" + id + gjennomfort + dato);
+			//			System.out.println("" + id + gjennomfort + dato);
 			preparedStatement.setInt(1, id);
 			preparedStatement.setBoolean(2, gjennomfort);
 			preparedStatement.setString(3, dato);
@@ -231,7 +231,7 @@ public class DBInnsertion {
 			System.out.println("id var lik null og modulTo ble ikke satt inn");
 		}
 	}
-	
+
 	public static void creatRegDato(String regDato) throws Exception {
 		if(id!=0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
@@ -242,12 +242,12 @@ public class DBInnsertion {
 			preparedStatement.setInt(1, id);
 			preparedStatement.setString(2, regDato);
 			preparedStatement.execute();
-			
+
 			statement.close();
 			connection.close();
 		}
 	}
-	
+
 	public static void getCount() throws Exception {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;

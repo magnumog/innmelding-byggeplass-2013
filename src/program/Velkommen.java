@@ -19,8 +19,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
-
+import panel.ModulEnPanel;
 import panel.PersonaliaPanel;
+import panel.SertifikatPanel;
 
 public class Velkommen extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -35,7 +36,7 @@ public class Velkommen extends JPanel implements ActionListener {
 	private ButtonGroup sprak;
 	private int spraknr = 0;
 	private JLabel velkommen = new JLabel(labels[spraknr][0]);
-	
+
 	public Velkommen() {
 		sprak = new ButtonGroup();
 		veidekke.setImage(image);
@@ -75,7 +76,7 @@ public class Velkommen extends JPanel implements ActionListener {
 		add(gb,c);
 		c.insets = new Insets(650, 100, 1, 1);
 		add(polsk,c);
-		
+
 		no.addActionListener(this);
 		gb.addActionListener(this);
 		polsk.addActionListener(this);
@@ -102,7 +103,9 @@ public class Velkommen extends JPanel implements ActionListener {
 		}
 		RegistreringPanelProgram.changeLanguage(spraknr);
 		PersonaliaPanel.changeLanguage(spraknr);
-		
+		ModulEnPanel.changeLanguage(spraknr);
+		SertifikatPanel.changeLanguage(spraknr);
+
 	}
 
 }

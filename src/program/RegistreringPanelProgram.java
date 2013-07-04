@@ -34,7 +34,7 @@ import modell.Sertifikat;
 public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
 	public static int sprak=0;
-	private static String[][] tekst = {{"Start registrering","Neste", "Tilbake"}, {"Start registration","Next", "Back"},{"Start Rejestracja", "Nastepny", "Z powrotem"}};
+	private static String[][] tekst = {{"Start registrering","Neste", "Tilbake"}, {"Start registration","Next", "Back"},{"Start rejestracja", "Nastepny", "Z powrotem"}};
 	private JFrame main;
 	private JPanel Welcomme;
 	private JPanel panel1;
@@ -44,12 +44,12 @@ public class RegistreringPanelProgram extends JPanel {
 
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		
-//		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
+
+		//		kobler modellen opp mot viewet slik at modellen skal oppdateres ved endringer
 		PersonaliaPanel registreringPanel = new PersonaliaPanel();
 		Personalia personaliaModel = new Personalia();
 		registreringPanel.setModel(personaliaModel);
-				
+
 		ModulEnPanel modulEnPanel = new ModulEnPanel();
 		ModulEn modulEnModel = new ModulEn();
 		modulEnPanel.setModel(modulEnModel);
@@ -57,27 +57,27 @@ public class RegistreringPanelProgram extends JPanel {
 		SertifikatPanel sertifikatPanel = new SertifikatPanel();
 		Sertifikat sertifikatModel = new Sertifikat();
 		sertifikatPanel.setModel(sertifikatModel);
-		
+
 		KursPanel kursPanel = new KursPanel();
 		Kurs kursModel = new Kurs();
 		kursPanel.setModel(kursModel);
-		
+
 		BekreftMedbraktPanel medbraktPanel = new BekreftMedbraktPanel();
 		BekreftMedbrakt medbraktModel = new BekreftMedbrakt();
 		medbraktPanel.setModel(medbraktModel);
-		
+
 		ModulToPanel modulToPanel = new ModulToPanel();
 		ModulTo modulTo = new ModulTo();
 		modulToPanel.setModel(modulTo);
-		
+
 		DoClickPanel doClickPanel = new DoClickPanel();
 		Velkommen velkommen = new Velkommen();
-		
+
 		//Dette for at det skal gå å bytte vindu
-		main = new JFrame("Regustrering av personell på prosjekt");
-		main.setSize(760, 800);
+		main = new JFrame("Registrering av personell på prosjekt");
+		main.setSize(730, 800);
 		main.setLocation(400, 100);
-		main.setResizable(true);
+		main.setResizable(false);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Welcomme = new JPanel();
 		panel1 = new JPanel();
@@ -90,10 +90,10 @@ public class RegistreringPanelProgram extends JPanel {
 		panel2.add(kursPanel, BorderLayout.NORTH);
 		panel3.add(medbraktPanel, BorderLayout.NORTH);
 		panel3.add(modulToPanel, BorderLayout.NORTH);
-		
+
 		buttons();
 		panelOneNext.setAlignmentY(JButton.SOUTH);
-		
+
 		Welcomme.add(velkommeNext, BorderLayout.SOUTH);
 		panel1.add(panelOneBack, BorderLayout.SOUTH);
 		panel1.add(panelOneNext, BorderLayout.SOUTH);
@@ -103,12 +103,12 @@ public class RegistreringPanelProgram extends JPanel {
 		panel3.add(doClickPanel, BorderLayout.SOUTH);
 		main.setContentPane(Welcomme);
 		main.setVisible(true);
-		
+
 		@SuppressWarnings("unused")
 		DBSetup dbconn = new DBSetup();
-		
+
 	}
-	
+
 	private void buttons() {
 		velkommeNext = new JButton(tekst[sprak][0]);
 		velkommeNext.addActionListener(new ActionListener() {
@@ -118,7 +118,7 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
-		
+
 		panelOneNext = new JButton(tekst[sprak][1]);
 		panelOneNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,7 +135,7 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
-		
+
 		panelOneBack = new JButton(tekst[sprak][2]); //må nulling av feltene også implementeres
 		panelOneBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +144,7 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
-		
+
 		panelTwoBack = new JButton(tekst[sprak][2]);
 		panelTwoBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,7 +153,7 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
-		
+
 		panelTreBack = new JButton(tekst[sprak][2]);
 		panelTreBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,37 +162,21 @@ public class RegistreringPanelProgram extends JPanel {
 				main.repaint();
 			}
 		});
-		
+
 	}
 	public static void changeLanguage(int i) {
 		sprak = i;
-		if(i==0) {
-			velkommeNext.setText(tekst[i][0]);
-			panelOneNext.setText(tekst[i][1]);
-			panelTwoNext.setText(tekst[i][1]);
-			panelOneBack.setText(tekst[i][2]);
-			panelTwoBack.setText(tekst[i][2]);
-			panelTreBack.setText(tekst[i][2]);
-		} else if(i==1) {
-			velkommeNext.setText(tekst[i][0]);
-			panelOneNext.setText(tekst[i][1]);
-			panelTwoNext.setText(tekst[i][1]);
-			panelOneBack.setText(tekst[i][2]);
-			panelTwoBack.setText(tekst[i][2]);
-			panelTreBack.setText(tekst[i][2]);
-		} else if(i==2) {
-			velkommeNext.setText(tekst[i][0]);
-			panelOneNext.setText(tekst[i][1]);
-			panelTwoNext.setText(tekst[i][1]);
-			panelOneBack.setText(tekst[i][2]);
-			panelTwoBack.setText(tekst[i][2]);
-			panelTreBack.setText(tekst[i][2]);
-		}
+		velkommeNext.setText(tekst[i][0]);
+		panelOneNext.setText(tekst[i][1]);
+		panelTwoNext.setText(tekst[i][1]);
+		panelOneBack.setText(tekst[i][2]);
+		panelTwoBack.setText(tekst[i][2]);
+		panelTreBack.setText(tekst[i][2]);
 	}	
 
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
 		RegistreringPanelProgram prog = new RegistreringPanelProgram();
 	}
-	
+
 }

@@ -25,11 +25,11 @@ public class DoClickPanel extends JPanel implements ActionListener {
 	private JButton neste;
 	DateFormat dateFormat = new SimpleDateFormat("dd. MMMM yyyy");
 	java.util.Date date = new java.util.Date();
-	
+
 	public DoClickPanel() {
 		neste = new JButton("Lagre og Avslutt");
 		neste.addActionListener(this);
-		
+
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -39,8 +39,8 @@ public class DoClickPanel extends JPanel implements ActionListener {
 		c.gridy=0;
 		add(neste,c);
 		System.out.println("Current Date : " + dateFormat.format(date));
-		
-		
+
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
