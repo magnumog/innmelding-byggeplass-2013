@@ -33,12 +33,14 @@ import modell.Sertifikat;
 
 public class RegistreringPanelProgram extends JPanel {
 	private static final long serialVersionUID = 1L;
-	JFrame main;
-	JPanel Welcomme;
-	JPanel panel1;
-	JPanel panel2;
-	JPanel panel3;
-	JButton velkommeNext;
+	public static int sprak=0;
+	private static String[][] tekst = {{"Start registrering","Neste", "Tilbake"}, {"Start registration","Next", "Back"},{"Start Rejestracja", "Nastepny", "Z powrotem"}};
+	private JFrame main;
+	private JPanel Welcomme;
+	private JPanel panel1;
+	private JPanel panel2;
+	private JPanel panel3;
+	private static JButton velkommeNext,panelOneNext, panelOneBack,panelTwoNext,panelTwoBack,panelTreBack;
 
 	public RegistreringPanelProgram() {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -89,51 +91,11 @@ public class RegistreringPanelProgram extends JPanel {
 		panel3.add(medbraktPanel, BorderLayout.NORTH);
 		panel3.add(modulToPanel, BorderLayout.NORTH);
 		
-		velkommeNext = new JButton("Start registrering");
-		velkommeNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				main.setContentPane(panel1);
-				main.validate();
-				main.repaint();
-			}
-		});
-		
-		JButton panelOneNext = new JButton("Neste");
-		panelOneNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.setContentPane(panel2);
-				main.validate();
-				main.repaint();
-			}
-		});
-		JButton panelTwoNext = new JButton("Neste");
-		panelTwoNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				main.setContentPane(panel3);
-				main.validate();
-				main.repaint();
-			}
-		});
-		JButton panelTwoBack = new JButton("Tilbake");
-		panelTwoBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.setContentPane(panel1);
-				main.validate();
-				main.repaint();
-			}
-		});
-		
-		JButton panelTreBack = new JButton("Tilbake");
-		panelTreBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				main.setContentPane(panel2);
-				main.validate();
-				main.repaint();
-			}
-		});
+		buttons();
 		panelOneNext.setAlignmentY(JButton.SOUTH);
 		
 		Welcomme.add(velkommeNext, BorderLayout.SOUTH);
+		panel1.add(panelOneBack, BorderLayout.SOUTH);
 		panel1.add(panelOneNext, BorderLayout.SOUTH);
 		panel2.add(panelTwoBack, BorderLayout.SOUTH);
 		panel2.add(panelTwoNext, BorderLayout.SOUTH);
@@ -142,40 +104,95 @@ public class RegistreringPanelProgram extends JPanel {
 		main.setContentPane(Welcomme);
 		main.setVisible(true);
 		
-		
-//		add(registreringPanel);
-//		add(modulEnPanel);
-//		add(sertifikatPanel);
-//		add(kursPanel);
-//		add(medbraktPanel);
-//		add(modulToPanel);
-//		add(doClickPanel);
-		
 		@SuppressWarnings("unused")
 		DBSetup dbconn = new DBSetup();
 		
 	}
 	
+	private void buttons() {
+		velkommeNext = new JButton(tekst[sprak][0]);
+		velkommeNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				main.setContentPane(panel1);
+				main.validate();
+				main.repaint();
+			}
+		});
+		
+		panelOneNext = new JButton(tekst[sprak][1]);
+		panelOneNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.setContentPane(panel2);
+				main.validate();
+				main.repaint();
+			}
+		});
+		panelTwoNext = new JButton(tekst[sprak][1]);
+		panelTwoNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				main.setContentPane(panel3);
+				main.validate();
+				main.repaint();
+			}
+		});
+		
+		panelOneBack = new JButton(tekst[sprak][2]); //må nulling av feltene også implementeres
+		panelOneBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.setContentPane(Welcomme);
+				main.validate();
+				main.repaint();
+			}
+		});
+		
+		panelTwoBack = new JButton(tekst[sprak][2]);
+		panelTwoBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.setContentPane(panel1);
+				main.validate();
+				main.repaint();
+			}
+		});
+		
+		panelTreBack = new JButton(tekst[sprak][2]);
+		panelTreBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				main.setContentPane(panel2);
+				main.validate();
+				main.repaint();
+			}
+		});
+		
+	}
+	public static void changeLanguage(int i) {
+		sprak = i;
+		if(i==0) {
+			velkommeNext.setText(tekst[i][0]);
+			panelOneNext.setText(tekst[i][1]);
+			panelTwoNext.setText(tekst[i][1]);
+			panelOneBack.setText(tekst[i][2]);
+			panelTwoBack.setText(tekst[i][2]);
+			panelTreBack.setText(tekst[i][2]);
+		} else if(i==1) {
+			velkommeNext.setText(tekst[i][0]);
+			panelOneNext.setText(tekst[i][1]);
+			panelTwoNext.setText(tekst[i][1]);
+			panelOneBack.setText(tekst[i][2]);
+			panelTwoBack.setText(tekst[i][2]);
+			panelTreBack.setText(tekst[i][2]);
+		} else if(i==2) {
+			velkommeNext.setText(tekst[i][0]);
+			panelOneNext.setText(tekst[i][1]);
+			panelTwoNext.setText(tekst[i][1]);
+			panelOneBack.setText(tekst[i][2]);
+			panelTwoBack.setText(tekst[i][2]);
+			panelTreBack.setText(tekst[i][2]);
+		}
+	}	
+
 	public static void main(String[] args) {
-//		JFrame frame = new JFrame("Registrering av personell på prosjekt");
-//		JPanel p = new JPanel();
-//		JScrollPane scrollframe = new JScrollPane(new RegistreringPanelProgram());
-//		frame.add(p);
-//		p.setVisible(true);
-//		frame.getContentPane().add(new RegistreringPanelProgram());
-//		frame.add(scrollframe);
-//		frame.setMinimumSize(new Dimension(900, 1000));
-//		frame.pack();
-//		frame.setSize(900, 1000);//Denne som må brukes for å bestemme hvor stort vinduet skal være!
-//		frame.setLocation(400, 100);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setVisible(true);
 		@SuppressWarnings("unused")
 		RegistreringPanelProgram prog = new RegistreringPanelProgram();
 	}
 	
-	public static void changeLanguage(int i) {
-		if(i==0) {
-		}
-	}
 }

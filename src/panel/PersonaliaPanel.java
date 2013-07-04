@@ -2,7 +2,7 @@ package panel;
 /**
  * @author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
- * Rotete kode men forstÂelig
+ * Rotete kode men forst√•elig
  * Owner Veidekke ASA
  **/
 
@@ -23,19 +23,23 @@ import modell.Personalia;
 public class PersonaliaPanel extends JPanel implements ActionListener, PropertyChangeListener {
 
 	private static final long serialVersionUID = 1L;
+	private static int sprak = 0;
+	private static String[][] labelTekst = {{"Navn: ", "F√∏dselsdato: ", "ID-Kortnummer: ", "Utl√∏psdato ID-Kort", "Adresse: ", "Postnr: ", "Poststed: ", "Telefon/mobil: ", "Arbeidsgiver: ", "Arbeidsgivers telefonnr: ", "N√¶rmeste p√•r√∏rende: ", "N√¶rmeste p√•r√∏rende telefon: "},
+		{"Name: ", "Date of birth: ", "Expiry date ID card", "Adress: ", "Postcode: ", "Postal town: ", "Telephone/mobile: ", "Employer: ", "Employer phonenr: ", "Next of kin: ", "Next of kin phonenr: "},
+		{"Imie i nazwisko: ", "Data urodzenia: ", "Nr dowodu tozsamosci: ", "Data waznosci dowodu tozsamosci: ", "Adres: ", "Kod poczto-wy: ", "Miejscowosc: ", "Nr tel. stacjonarnego/ kom√≥rkowego: ", "Pracodawca: ", "Nr tel: ", "Najbli≈ºszy krewny: ", "Nr tel. stacjonarnego/kom√≥rkowego: " }};
 	//GUI til personalia
-	protected JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,employeerLabel;
-	protected JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel, emptyLabel;
+	private static JLabel nameLabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,employeerLabel;
+	private static JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,selectLanguageLabel, emptyLabel;
 	protected JTextField namePropertyComponent,dateOfBirthpropertyComponent,idCardPropertyComponent,idExpiresPropertyComponent,adressPropertyComponent,postNrPropertyComponent,postPlacePropertyComponent,phonePropertyComponent,employeePropertyComponent;
 	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent;
 	protected JComboBox<Language> languageChoise; 
 	
-	//GUI sprÂk
-	protected JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
+	//GUI spr√•k
+	private static JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
 	protected JRadioButton speakSkadinvaiskJaRadio,speakSkadinvaiskNeiRadio,understadnSkandinaviskJaRadio,understadnSkandinaviskNeiRadio;
 	protected ButtonGroup speakSkandinavisk,understandSkandinavisk;
 	protected JTextField speakTiltakPropertyComponent,understandTiltakPropertyComponent;
-	protected JLabel speakTiltakLabel,understandTiltakLabel;
+	private static JLabel speakTiltakLabel,understandTiltakLabel;
 	
 	boolean speakingSkandinavisk, understandingSkandinavisk;
 	
@@ -58,7 +62,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	}
 
 	private void setNameOnComponenents() {
-		// Setter navn pÂ componentene slik at de kan brukes i tester
+		// Setter navn p√• componentene slik at de kan brukes i tester
 		namePropertyComponent.setName("NamePropertyComponent");
 		dateOfBirthpropertyComponent.setName("DateOfBirthpropertyComponent");
 		idCardPropertyComponent.setName("IdCardPropertyComponent");
@@ -87,11 +91,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 0;
 		add(selectLanguageLabel,c);
-		selectLanguageLabel.setVisible(false); //Setter usynlige fordi denne funksjonen er ikke implementert ennÂ.
+		selectLanguageLabel.setVisible(false); //Setter usynlige fordi denne funksjonen er ikke implementert enn√•.
 		c.gridx = 2;
 		c.gridy = 0;
 		add(languageChoise,c);
-		languageChoise.setVisible(false); //Sette usynlig for denne funksjonen er ikke implementert ennÂ.
+		languageChoise.setVisible(false); //Sette usynlig for denne funksjonen er ikke implementert enn√•.
 
 
 
@@ -238,13 +242,13 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	private void createComponents() {
 		//Fikser alle komponenter som skal brukes
 		emptyLabel = new JLabel(" ");
-		nameLabel = new JLabel("Navn: ");
+		nameLabel = new JLabel(labelTekst[sprak][0]);
 		namePropertyComponent = new JTextField(15);
-		dateOfBirthLabel = new JLabel("F¯dselsdato: ");
+		dateOfBirthLabel = new JLabel("F√∏dselsdato: ");
 		dateOfBirthpropertyComponent = new JTextField(10);
 		idCardLabel = new JLabel("Id-kortnummer: ");
 		idCardPropertyComponent = new JTextField(10);
-		idCardExpiresDateLabel = new JLabel("Utl¯psdato ID-kort: ");
+		idCardExpiresDateLabel = new JLabel("Utl√∏psdato ID-kort: ");
 		idExpiresPropertyComponent = new JTextField(10);
 		adressLabel = new JLabel("Adresse: ");
 		adressPropertyComponent = new JTextField(15);
@@ -258,16 +262,16 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		employeePropertyComponent = new JTextField(15);
 		employerPhoneLabel = new JLabel("Arbeidsgivers telefon: ");
 		employeePhonePropertyComponent = new JTextField(10);
-		nextToKindNameLabel = new JLabel("NÊrmeste pÂr¯rende: ");
+		nextToKindNameLabel = new JLabel("N√¶rmeste p√•r√∏rende: ");
 		nextToKindPropertyComponent = new JTextField(15);
-		nextToKindPhoneLabel = new JLabel("Telefon til nÊrmeste pÂr¯rende: ");
+		nextToKindPhoneLabel = new JLabel("Telefon til n√¶rmeste p√•r√∏rende: ");
 		nextToKindPhonePropertyComponent = new JTextField(10);
-		selectLanguageLabel = new JLabel("Velg SprÂk/Select Language: ");
+		selectLanguageLabel = new JLabel("Velg Spr√•k/Select Language: ");
 		languageChoise = new JComboBox<Language>(Language.values());
 		
 		
 		speakSkandinaviskLabel = new JLabel("Snakker skandinavisk: ");
-		understandSkandinaviskLabel = new JLabel("ForstÂr skandinavisk: ");
+		understandSkandinaviskLabel = new JLabel("Forst√•r skandinavisk: ");
 		speakSkadinvaiskJaRadio = new JRadioButton("Ja");
 		speakSkadinvaiskNeiRadio = new JRadioButton("Nei");
 		understadnSkandinaviskJaRadio = new JRadioButton("Ja");
@@ -289,7 +293,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 
 	}
 	private void addactionListeners() {
-		//Legger til ActionListener pÂ LaguageChoise dette slik at det skal gÂ Â bytte sprÂk, og pÂ knappen.
+		//Legger til ActionListener p√• LaguageChoise dette slik at det skal g√• √• bytte spr√•k, og p√• knappen.
 		languageChoise.addActionListener(this);
 		Neste.addActionListener(this);
 		nullstill.addActionListener(this);
@@ -345,7 +349,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			return;
 		}
 		if(action.getSource() == Neste) {
-//			System.out.println("Du trykket pÂ knappen");
+//			System.out.println("Du trykket p√• knappen");
 			model.setName(namePropertyComponent.getText());
 			model.setDateOfBirth(dateOfBirthpropertyComponent.getText());
 			model.setIdCardNr(idCardPropertyComponent.getText());
@@ -367,10 +371,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				DBInnsertion.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
 				DBInnsertion.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Du mÂ skrive inn et tall i ID-kortnummer feltet");
+				JOptionPane.showMessageDialog(null, "Du m√• skrive inn et tall i ID-kortnummer feltet");
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Det skjedde noe feil nÂr dataene skulle overf¯res til databasen");
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil n√•r dataene skulle overf√∏res til databasen");
 			}
 
 //			System.out.println("You just updated a bunch of shit");
@@ -502,6 +506,27 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(evt.getPropertyName() == Personalia.TILTAKUNDERSTAND_PROPERTY) {
 			understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
 //			System.out.println("Endret understand tiltak");
+		}
+	}
+
+	public static void changeLanguage(int i) {
+		sprak = i;
+		if(i==0) {
+			nameLabel.setText(labelTekst[i][0]);
+			dateOfBirthLabel.setText(labelTekst[i][1]);
+			idCardLabel.setText(labelTekst[i][2]);
+			nextToKindPhoneLabel.setText(labelTekst[i][11]);
+		} else if(i==1) {
+			nameLabel.setText(labelTekst[i][0]);
+			dateOfBirthLabel.setText(labelTekst[i][1]);
+			idCardLabel.setText(labelTekst[i][2]);
+			nextToKindPhoneLabel.setText(labelTekst[i][11]);
+			
+		} else if(i==2) {
+			nameLabel.setText(labelTekst[i][0]);
+			dateOfBirthLabel.setText(labelTekst[i][1]);
+			idCardLabel.setText(labelTekst[i][2]);
+			nextToKindPhoneLabel.setText(labelTekst[i][11]);
 		}
 	}
 }

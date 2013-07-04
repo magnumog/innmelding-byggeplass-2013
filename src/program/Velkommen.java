@@ -20,17 +20,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
+import panel.PersonaliaPanel;
+
 public class Velkommen extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
+	private String[][] labels = {{"Velkommen til Veidekkes elektroniske registrering av personell"},{"Welcomme to Veidekkes electronical registration of personell"},{"Witamy Veidekkes elektroniczny rejestracja personelu"}};
 	protected ImageIcon veidekke = new ImageIcon("src/bilder/Veidekke-logo__JPG__8006a.jpg");
 	private Image image = veidekke.getImage().getScaledInstance(615, 615, Image.SCALE_SMOOTH);
 	private JLabel logo;
-	private JLabel velkommen = new JLabel("Velkommen til Veidekkes elektroniske registrering av personell");
 	protected ImageIcon noImg = new ImageIcon("src\\bilder\\no.gif");
 	protected ImageIcon gbImg = new ImageIcon("src\\bilder\\gb.gif");
-	private JToggleButton no, gb;
+	protected ImageIcon polskImg = new ImageIcon("src\\bilder\\pl.gif");
+	private JToggleButton no, gb, polsk;
 	private ButtonGroup sprak;
 	private int spraknr = 0;
+	private JLabel velkommen = new JLabel(labels[spraknr][0]);
 	
 	public Velkommen() {
 		sprak = new ButtonGroup();
@@ -60,30 +64,44 @@ public class Velkommen extends JPanel implements ActionListener {
 		gb.setIcon(gbImg);
 		gb.setContentAreaFilled(false);
 		gb.setBorderPainted(false);
+		polsk = new JToggleButton();
+		polsk.setIcon(polskImg);
+		polsk.setContentAreaFilled(false);
+		polsk.setBorderPainted(false);
 		c.gridy=7;
-		c.insets = new Insets(650,1,1,30);
+		c.insets = new Insets(650,1,1,100);
 		add(no,c);
-		c.gridx=0;
-		c.insets = new Insets(650, 30, 1, 1);
-//		c.anchor = GridBagConstraints.WEST;
+		c.insets = new Insets(650, 0, 1, 1);
 		add(gb,c);
+		c.insets = new Insets(650, 100, 1, 1);
+		add(polsk,c);
+		
 		no.addActionListener(this);
 		gb.addActionListener(this);
+		polsk.addActionListener(this);
 		sprak.add(no);
 		sprak.add(gb);
+		sprak.add(polsk);
+		no.setSelected(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == no) {
 			System.out.println("Du trykket på det norske flagget");
-			velkommen.setText("Velkommen til Veidekkes elektroniske registrering av personell");
 			spraknr=0;
+			velkommen.setText(labels[spraknr][0]);
 		} else if(e.getSource() == gb) {
 			System.out.println("Du trykket på det engelseke falgget");
-			velkommen.setText("Welcomme to Veidekkes electronical registration of personell");
 			spraknr=1;
+			velkommen.setText(labels[spraknr][0]);
+		} else if(e.getSource() == polsk) {
+			System.out.println("Polsk sprak");
+			spraknr=2;
+			velkommen.setText(labels[spraknr][0]);
 		}
+		RegistreringPanelProgram.changeLanguage(spraknr);
+		PersonaliaPanel.changeLanguage(spraknr);
 		
 	}
 
