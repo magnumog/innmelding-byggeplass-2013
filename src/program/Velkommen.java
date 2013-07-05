@@ -19,7 +19,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
+
+import panel.BekreftMedbraktPanel;
+import panel.KursPanel;
 import panel.ModulEnPanel;
+import panel.ModulToPanel;
 import panel.PersonaliaPanel;
 import panel.SertifikatPanel;
 
@@ -105,6 +109,9 @@ public class Velkommen extends JPanel implements ActionListener {
 		PersonaliaPanel.changeLanguage(spraknr);
 		ModulEnPanel.changeLanguage(spraknr);
 		SertifikatPanel.changeLanguage(spraknr);
+		KursPanel.changeLanguage(spraknr);
+		BekreftMedbraktPanel.changeLanguage(spraknr);
+		ModulToPanel.changeLanguage(spraknr);
 
 	}
 

@@ -2,7 +2,7 @@ package panel;
 /**
  * @author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
- * Rotete kode men forst�elig
+ * Rotete kode men forståelig
  * Owner Veidekke ASA
  **/
 
@@ -26,9 +26,15 @@ import modell.BekreftMedbrakt;
 
 public class BekreftMedbraktPanel extends JPanel implements ActionListener, PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
-	protected JCheckBox harMedVerneUtstyr, tillgjengeligVerneUtstyr;
-	protected JTextField datoBekreftet, navnPaaArbeidstaker;
-	protected JLabel datoLabel, arbeidsgiverLabel;
+	private static int sprak = 0;
+	private static String[][] labelTekst = {{"<html>Påbudt verneutstyr: Hjelm(Standard: EN397)<br> og vernesko(Standard: EN345(EN ISO20345)) med spikertrampsåle.</html>", "<html>Alltid tilgengelig: Hørselvern, øyevern, arbeidshansker<br> og ved behov Åndedrettsvern, kjemikalie-/kuttreduserende-/spesialhansker og synbarhetstøy</html>",
+		"Dato:","Navn på arbeidgiver:"},
+		{"<html>Mandatory protective equipment: Helmet(Standard: EN3907)<br> and protective footwear(Standard: EN345(EN ISO20345)) with penetration-resistant soles</html>", "<html>Always available: Hearing protection, eye protection, work gloves<br> and if needed: Breathing protection, chemical/cutreducing/special gloves and high-visibility clothing</html>", "Date:", "Name of Emplyer:"},
+		{"<html>Obowiązkowe wyposażenie ochronne: kask (norma: EN 397)<br> i obuwie ochronne (norma: EN 345 (EN ISO 20345)) z podeszwami odpornymi na penetrację. </html>", "<html>Zawsze dostępne: środki ochrony uszu, środki ochrony oczu, rękawice robocze;<br> w razie konieczności: środki ochrony układu oddechowego,<br> rękawice chroniące przed działaniem środków chemicznych/przecięciem/specjalistyczne, odzież odblaskowa.</html>",
+			"Data:","nazwa na Pracodawca:"}};
+	private static JCheckBox harMedVerneUtstyr, tillgjengeligVerneUtstyr;
+	private static JTextField datoBekreftet, navnPaaArbeidstaker;
+	private static JLabel datoLabel, arbeidsgiverLabel;
 	
 	protected static JButton neste;
 	
@@ -37,12 +43,12 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 //	DBConnection conn = new DBConnection();
 	
 	public BekreftMedbraktPanel() {
-		harMedVerneUtstyr = new JCheckBox("<html>P�budt verneutstyr: Hjelm(Standard: EN397)<br> og vernesko(Standard: EN345(EN ISO20345)) med spikertramps�le.</html>");
-		tillgjengeligVerneUtstyr = new JCheckBox("<html>Alltid tilgengelig: H�rselvern, �yevern, arbeidshansker<br> og ved behov �ndedrettsvern, kjemikalie-/kuttreduserende-/spesialhansker og synbarhetst�y</html>");
+		harMedVerneUtstyr = new JCheckBox(labelTekst[sprak][0]);
+		tillgjengeligVerneUtstyr = new JCheckBox(labelTekst[sprak][1]);
 		datoBekreftet = new JTextField(8);
 		navnPaaArbeidstaker = new JTextField(15);
-		datoLabel = new JLabel("Dato:");
-		arbeidsgiverLabel = new JLabel("Navn p� arbeidgiver:");
+		datoLabel = new JLabel(labelTekst[sprak][2]);
+		arbeidsgiverLabel = new JLabel(labelTekst[sprak][3]);
 		neste = new JButton("NESTE");
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
@@ -63,7 +69,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		c.insets = new Insets(0,148,1,1);
 		add(arbeidsgiverLabel,c);
 		c.gridx=0;
-		c.insets = new Insets(4,268,1,1);
+		c.insets = new Insets(4,268,1,50);
 		add(navnPaaArbeidstaker,c);
 		c.gridy=3;
 		add(neste,c);
@@ -121,7 +127,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-//			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnp�arbeidsgiver:" + model.getNavnPaaArbeidgiver());
+//			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
 		} else if(e.getSource() == datoBekreftet) {
 			model.setDato(datoBekreftet.getText());
 		} else if(e.getSource() == navnPaaArbeidstaker) {
@@ -134,4 +140,14 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		
 	}
 
+	public static void changeLanguage(int i) {
+		sprak = i;
+		harMedVerneUtstyr.setText(labelTekst[i][0]);
+		tillgjengeligVerneUtstyr.setText(labelTekst[i][1]);
+		datoLabel.setText(labelTekst[i][2]);
+		arbeidsgiverLabel.setText(labelTekst[sprak][3]);
+		if(i==2){
+//			navnPaaArbeidstaker.setColumns(6);
+		}
+	}
 }

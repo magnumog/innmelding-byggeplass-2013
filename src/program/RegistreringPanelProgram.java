@@ -77,7 +77,7 @@ public class RegistreringPanelProgram extends JPanel {
 		main = new JFrame("Registrering av personell på prosjekt");
 		main.setSize(730, 800);
 		main.setLocation(400, 100);
-		main.setResizable(false);
+		main.setResizable(true);
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Welcomme = new JPanel();
 		panel1 = new JPanel();

@@ -2,7 +2,7 @@ package panel;
 /**
  * @author Magnus Settemsli Mogstad
  * mail @ magnumog@stud.ntnu.no
- * Rotete kode men forst�elig
+ * Rotete kode men forståelig
  * Owner Veidekke ASA
  **/
 
@@ -27,14 +27,19 @@ import modell.Kurs;
 public class KursPanel extends JPanel implements ActionListener, PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private static int sprak = 0;
-	private static String[][] labelTekst = {{"Verksted og lager, type:", "Spesialkraner, type:", "Vinsjer oig taljer","Anhuking - stropping - signalgivning", "Klatre- og hengestillaser(36t kurs)","Personl�ftere klasse: ", "Personl�ftere under jord", "Borvogner og tunnelrigger",
-		"Selvg�ende valser", "Traktorutstyr", "Vinkelsliper/-kutter", "Boltepistol", "Annet: (Beskriv):", "Spikerpistol", "Kombihammer/borhammer", "Kjedesag", "Kapp-/Klyve-/Gjerdesag", "Bindemaskin armering", "Vibrostav", "H�ndholdt armeringskapper", "Skj�rebrenner",
-		"Sponbrytende", "Slipemaskiner", "Trebearbeidingsmaskiner", "Asfaltarbeider", "Betongsager, kjerneboringsutstyr", "Veggsager","Vaiersager", "Gulvsager og asfaltsag", "H�ytrykkspylerutstyr", "Ryddesager og trimmere",
-		"Spunte- og p�leutstyr", "Mobilt betongpumpeutstyr", "Sikker bruk/kontroll av stillas", "Sikker bruk av forskaling", "Fallsikringsutstyr", "F�rstehjelpskurs, Dato:"},
-		{""},
-		{}};
+	private static String[][] labelTekst = {{"Verksted og lager, type:", "Spesialkraner, type:", "Vinsjer og taljer","Anhuking - stropping - signalgivning", "Klatre- og hengestillaser(36t kurs)","Personløftere klasse: ", "Personløftere under jord", "Borvogner og tunnelrigger",
+		"Selvgående valser", "Traktorutstyr", "Vinkelsliper/-kutter", "Boltepistol", "Annet: (Beskriv):", "Spikerpistol", "Kombihammer/borhammer", "Kjedesag", "Kapp-/Klyve-/Gjerdesag", "Bindemaskin armering", "Vibrostav", "Håndholdt armeringskapper", "Skjærebrenner",
+		"Sponbrytende", "Slipemaskiner", "Trebearbeidingsmaskiner", "Asfaltarbeider", "Betongsager, kjerneboringsutstyr", "Veggsager","Vaiersager", "Gulvsager og asfaltsag", "Høytrykkspylerutstyr", "Ryddesager og trimmere",
+		"Spunte- og pæleutstyr", "Mobilt betongpumpeutstyr", "Sikker bruk/kontroll av stillas", "Sikker bruk av forskaling", "Fallsikringsutstyr", "Førstehjelpskurs, Dato:"},
+		{"Workshop and warehouse, type:", "Special cranes, type:", "Winches and tackle", "Hooking - strapping - signalling", "Climbing and hanging scaffolding(36h course)", "Man lift class:", "Man lift Underground", "Drill vehicles", "Self-propelled roller", "Tractor equipment", "Angle grinder/cutter", "Bolt gun",
+		"Other: (descirbe)", "Nail gun", "Combi hammer/drill hammer", "Chain saw", "Cutting/wood splitting/fencing saw", "Reinforcement connector", "Vibrorod", "Hand-held reinforcement cutter", "Cutting torch", "Rotary cutter", "Grinder", "Woodworking machines", "Asphalt work", "Concrete saw, core drilling equipment", "wall saws",
+		"Wire saw", "Floor and asphalt saw", "High-pressure hose equipment", "Clearing saw and trimmer", "piling and sheet piling equipment", "Mobile concrete pump equipment", "Safe use/Controll of scaffolding", "Safe use of formwork", "Fall safety equipment", "First aid course: Date:"},
+		{"Warsztat i magazyn, typ:","Dźwigi specjalistyczne, typ:","Wciągarki i wielokrążki","Podwieszanie – taśmowanie – sygnalizacja","Budowa i praca na rusztowaniach (kurs 36-godz.)","Podnośniki osobowe, klasa:","Podnośniki osobowe, podziemne:","Wozy wiertnicze","Walce samobieżne","Sprzęt ciągnikowy","Szlifierki/frezy kątowe",
+		"Pistolety do śrub","Inne (opisać):", "Gwoździarka","Młotowiertarka/wiertarka udarowa","Piły łańcuchowe","Piły do cięcia/łuparki/piły do żywopłotów","Łączniki zbrojeniowe","Ubijak pneumatyczny","Ręczne urządzenia do cięcia zbrojenia","Palniki do cięcia","Nożyce krążkowe","Szlifierki","Urządzenia do obróbki drewna","Prace przy asfalcie",
+		"Pilarka do betonu, urządzenia do wiercenia rdzeniowego","Piły do cięcia ścian","Piły cierne druciane","Piły do cięcia stropów i asfaltu","Węże wysokociśnieniowe","Podkaszarki i przycinarki","Układarki, w tym układarki do blachy","Mobilne pompy do betonu","Bezpieczne wykorzystanie/kontrola rusztowań","Bezpieczne wykorzystanie szalunków",
+		"Systemy zabezpieczające przed upadkiem z wysokości","Kurs pierwszej pomocy: data:"}};
 	private static JCheckBox verkstedOgLagerCheck, SpesialKranerCheck, VinsjerOgTaljerCheck, anhukingStroppingOgSignalgivningCheck, klatreOgHengeStilaserCheck, personLoftereCheck, personLoftereUnderJordCheck;
-	private static JCheckBox borVognerOgTunnelriggerCheck, selvg�endeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
+	private static JCheckBox borVognerOgTunnelriggerCheck, selvgåendeValserCheck, TraktorutstyrCheck, vinkelSliperKutterCheck, boltePistolCheck, spikerPistolCheck, KombiHammerBorHammerCheck, kjedeSagCheck;
 	private static JCheckBox KappKlyveGjerdeSagCheck, bindeMaskinArmeringCheck, VibrostavCheck, haandholdtArmeringsKapperCheck, skjarebrennerCheck, sponBrytendeCheck, slipemaskinerCheck, trebearbeidingsMaskinerCheck;
 	private static JCheckBox asfaltArbeiderCheck, betongSagerKjerneBorCheck, veggsagerCheck, vaierSagerCheck, gulvsagerOgAsfaltsagCheck, hoytrykkspylerUtstyrCheck, ryddeSagerOgTrimmereCheck, spunteOgPaleutstyrCheck;
 	private static JCheckBox mobiltBetongPumpeUtstyr, sikkerBrukKontrollAvStillasCheck, sikkerBrukAvForskalingCheck, fallsikringutstyrCheck, forstehjelpUtstyrCheck;
@@ -64,7 +69,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		personLoftereCheck.addActionListener(this);
 		personLoftereUnderJordCheck.addActionListener(this);
 		borVognerOgTunnelriggerCheck.addActionListener(this);
-		selvg�endeValserCheck.addActionListener(this);
+		selvgåendeValserCheck.addActionListener(this);
 		TraktorutstyrCheck.addActionListener(this);
 		vinkelSliperKutterCheck.addActionListener(this);
 		boltePistolCheck.addActionListener(this);
@@ -128,7 +133,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		c.gridy = 7;
 		add(borVognerOgTunnelriggerCheck,c);
 		c.gridy = 8;
-		add(selvg�endeValserCheck,c);
+		add(selvgåendeValserCheck,c);
 		c.gridy =9;
 		add(TraktorutstyrCheck,c);
 		c.gridy = 10;
@@ -226,7 +231,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		personlofterePropertyComponent = new JTextField(6);
 		personLoftereUnderJordCheck = new JCheckBox(labelTekst[sprak][6]);
 		borVognerOgTunnelriggerCheck = new JCheckBox(labelTekst[sprak][7]);
-		selvg�endeValserCheck = new JCheckBox(labelTekst[sprak][8]);
+		selvgåendeValserCheck = new JCheckBox(labelTekst[sprak][8]);
 		TraktorutstyrCheck = new JCheckBox(labelTekst[sprak][9]);
 		vinkelSliperKutterCheck = new JCheckBox(labelTekst[sprak][10]);
 		boltePistolCheck = new JCheckBox(labelTekst[sprak][11]);
@@ -280,7 +285,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		personLoftereCheck.setSelected(model.isPersonLoftere());
 		personLoftereUnderJordCheck.setSelected(model.isPersonLoftereUnderJord());
 		borVognerOgTunnelriggerCheck.setSelected(model.isBorvognerTunnelrigger());
-		selvg�endeValserCheck.setSelected(model.isSelvgaendeUtstyr());
+		selvgåendeValserCheck.setSelected(model.isSelvgaendeUtstyr());
 		TraktorutstyrCheck.setSelected(model.isTraktorUtstyr());
 		vinkelSliperKutterCheck.setSelected(model.isVinkelsliperKutter());
 		boltePistolCheck.setSelected(model.isBoltePistol());
@@ -340,7 +345,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		} else if(evt.getPropertyName() == Kurs.BORVOGNERTUNNELRIGGER_PROPERTY) {
 			borVognerOgTunnelriggerCheck.setSelected(model.isBorvognerTunnelrigger());
 		} else if(evt.getPropertyName() == Kurs.SELVGAENDEUTSTYR_PROPERTY) {
-			selvg�endeValserCheck.setSelected(model.isSelvgaendeUtstyr());
+			selvgåendeValserCheck.setSelected(model.isSelvgaendeUtstyr());
 		} else if(evt.getPropertyName() == Kurs.TRAKTORUTSTYR_PROPERTY){
 			TraktorutstyrCheck.setSelected(model.isTraktorUtstyr());
 		} else if(evt.getPropertyName() == Kurs.VINKELSLIPERKUTTER_PROPERTY) {
@@ -425,7 +430,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			model.setPersonLoftere(personLoftereCheck.isSelected());
 			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
 			model.setBorvognerTunnelrigger(borVognerOgTunnelriggerCheck.isSelected());
-			model.setSelvgaendeUtstyr(selvg�endeValserCheck.isSelected());
+			model.setSelvgaendeUtstyr(selvgåendeValserCheck.isSelected());
 			model.setTraktorUtstyr(TraktorutstyrCheck.isSelected());
 			model.setVinkelsliperKutter(vinkelSliperKutterCheck.isSelected());
 			model.setBoltePistol(boltePistolCheck.isSelected());
@@ -467,12 +472,12 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			}
 			//			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
 			//			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
-			//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVG�ENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+			//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
 			//			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
-			//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " H�NDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
-			//			System.out.println("SKJ�REBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
-			//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " H�YTRYKKSPYLER:" + model.isHoytrykkSpyler());
-			//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGP�LEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+			//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+			//			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+			//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+			//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
 			//			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
 			//			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
 		} else if(e.getSource()== nullstill) {
@@ -520,12 +525,12 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			model.setAnnetTekst(null);
 			//			System.out.println("VERKSTED:" + model.isVerkstedOgLager()+ " VERKSTEDTEKST:" + model.getVerksetedLagerTekst() + " SPESIALKRAN:" + model.isSpesialKraner() + " SPESIALKRANTEKST:" + model.getSpesialKranerTekst());
 			//			System.out.println("VINSJER:" + model.isVinsjerOgTaljer() + " ANHUK:" + model.isAnhukStroppingSignalGiving() + " KLATREHENGESTILAS:" + model.isKlatreOgHengestilaser() + " PERSONLOFTER:" + model.isPersonLoftere() + " PERSONLOFTERTEKST:" + model.getPersonLoftereTekst());
-			//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVG�ENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
+			//			System.out.println("PERSONLOFTERUNDERJORD:" + model.isPersonLoftereUnderJord() + " BORVOGNER:" + model.isBorvognerTunnelrigger() + " SELVGÅENDE:" + model.isSelvgaendeUtstyr() + " TRAKTORUTSTYR:" + model.isTraktorUtstyr());
 			//			System.out.println("VINKELSLIPER:" + model.isVinkelsliperKutter() + " BOLTEPISTOL:" + model.isBoltePistol() + " SPIKERPISTOL:" + model.isSpikerPistol() + " KOMBIHAMMER:" + model.isKombihammerBorhammer() + " KJEDESAG:" + model.isKjedeSag());
-			//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " H�NDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
-			//			System.out.println("SKJ�REBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
-			//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " H�YTRYKKSPYLER:" + model.isHoytrykkSpyler());
-			//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGP�LEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
+			//			System.out.println("KAPPKLYVEGJERDESAG:" + model.isKappklyveGjerdeSag() + " BINDEMASKIN:" + model.isBindeMaskinArmering() + " VIBROSTAV:" + model.isVibroStav() + " HÅNDHOLDTARMERINGSKAPPER:" + model.isHandhaldtArmeringsKapper());
+			//			System.out.println("SKJÆREBRENNER:" + model.isSkjarebrenner() + " SPONBRYTENDE:" + model.isSponBrytende() + " SLIPEMASKINER:" + model.isSlipeMaskiner() + " TREBEARBEIDINGSMASKINER:" + model.isTreBearbeidingsMaskin() + " ASFALTARBEIDER:" + model.isAsfaltarbeider());
+			//			System.out.println("BETONGSAGER:" + model.isBetongSagerKjerneBoring() + " VEGGSAGER:" + model.isVeggSager() + " VAIERSAGER:" + model.isVaierSager() + " GULVSAGOGASFALTSAG:" + model.isGulvOgAsfaltSag() + " HØYTRYKKSPYLER:" + model.isHoytrykkSpyler());
+			//			System.out.println("RYDDESAGER:" + model.isRyddeSagerOgTrimmere() + " SPUNTEOGPÆLEUTSTYR:" + model.isSpunteOgPaleUtstyr() + " MOBILTBETONGPUMPEUTSTYR:" + model.isMobiltBetongPumpeUtstyr() + " SIKKERSTILAS:" + model.isSikkerKontorllAvStillas());
 			//			System.out.println("SIKKERFORSKALING:" + model.isSikkerBrukAvForskaling() + " FALLSIKRINGSUTSTYR:" + model.isFallSikkring() + " FORSTEHJELP:" + model.isForsteHjelp() + " FORSTEHJELPTEKST:" + model.getForstehjelpDatoTekst());
 			//			System.out.println("ANNET:" + model.isAnnet() + " ANNETTEKST:" + model.getAnnetTekst());
 
@@ -558,16 +563,16 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 				personlofterePropertyComponent.setEditable(true);
 			} else 
 				personlofterePropertyComponent.setEditable(false);
-			//			System.out.println("Endret Personl�ftere check");
+			//			System.out.println("Endret Personløftere check");
 		} else if(e.getSource()==personLoftereUnderJordCheck) {
 			model.setPersonLoftereUnderJord(personLoftereUnderJordCheck.isSelected());
-			//			System.out.println("Endret personl�ftereunderjord Check");
+			//			System.out.println("Endret personløftereunderjord Check");
 		} else if(e.getSource()==borVognerOgTunnelriggerCheck) {
 			model.setBorvognerTunnelrigger(borVognerOgTunnelriggerCheck.isSelected());
 			//			System.out.println("Endret borvogner og tunnelrigger check");
-		} else if(e.getSource()==selvg�endeValserCheck) {
-			model.setSelvgaendeUtstyr(selvg�endeValserCheck.isSelected());
-			//			System.out.println("Endret selvg�endevalse check");
+		} else if(e.getSource()==selvgåendeValserCheck) {
+			model.setSelvgaendeUtstyr(selvgåendeValserCheck.isSelected());
+			//			System.out.println("Endret selvgåendevalse check");
 		} else if(e.getSource()==TraktorutstyrCheck) {
 			model.setTraktorUtstyr(TraktorutstyrCheck.isSelected());
 			//			System.out.println("Endret Traktorutstyr check");
@@ -597,10 +602,10 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			//			System.out.println("Endret vibrostav check");
 		} else if(e.getSource()==haandholdtArmeringsKapperCheck) {
 			model.setHandhaldtArmeringsKapper(haandholdtArmeringsKapperCheck.isSelected());
-			//			System.out.println("Endret h�ndholdtArmeringsKapper check");
+			//			System.out.println("Endret håndholdtArmeringsKapper check");
 		} else if(e.getSource()==skjarebrennerCheck) {
 			model.setSkjarebrenner(skjarebrennerCheck.isSelected());
-			//			System.out.println("Endret skj�rebrenner check");
+			//			System.out.println("Endret skjærebrenner check");
 		} else if(e.getSource()==sponBrytendeCheck) {
 			model.setSponBrytende(sponBrytendeCheck.isSelected());
 			//			System.out.println("Endret sponbrytende check");
@@ -633,7 +638,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 			//			System.out.println("Endret ryddesager og trimmere check");
 		} else if(e.getSource()==spunteOgPaleutstyrCheck){
 			model.setSpunteOgPaleUtstyr(spunteOgPaleutstyrCheck.isSelected());
-			//			System.out.println("Endret Spunte og p�leutstyr check");
+			//			System.out.println("Endret Spunte og pæleutstyr check");
 		} else if(e.getSource()==mobiltBetongPumpeUtstyr) {
 			model.setMobiltBetongPumpeUtstyr(mobiltBetongPumpeUtstyr.isSelected());
 			//			System.out.println("Endret mobiltbetongpumpeutstyr check");
@@ -687,7 +692,7 @@ public class KursPanel extends JPanel implements ActionListener, PropertyChangeL
 		personLoftereCheck.setText(labelTekst[i][5]);
 		personLoftereUnderJordCheck.setText(labelTekst[i][6]);
 		borVognerOgTunnelriggerCheck.setText(labelTekst[i][7]);
-		selvg�endeValserCheck.setText(labelTekst[i][8]);
+		selvgåendeValserCheck.setText(labelTekst[i][8]);
 		TraktorutstyrCheck.setText(labelTekst[i][9]);
 		vinkelSliperKutterCheck.setText(labelTekst[i][10]);
 		boltePistolCheck.setText(labelTekst[i][11]);

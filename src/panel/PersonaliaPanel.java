@@ -24,14 +24,14 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 
 	private static final long serialVersionUID = 1L;
 	private static int sprak = 0;
-	private static String[][] labelTekst = {{"Fornavn: ", "Fødselsdato: ", "ID-Kortnummer: ", "Utløpsdato ID-Kort: ", "Adresse: ", "Postnr: ", "Poststed: ", "Telefon/mobil: ", "Arbeidsgiver: ", "Arbeidsgivers telefonnr: ", "Nærmeste pårørende: ", "Nærmeste pårørende telefon: ", "Snakker skandinavisk: ", "Forstår skandinavisk: ", "Ja", "Nei", "Ved nei, tiltak: ", "Etternavn: "},
-		{"Firstname: ", "Date of birth: ", "ID card number: ", "Expiry date ID card", "Adress: ", "Postcode: ", "Postal town: ", "Telephone/mobile: ", "Employer: ", "Employer phonenr: ", "Next of kin: ", "Next of kin phonenr: ", "Speaks scandinavian: ", "Understands scandinavian: ", "Yes", "No", "If no, action: ", "Lastname: "},
-		{"Imię: ", "Data urodzenia: ", "Nr dowodu tozsamosci: ", "Data waznosci dowodu tozsamosci: ", "Adres: ", "Kod poczto-wy: ", "Miejscowosc: ", "Nr tel. stacjonarnego/ komórkowego: ", "Pracodawca: ", "Nr tel: ", "Najbliższy krewny: ", "Nr tel. stacjonarnego/komórkowego: ", "Mówi językiem skandynawskim: ", "Rozumie język skandynawski: ", "Tak", "Nie", "Jeśli nie, zaleca się: ", "Nazwisko: " }};
+	private static String[][] labelTekst = {{"Fornavn: ", "Fødselsdato: ", "ID-Kortnummer: ", "Utløpsdato ID-Kort: ", "Adresse: ", "Postnr: ", "Poststed: ", "Telefon/mobil: ", "Arbeidsgiver: ", "Arbeidsgivers telefonnr: ", "Nærmeste pårørende: ", "Nærmeste pårørende telefon: ", "Snakker skandinavisk: ", "Forstår skandinavisk: ", "Ja", "Nei", "Ved nei, tiltak: ", "Etternavn: ", "Nasjonalitet: "},
+		{"Firstname: ", "Date of birth: ", "ID card number: ", "Expiry date ID card", "Adress: ", "Postcode: ", "Postal town: ", "Telephone/mobile: ", "Employer: ", "Employer phonenr: ", "Next of kin: ", "Next of kin phonenr: ", "Speaks scandinavian: ", "Understands scandinavian: ", "Yes", "No", "If no, action: ", "Lastname: ", "Nationality: "},
+		{"Imię: ", "Data urodzenia: ", "Nr dowodu tozsamosci: ", "Data waznosci dowodu tozsamosci: ", "Adres: ", "Kod poczto-wy: ", "Miejscowosc: ", "Nr tel. stacjonarnego/ komórkowego: ", "Pracodawca: ", "Nr tel: ", "Najbliższy krewny: ", "Nr tel. stacjonarnego/komórkowego: ", "Mówi językiem skandynawskim: ", "Rozumie język skandynawski: ", "Tak", "Nie", "Jeśli nie, zaleca się: ", "Nazwisko: ", "Narodowość: "}};
 	//GUI til personalia
 	private static JLabel fornavnLabel,etternavnlabel,dateOfBirthLabel,idCardLabel,idCardExpiresDateLabel,adressLabel,postalNrLabel,postalPlaceLabel,telefoneNrLabel,employeerLabel;
-	private static JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel;
+	private static JLabel employerPhoneLabel,nextToKindNameLabel,nextToKindPhoneLabel,nasjonalityLabel;
 	protected JTextField fornavnPropertyComponent, etternavnPropertyComponent,dateOfBirthpropertyComponent,idCardPropertyComponent,idExpiresPropertyComponent,adressPropertyComponent,postNrPropertyComponent,postPlacePropertyComponent,phonePropertyComponent,employeePropertyComponent;
-	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent;
+	protected JTextField employeePhonePropertyComponent,nextToKindPropertyComponent,nextToKindPhonePropertyComponent, nasjonalitypropertyComponent;
 
 	//GUI språk
 	private static JLabel speakSkandinaviskLabel, understandSkandinaviskLabel;
@@ -89,9 +89,13 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 0;
 		c.gridy = 1;
 		add(fornavnLabel,c);
+		c.gridx=2;
+		add(etternavnlabel,c);
 		c.gridx = 0;
 		c.gridy = 2;
 		add(dateOfBirthLabel,c);
+		c.gridx = 2;
+		add(nasjonalityLabel,c);
 		c.gridx = 0;
 		c.gridy = 3;
 		add(idCardLabel,c);
@@ -136,9 +140,13 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		c.gridx = 1;
 		c.gridy = 1;
 		add(fornavnPropertyComponent,c);
+		c.gridx = 3;
+		add(etternavnPropertyComponent,c);
 		c.gridx = 1;
 		c.gridy = 2;
 		add(dateOfBirthpropertyComponent,c);
+		c.gridx = 3;
+		add(nasjonalitypropertyComponent,c);
 		c.gridx = 1;
 		c.gridy = 3;
 		add(idCardPropertyComponent,c);
@@ -225,8 +233,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		//Fikser alle komponenter som skal brukes
 		fornavnLabel = new JLabel(labelTekst[sprak][0]);
 		fornavnPropertyComponent = new JTextField(15);
-		etternavnlabel = new JLabel();
-		etternavnPropertyComponent = new JTextField(labelTekst[sprak][17]);
+		etternavnlabel = new JLabel(labelTekst[sprak][17]);
+		etternavnPropertyComponent = new JTextField(10);
 		dateOfBirthLabel = new JLabel(labelTekst[sprak][1]);
 		dateOfBirthpropertyComponent = new JTextField(10);
 		idCardLabel = new JLabel(labelTekst[sprak][2]);
@@ -248,7 +256,9 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		nextToKindNameLabel = new JLabel(labelTekst[sprak][10]);
 		nextToKindPropertyComponent = new JTextField(15);
 		nextToKindPhoneLabel = new JLabel(labelTekst[sprak][11]);
-		nextToKindPhonePropertyComponent = new JTextField(10);		
+		nextToKindPhonePropertyComponent = new JTextField(10);
+		nasjonalityLabel = new JLabel(labelTekst[sprak][18]);
+		nasjonalitypropertyComponent = new JTextField(10);
 
 		speakSkandinaviskLabel = new JLabel(labelTekst[sprak][12]);
 		understandSkandinaviskLabel = new JLabel(labelTekst[sprak][13]);
@@ -493,7 +503,6 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 	public static void changeLanguage(int i) {
 		sprak = i;
 		fornavnLabel.setText(labelTekst[i][0]);
-		etternavnlabel.setText(labelTekst[i][17]);
 		dateOfBirthLabel.setText(labelTekst[i][1]);
 		idCardLabel.setText(labelTekst[i][2]);
 		idCardExpiresDateLabel.setText(labelTekst[i][3]);
@@ -513,5 +522,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understadnSkandinaviskNeiRadio.setText(labelTekst[i][15]);
 		speakTiltakLabel.setText(labelTekst[i][16]);
 		understandTiltakLabel.setText(labelTekst[i][16]);
+		etternavnlabel.setText(labelTekst[i][17]);
+		nasjonalityLabel.setText(labelTekst[i][18]);
 	}
 }
