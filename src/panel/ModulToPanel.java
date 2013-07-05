@@ -33,7 +33,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	"<html>Pracownik zna stosowane przez firmę Veidekke standardowe procedury reagowania na<br> naruszenie przepisów bezpieczeństwa.</html>", "<html>Pracownik otrzymał świadectwo ukończenia szkolenia z zakresu niezgodności oraz oceny ryzyka – <br>„Blok – stała ocena ryzyka”</html>", "Pracownik zna plan bezpieczeństwa i higieny pracy (tablica informacyjna)."}};
 	private static JCheckBox fravar, bedriftsikkerhetsinstruks, gjennomfortModulTo, klistremerkeModulEn, veidekkesReaksjonsMonster, avviskblokkOgRisikovurdering, SHAplan;
 	
-	protected static JButton neste;
+	protected static JButton neste, nullstill;
 	
 	ModulTo model = null;
 //	DBConnection conn = new DBConnection();
@@ -47,6 +47,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 		avviskblokkOgRisikovurdering = new JCheckBox(labelTekst[sprak][5]);
 		SHAplan = new JCheckBox(labelTekst[sprak][6]);
 		neste = new JButton("Neste");
+		nullstill = new JButton();
 		
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
@@ -80,6 +81,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 		avviskblokkOgRisikovurdering.addActionListener(this);
 		SHAplan.addActionListener(this);
 		neste.addActionListener(this);
+		nullstill.addActionListener(this);
 	}
 	
 	public void setModel(ModulTo model) {
@@ -141,6 +143,14 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 			}
 //			System.out.println("Fravær:" + model.isFravaroppfolging() + " Sikkerhetsinstruks:" + model.isUnderskrevetsikkerhetsinstruks() + "gjennomførtModulTo:" + model.isGjennomfortModulTo() + "Klistremerke:" +model.isKlistremerkeModulEn());
 //			System.out.println("Reaksjonsmønster:" + model.isInneforstattMedReaksjonsmonster() + " Avviksblokk:" + model.isUtdeltBlokkLopendeRisiko() + " SHA-plan:" + model.isSHAPlan());
+		} else if(e.getSource()== nullstill) {
+			model.setFravaroppfolging(false);
+			model.setGjennomfortModulTo(false);
+			model.setInneforstattMedReaksjonsmonster(false);
+			model.setKlistremerkeModulEn(false);
+			model.setSHAPlan(false);
+			model.setUnderskrevetsikkerhetsinstruks(false);
+			model.setUtdeltBlokkLopendeRisiko(false);
 		} else if(e.getSource()==fravar) {
 			model.setFravaroppfolging(fravar.isSelected());
 		} else if(e.getSource()==bedriftsikkerhetsinstruks) {

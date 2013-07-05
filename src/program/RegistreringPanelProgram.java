@@ -139,6 +139,7 @@ public class RegistreringPanelProgram extends JPanel {
 		panelOneBack = new JButton(tekst[sprak][2]); //må nulling av feltene også implementeres
 		panelOneBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DoClickPanel.nullstill.doClick();
 				main.setContentPane(Welcomme);
 				main.validate();
 				main.repaint();

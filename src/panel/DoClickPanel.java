@@ -23,12 +23,15 @@ import database.DBInnsertion;
 public class DoClickPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JButton neste;
+	public static JButton nullstill;
 	DateFormat dateFormat = new SimpleDateFormat("dd. MMMM yyyy");
 	java.util.Date date = new java.util.Date();
 
 	public DoClickPanel() {
 		neste = new JButton("Lagre og Avslutt");
 		neste.addActionListener(this);
+		nullstill = new JButton();
+		nullstill.addActionListener(this);
 
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
@@ -60,6 +63,13 @@ public class DoClickPanel extends JPanel implements ActionListener {
 			System.out.println("Dataene er oppdatert i databasen");
 			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
 			System.exit(0);
+		} else if (e.getSource()==nullstill) {
+			PersonaliaPanel.nullstill.doClick();
+			ModulEnPanel.nullstill.doClick();
+			SertifikatPanel.nullstill.doClick();
+			KursPanel.nullstill.doClick();
+			BekreftMedbraktPanel.nullstill.doClick();
+			ModulToPanel.nullstill.doClick();
 		}
 	}
 }

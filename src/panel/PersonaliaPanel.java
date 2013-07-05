@@ -304,6 +304,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understadnSkandinaviskNeiRadio.addActionListener(this);
 		speakTiltakPropertyComponent.addActionListener(this);
 		understandTiltakPropertyComponent.addActionListener(this);
+		etternavnPropertyComponent.addActionListener(this);
+		nasjonalitypropertyComponent.addActionListener(this);
 	}
 
 	public void setModel(Personalia model){
@@ -327,6 +329,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		speakSkadinvaiskJaRadio.setSelected(model.isSpeakScandinavian());
 		//		speakSkadinvaiskNeiRadio.setSelected(!model.isSpeakScandinavian());
 		speakTiltakPropertyComponent.setText(model.getTiltakSpeak());
+		etternavnPropertyComponent.setText(model.getEtternavn());
+		nasjonalitypropertyComponent.setText(model.getNasjonalitet());
 	}
 	public Personalia getModel() {
 		return model;
@@ -355,9 +359,11 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setSpeakScandinavian(speakSkadinvaiskJaRadio.isSelected());
 			model.setTiltakSpeak(speakTiltakPropertyComponent.getText());
 			model.setTiltakUnderstand(understandTiltakPropertyComponent.getText());
+			model.setEtternavn(etternavnPropertyComponent.getText());
+			model.setNasjonalitet(nasjonalitypropertyComponent.getText());
 			try {
 				DBInnsertion.getCount();
-				DBInnsertion.createPersonalia(model.getName(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone());
+				DBInnsertion.createPersonalia(model.getName(), model.getEtternavn(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone(), model.getNasjonalitet());
 				DBInnsertion.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
 			} catch(NumberFormatException e) {
 				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
@@ -412,6 +418,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setNextToKind(nextToKindPropertyComponent.getText());
 		} else if(action.getSource()==nextToKindPhonePropertyComponent) {
 			model.setNextToKindPhone(nextToKindPhonePropertyComponent.getText());
+		} else if(action.getSource() == nasjonalitypropertyComponent) {
+			model.setNasjonalitet(nasjonalitypropertyComponent.getText());
+		} else if(action.getSource() == etternavnPropertyComponent) {
+			model.setEtternavn(etternavnPropertyComponent.getText());
 		} else if(action.getSource() == understadnSkandinaviskJaRadio || action.getSource()==understadnSkandinaviskNeiRadio) {
 			if(action.getSource()==understadnSkandinaviskJaRadio) {
 				model.setUnderstandScandinavian(true);
@@ -497,6 +507,10 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		} else if(evt.getPropertyName() == Personalia.TILTAKUNDERSTAND_PROPERTY) {
 			understandTiltakPropertyComponent.setText(model.getTiltakUnderstand());
 			//			System.out.println("Endret understand tiltak");
+		} else if(evt.getPropertyName() == Personalia.LASTNAME_PROPERTY) {
+			etternavnPropertyComponent.setText(model.getEtternavn());
+		} else if(evt.getPropertyName() == Personalia.NASJONALITY_PROPERTY) {
+			nasjonalitypropertyComponent.setText(model.getNasjonalitet());
 		}
 	}
 

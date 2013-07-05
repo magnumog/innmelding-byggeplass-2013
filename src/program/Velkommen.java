@@ -112,7 +112,6 @@ public class Velkommen extends JPanel implements ActionListener {
 		KursPanel.changeLanguage(spraknr);
 		BekreftMedbraktPanel.changeLanguage(spraknr);
 		ModulToPanel.changeLanguage(spraknr);
-
 	}
 
 }

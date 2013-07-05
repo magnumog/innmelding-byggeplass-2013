@@ -36,7 +36,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 	private static JTextField datoBekreftet, navnPaaArbeidstaker;
 	private static JLabel datoLabel, arbeidsgiverLabel;
 	
-	protected static JButton neste;
+	protected static JButton neste, nullstill;
 	
 	BekreftMedbrakt model = null;
 	
@@ -50,6 +50,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		datoLabel = new JLabel(labelTekst[sprak][2]);
 		arbeidsgiverLabel = new JLabel(labelTekst[sprak][3]);
 		neste = new JButton("NESTE");
+		nullstill = new JButton();
 		GridBagConstraints c;
 		setLayout(new GridBagLayout());
 		c = new GridBagConstraints();
@@ -80,6 +81,7 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 		datoBekreftet.addActionListener(this);
 		navnPaaArbeidstaker.addActionListener(this);
 		neste.addActionListener(this);
+		nullstill.addActionListener(this);
 	}
 	
 	public void setModel(BekreftMedbrakt model) {
@@ -128,6 +130,11 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 				e1.printStackTrace();
 			}
 //			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
+		} else if(e.getSource()== nullstill) {
+			model.setDato(null);
+			model.setNavnPaaArbeidgiver(null);
+			model.setPabudtVerneutstyr(false);
+			model.setTilgjengeligVerneutstyr(false);
 		} else if(e.getSource() == datoBekreftet) {
 			model.setDato(datoBekreftet.getText());
 		} else if(e.getSource() == navnPaaArbeidstaker) {

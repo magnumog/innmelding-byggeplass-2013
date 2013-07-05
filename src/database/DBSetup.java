@@ -26,7 +26,7 @@ public class DBSetup {
 
 			//Create a table
 			String tableName="Personalia";
-			String createTabel = "CREATE TABLE " + tableName + " (id Integer, Navn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), PRIMARY KEY (id))";
+			String createTabel = "CREATE TABLE " + tableName + " (id Integer, Fornavn Text(32), Etternavn Text(32), FødselsDato Text(10), IDkortnummer Text(10), Utløpsdato_ID_kort Text(10), Adresse Text(30), PostNr Text(8), PostSted Text(25), TelefornNr Text(15), Arbeidsgiver Text(20), ArbeidsgiverTelefon Text(20), NærmestePårørende Text(35), NærmestePårørendeTelefon Text(20), Nasjonalitet Text(30), PRIMARY KEY (id))";
 			try {
 				statement.execute(createTabel);				
 				System.out.println("Personalia createt");

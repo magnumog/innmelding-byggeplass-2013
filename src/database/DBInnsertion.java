@@ -23,27 +23,29 @@ public class DBInnsertion {
 	public DBInnsertion() {
 	}
 
-	public static void createPersonalia(String name, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon) throws Exception {
+	public static void createPersonalia(String fornavn,String etternavn, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon, String nasjonalitet) throws Exception {
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;
 			connection = DriverManager.getConnection(database,"","");
 			statement = connection.createStatement();
 
-			preparedStatement = connection.prepareStatement("INSERT INTO Personalia(id, Navn, FødselsDato, IDkortnummer, Utløpsdato_ID_kort, Adresse, PostNr, PostSted, TelefornNr, Arbeidsgiver, ArbeidsgiverTelefon, NærmestePårørende, NærmestePårørendeTelefon) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement = connection.prepareStatement("INSERT INTO Personalia(id, Fornavn, Etternavn, FødselsDato, IDkortnummer, Utløpsdato_ID_kort, Adresse, PostNr, PostSted, TelefornNr, Arbeidsgiver, ArbeidsgiverTelefon, NærmestePårørende, NærmestePårørendeTelefon, Nasjonalitet) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			preparedStatement.setInt(1,id);
-			preparedStatement.setString(2, name);
-			preparedStatement.setString(3, fdato);
-			preparedStatement.setString(4, idKort);
-			preparedStatement.setString(5, idutlop);
-			preparedStatement.setString(6, Adresse);
-			preparedStatement.setString(7, postnr);
-			preparedStatement.setString(8, poststed);
-			preparedStatement.setString(9, telefon);
-			preparedStatement.setString(10, arbeidsgiver);
-			preparedStatement.setString(11, arbeidsgivertelefon);
-			preparedStatement.setString(12, nermestepaarorende);
-			preparedStatement.setString(13, narmesteparorendetelefon);
+			preparedStatement.setString(2, fornavn);
+			preparedStatement.setString(3, etternavn);
+			preparedStatement.setString(4, fdato);
+			preparedStatement.setString(5, idKort);
+			preparedStatement.setString(6, idutlop);
+			preparedStatement.setString(7, Adresse);
+			preparedStatement.setString(8, postnr);
+			preparedStatement.setString(9, poststed);
+			preparedStatement.setString(10, telefon);
+			preparedStatement.setString(11, arbeidsgiver);
+			preparedStatement.setString(12, arbeidsgivertelefon);
+			preparedStatement.setString(13, nermestepaarorende);
+			preparedStatement.setString(14, narmesteparorendetelefon);
+			preparedStatement.setString(15, nasjonalitet);
 			preparedStatement.execute();
 			//			System.out.println(id);
 

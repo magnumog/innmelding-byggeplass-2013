@@ -10,7 +10,7 @@ package modell;
 import java.beans.*;
 
 public class Personalia {
-	private String name;
+	private String fornavn;
 	private String dateOfBirth;
 	private String IdCardNr;
 	private String IdexpireDate;
@@ -22,13 +22,16 @@ public class Personalia {
 	private String employeerPhone;
 	private String nextToKind;
 	private String NextToKindPhone;
+	private String etternavn;
+	private String nasjonalitet;
 	private boolean SpeakScandinavian;
 	private boolean understandScandinavian;
 	private String tiltakSpeak;
 	private String tiltakUnderstand;
 	
 
-	public final static String NAME_PROPERTY = "name";
+	public final static String NAME_PROPERTY = "fornavn";
+	public final static String LASTNAME_PROPERTY = "etternavn";
 	public final static String DATE_PROPERTY = "dateOfBirth";
 	public final static String ID_CARDNUMBER = "IdCardNr";
 	public final static String ID_EXPIRATION = "IdexpireDate";
@@ -40,6 +43,7 @@ public class Personalia {
 	public final static String EMPLOYERPHONE_PROPERTY = "employeerPhone";
 	public final static String NEXTTO_PROPERTY = "nextToKind";
 	public final static String NEXTTOPHONE_PROPERTY = "NextToKindPhone";
+	public final static String NASJONALITY_PROPERTY = "nasjonalitet";
 	public final static String SPEAKSVANDINAVIAN_PROPERTY = "SpeakScandinavian";
 	public final static String UNDERSTANDSKANDINAVIAN_PROPERTY = "understandScandinavian";
 	public final static String TILTAKSPEAK_PROPERTY = "tiltakSpeak";
@@ -54,6 +58,25 @@ public class Personalia {
 		pcs = new PropertyChangeSupport(this);
 	}
 
+	public String getEtternavn() {
+		return etternavn;
+	}
+	
+	public void setEtternavn(String etternavn) {
+		String oldEtternavn = this.getEtternavn();
+		this.etternavn = etternavn;
+		pcs.firePropertyChange(LASTNAME_PROPERTY, oldEtternavn, etternavn);
+	}
+	
+	public String getNasjonalitet() {
+		return nasjonalitet;
+	}
+	
+	public void setNasjonalitet(String nasjonalitet) {
+		String OldNasjonlaitet = this.getNasjonalitet();
+		this.nasjonalitet = nasjonalitet;
+		pcs.firePropertyChange(NASJONALITY_PROPERTY, OldNasjonlaitet, nasjonalitet);
+	}
 	public String getTiltakSpeak() {
 		return tiltakSpeak;
 	}
@@ -74,12 +97,12 @@ public class Personalia {
 		pcs.firePropertyChange(TILTAKUNDERSTAND_PROPERTY, oldTiltak, tiltakUnderstand);
 	}
 	public String getName() {
-		return name;
+		return fornavn;
 	}
 	public void setName(String name) {
 		String oldName = this.getName();
-		this.name = name;
-		pcs.firePropertyChange(NAME_PROPERTY, oldName, this.name);
+		this.fornavn = name;
+		pcs.firePropertyChange(NAME_PROPERTY, oldName, this.fornavn);
 	}
 	public String getDateOfBirth() {
 		return dateOfBirth;
