@@ -34,7 +34,7 @@ import modell.ModulEn;
 public class ModulEnPanel extends JPanel implements ActionListener,PropertyChangeListener, MouseListener {
 	private static final long serialVersionUID = 1L;
 	private static int sprak = 0;
-	public static String[][] labeltekst = {{"Ja, dato for gjennomføring: ", "Nei", "<html>Gjennomført obligatorisk sikkerthetopplæring Modul 1: </html>" ,"http://veidekke.edvantage.net/ETS/index.jsp?context=UserRegistration&view=_UserRegistrationForm&selfRegID=157", "<html><u>Ta modulEn nå</u></html>"},
+	public static String[][] labeltekst = {{"Ja, dato for gjennomføring: ", "Nei", "<html>Gjennomført obligatorisk sikkerthetopplæring Modul 1: </html>" ,"http://veidekke.edvantage.net/ETS/index.jsp?context=UserRegistration&view=_UserRegistrationForm&selfRegID=157", "<html><u>Ta modul En nå</u></html>"},
 		{"Yes, date: ", "No", "                           Completed mandatory safety training Module 1: ", "http://veidekke.edvantage.net/ETS/index.jsp?context=UserRegistration&view=_UserRegistrationForm&locale=en_GB_315&changeUserLanguage=true&selfRegID=157"},
 		{"Tak, Data: ", "Nie", "<html>Ukończone obowiązkowe szkolenie z zakresu bezpieczeństwa, <br>moduł nr 1: </html>", "http://veidekke.edvantage.net/ETS/index.jsp?context=UserRegistration&view=_UserRegistrationForm&locale=pl_PL_315&changeUserLanguage=true&selfRegID=157"}};
 	private static JRadioButton modulEnJaRadio, modulEnNeiRadio;
@@ -56,7 +56,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		modulEnInfo = new JLabel(labeltekst[sprak][2]);
 		neiTaModulEn = new JLabel(labeltekst[sprak][4]);
 		neiTaModulEn.setForeground(Color.BLUE);
-		neiTaModulEn.setVisible(false);
+		neiTaModulEn.setVisible(true);
 		Neste = new JButton("Neste");
 		nullstill = new JButton("nullstill");
 		ButtonGroup btnGroup = new ButtonGroup();
@@ -76,8 +76,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 		c.gridx=2;
 		add(modulEnJaDato,c);
 		c.gridx=3;
-//		c.ipadx = 80;
 		add(modulEnNeiRadio,c);
+//		c.ipadx = 80;
 		c.gridx=4;
 		add(modulEnNeiFrist,c);
 		modulEnNeiFrist.setVisible(false);
@@ -171,6 +171,7 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 //				// TODO Auto-generated catch block
 //				e1.printStackTrace();
 //			}
+			neiTaModulEn.setText(labeltekst[sprak][4]);
 			neiTaModulEn.setVisible(true);
 			model.setModulEnNeiSvar(modulEnNeiRadio.isSelected());
 			modulEnNeiFrist.setEditable(true);
@@ -217,13 +218,15 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		String URL = labeltekst[sprak][3];
-		try {
-			java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if(modulEnNeiRadio.isSelected()) {
+			try {
+				java.awt.Desktop.getDesktop().browse(java.net.URI.create(URL));
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			neiTaModulEn.setForeground(new Color(128,0,128));			
 		}
-		neiTaModulEn.setForeground(new Color(128,0,128));
 	}
 
 }
