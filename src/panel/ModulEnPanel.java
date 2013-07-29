@@ -29,7 +29,7 @@ import modell.ModulEn;
 public class ModulEnPanel extends JPanel implements ActionListener,PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
 	private static int sprak = 0;
-	public static String[][] labeltekst = {{"Ja, dato for gjennomføring: ", "Nei, dato frist: ", "<html>Gjennomført obligatorisk sikkerthetopplæring <br>Modul 1: </htm>"},
+	public static String[][] labeltekst = {{"Ja, dato for gjennomføring: ", "Nei, dato frist: ", "<html>Gjennomført obligatorisk sikkerthetopplæring     <br>Modul 1: </html>"},
 		{"Yes, date: ", "No, deadline day: ", "                           Completed mandatory safety training Module 1: "},
 		{"Tak, Data: ", "Nie, termin ukończenia: ", "<html>Ukończone obowiązkowe szkolenie z zakresu bezpieczeństwa,<br> moduł nr 1: </html>"}};
 	private static JRadioButton modulEnJaRadio, modulEnNeiRadio;
