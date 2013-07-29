@@ -64,12 +64,12 @@ public class DoClickPanel extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
 			System.exit(0);
 		} else if (e.getSource()==nullstill) {
-			PersonaliaPanel.nullstill.doClick();
-			ModulEnPanel.nullstill.doClick();
-			SertifikatPanel.nullstill.doClick();
-			KursPanel.nullstill.doClick();
-			BekreftMedbraktPanel.nullstill.doClick();
-			ModulToPanel.nullstill.doClick();
+//			PersonaliaPanel.nullstill.doClick();
+//			ModulEnPanel.nullstill.doClick();
+//			SertifikatPanel.nullstill.doClick();
+//			KursPanel.nullstill.doClick();
+//			BekreftMedbraktPanel.nullstill.doClick();
+//			ModulToPanel.nullstill.doClick();
 		}
 	}
 }
