@@ -541,5 +541,12 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 		understandTiltakLabel.setText(labelTekst[i][16]);
 		etternavnlabel.setText(labelTekst[i][17]);
 		nasjonalityLabel.setText(labelTekst[i][18]);
+		if(i==2) {
+			speakTiltakPropertyComponent.setColumns(10);
+			understandTiltakPropertyComponent.setColumns(10);
+		} else {
+			speakTiltakPropertyComponent.setColumns(19);
+			understandTiltakPropertyComponent.setColumns(19);
+		}
 	}
 }
