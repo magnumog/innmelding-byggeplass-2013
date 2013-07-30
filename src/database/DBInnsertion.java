@@ -6,7 +6,10 @@ package database;
  * Owner Veidekke ASA
  **/
 
-
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
 import java.sql.*;
 
 public class DBInnsertion {
@@ -14,7 +17,8 @@ public class DBInnsertion {
 	private static Statement statement = null;
 	private static PreparedStatement preparedStatement = null;
 	public static int id = 0;
-	static String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+	//	static String filename = "C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb";
+	static String filename;
 
 	public static void setID(int nyId) {
 		id = nyId;
@@ -23,7 +27,21 @@ public class DBInnsertion {
 	public DBInnsertion() {
 	}
 
+	public static void readfromfile() throws IOException {
+		File file = new File("src/filer/filplassering.txt");
+		if (file.exists()){
+			FileReader fr = new FileReader(file);
+			@SuppressWarnings("resource")
+			LineNumberReader ln = new LineNumberReader(fr);
+			while (ln.getLineNumber() == 0){
+				filename = ln.readLine();
+				System.out.println(filename);
+			}
+		}
+	}
+
 	public static void createPersonalia(String fornavn,String etternavn, String fdato, String idKort, String idutlop, String Adresse, String postnr, String poststed, String telefon, String arbeidsgiver, String arbeidsgivertelefon, String nermestepaarorende, String narmesteparorendetelefon, String nasjonalitet) throws Exception {
+		//		readfromfile();
 		if(id != 0) {
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=" + DBInnsertion.filename;

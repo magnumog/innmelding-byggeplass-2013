@@ -19,7 +19,10 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.LineNumberReader;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -45,6 +48,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	"<html><u>- instrukcje bezpieczeństwa.</u></html>","<html><u>- Veidekke standardowe procedury reagowania na<br> naruszenie przepisów bezpieczeństwa.</u></html>" }};
 	private static JCheckBox fravar, bedriftsikkerhetsinstruks, gjennomfortModulTo, klistremerkeModulEn, veidekkesReaksjonsMonster, avviskblokkOgRisikovurdering, SHAplan;
 	private static JLabel sikkerhet, reaksjonsmonster;
+	private String sikkerhetfil, bruddfil;
 
 	
 	protected static JButton neste, nullstill;
@@ -52,7 +56,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	ModulTo model = null;
 //	DBConnection conn = new DBConnection();
 	
-	public ModulToPanel() {
+	public ModulToPanel(){
 		fravar = new JCheckBox(labelTekst[sprak][0]);
 		bedriftsikkerhetsinstruks = new JCheckBox(labelTekst[sprak][1]);
 		gjennomfortModulTo = new JCheckBox(labelTekst[sprak][2]);
@@ -115,8 +119,35 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 		SHAplan.addActionListener(this);
 		neste.addActionListener(this);
 		nullstill.addActionListener(this);
+		
+		readfromfile();
 	}
 	
+	private void readfromfile() {
+		try {
+			File file = new File("src/filer/filplassering.txt");
+			if (file.exists()){
+				FileReader fr;
+				fr = new FileReader(file);
+				@SuppressWarnings("resource")
+				LineNumberReader ln = new LineNumberReader(fr);
+				while (ln.readLine() != null){
+					if(ln.getLineNumber() == 1) {
+						sikkerhetfil = ln.readLine();
+					}
+					if(ln.getLineNumber()==2) {
+						bruddfil = ln.readLine();
+					}
+					System.out.println("1 " + sikkerhetfil);
+					System.out.println("2 " + bruddfil);
+				}
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void setModel(ModulTo model) {
 		this.model = model;
 		model.addPropertyChangeListener(this);
@@ -242,7 +273,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 	public void mouseReleased(MouseEvent e) {
 		if(e.getSource()==sikkerhet) {
 			try {
-		        File myFile = new File("src/filer/sikkerhet.pdf");
+		        File myFile = new File(sikkerhetfil);
 		        Desktop.getDesktop().open(myFile);
 		    } catch (IOException ex) {
 		        ex.printStackTrace();
@@ -250,7 +281,7 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 			sikkerhet.setForeground(new Color(128,0,128));
 		} else if(e.getSource() == reaksjonsmonster) {
 			try {
-		        File myFile = new File("src/filer/Burdd på sikkerhetsbestemelser.pdf");
+		        File myFile = new File(bruddfil);
 		        Desktop.getDesktop().open(myFile);
 		    } catch (IOException ex) {
 		        ex.printStackTrace();

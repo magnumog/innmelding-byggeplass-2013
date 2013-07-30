@@ -1,0 +1,3 @@
+C:/workspace/innmelding-byggeplass-2013/src/database/elektroniskInnmelding.mdb
+src/filer/sikkerhet.pdf
+src/filer/Burdd på sikkerhetsbestemelser.pdf

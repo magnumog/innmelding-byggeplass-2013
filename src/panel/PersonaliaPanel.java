@@ -365,6 +365,7 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 			model.setEtternavn(etternavnPropertyComponent.getText());
 			model.setNasjonalitet(nasjonalitypropertyComponent.getText());
 			try {
+				DBInnsertion.readfromfile();
 				DBInnsertion.getCount();
 				DBInnsertion.createPersonalia(model.getName(), model.getEtternavn(), model.getDateOfBirth(), model.getIdCardNr(), model.getIdexpireDate(), model.getAdresse(), model.getPostalNr(), model.getPostalPlace(), model.getPhoneNr(), model.getEmployeer(), model.getEmployeerPhone(), model.getNextToKind(), model.getNextToKindPhone(), model.getNasjonalitet());
 				DBInnsertion.createSprak(model.isSpeakScandinavian(), model.isUnderstandScandinavian(), model.getTiltakSpeak(), model.getTiltakUnderstand());
