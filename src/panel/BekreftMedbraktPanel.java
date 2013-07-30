@@ -17,6 +17,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -128,6 +129,8 @@ public class BekreftMedbraktPanel extends JPanel implements ActionListener, Prop
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen programmet avsluttes, vennligst kontakt hjelp");
+				System.exit(0);
 			}
 //			System.out.println("PabudtVern:" + model.isPabudtVerneutstyr() + " TilgjengeligVern:" + model.isTilgjengeligVerneutstyr() + " Dato:" + model.getDato() + " Navnpåarbeidsgiver:" + model.getNavnPaaArbeidgiver());
 		} else if(e.getSource()== nullstill) {

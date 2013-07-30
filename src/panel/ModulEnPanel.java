@@ -153,6 +153,8 @@ public class ModulEnPanel extends JPanel implements ActionListener,PropertyChang
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen programmet avsluttes, vennligst kontakt hjelp");
+				System.exit(0);
 			}
 			//			System.out.println("JA:" + model.isModulEnJaSvar() + " NEI:" + model.isModulEnNeiSvar() + " JADATO:" + model.getModulEnJADato() +  " NEIFRIST:" + model.getModulEnNeiFrist());
 		} else if(e.getSource()==nullstill) {

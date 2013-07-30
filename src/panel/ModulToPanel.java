@@ -19,7 +19,6 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -27,6 +26,7 @@ import java.io.LineNumberReader;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import database.DBInnsertion;
@@ -138,13 +138,14 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 					if(ln.getLineNumber()==2) {
 						bruddfil = ln.readLine();
 					}
-					System.out.println("1 " + sikkerhetfil);
-					System.out.println("2 " + bruddfil);
+//					System.out.println("1 " + sikkerhetfil);
+//					System.out.println("2 " + bruddfil);
 				}
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			sikkerhetfil = "src/filer/sikkerhet.pdf";
+			bruddfil = "src/filer/Burdd på sikkerhetsbestemelser.pdf";
+			JOptionPane.showMessageDialog(null, "En av filstien til sikkerhet eller brudd på sikkerhet var feil. Vennligst kontakt hjelp");
 		}
 	}
 
@@ -204,6 +205,8 @@ public class ModulToPanel extends JPanel implements ActionListener,PropertyChang
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen programmet avsluttes, vennligst kontakt hjelp");
+				System.exit(0);
 			}
 //			System.out.println("Fravær:" + model.isFravaroppfolging() + " Sikkerhetsinstruks:" + model.isUnderskrevetsikkerhetsinstruks() + "gjennomførtModulTo:" + model.isGjennomfortModulTo() + "Klistremerke:" +model.isKlistremerkeModulEn());
 //			System.out.println("Reaksjonsmønster:" + model.isInneforstattMedReaksjonsmonster() + " Avviksblokk:" + model.isUtdeltBlokkLopendeRisiko() + " SHA-plan:" + model.isSHAPlan());

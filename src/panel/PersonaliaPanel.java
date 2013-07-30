@@ -373,7 +373,8 @@ public class PersonaliaPanel extends JPanel implements ActionListener, PropertyC
 				JOptionPane.showMessageDialog(null, "Du må skrive inn et tall i ID-kortnummer feltet");
 			} catch (Exception e) {
 				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen");
+				JOptionPane.showMessageDialog(null, "Det skjedde noe feil når dataene skulle overføres til databasen programmet avsluttes, vennligst kontakt hjelp");
+				System.exit(0);
 			}
 
 			//			System.out.println("You just updated a bunch of shit");

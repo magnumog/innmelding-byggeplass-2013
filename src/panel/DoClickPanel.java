@@ -58,10 +58,11 @@ public class DoClickPanel extends JPanel implements ActionListener {
 				DBInnsertion.creatRegDato(dateFormat.format(date));				
 			} catch (Exception e1) {
 				e1.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Noe feil skjedde når dataene skulle overføres til databsen");
+				JOptionPane.showMessageDialog(null, "Noe feil skjedde når dataene skulle overføres til databasen, programmet avsluttes, vennligst kontakt hjelp");
+				System.exit(0);
 			}
-			System.out.println("Dataene er oppdatert i databasen");
 			JOptionPane.showMessageDialog(null, "Dataene dine ble vellykket lagt inn i databasen, ha en god dag videre");
+			System.out.println("Dataene er oppdatert i databasen");
 			System.exit(0);
 		} else if (e.getSource()==nullstill) {
 //			PersonaliaPanel.nullstill.doClick();
